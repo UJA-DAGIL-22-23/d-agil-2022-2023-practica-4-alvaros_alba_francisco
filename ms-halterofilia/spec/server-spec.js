@@ -17,7 +17,7 @@ const app = require('../server');
  */
 describe('Servidor HALTEROFILIA:', () => {
   describe('Rutas / y /acercade', () => {
-    it('Devuelve MS Plantilla Home Page', (done) => {
+    it('Devuelve MS Halterofilia Home Page', (done) => {
       supertest(app)
         .get('/')
         .expect(200)
@@ -25,12 +25,12 @@ describe('Servidor HALTEROFILIA:', () => {
         .expect(function (res) {
           //console.log( res.body ); // Para comprobar qué contiene exactamente res.body
           assert(res.body.hasOwnProperty('mensaje'));
-          assert(res.body.mensaje === "Microservicio MS Plantilla: home");
+          assert(res.body.mensaje === "Microservicio MS Halterofilia: home");
 
         })
         .end((error) => { error ? done.fail(error) : done() })
     });
-    it('Devuelve MS Plantilla Acerca De', (done) => {
+    it('Devuelve MS Halterofilia Acerca De', (done) => {
       supertest(app)
         .get('/acercade')
         .expect(200)

@@ -15,22 +15,22 @@ const app = require('../server');
  * @description Rutas de ms-halterofilia
  */
 describe('API Gateway: rutas estáticas', () => {
-  describe('Rutas estáticas de MS Plantilla', () => {
-    it('Devuelve MS Plantilla Home Page', (done) => {
+  describe('Rutas estáticas de MS Halterofilia', () => {
+    it('Devuelve MS halterofilia Home Page', (done) => {
       supertest(app)
-        .get('/plantilla/')
+        .get('/halterofilia/')
         .expect(200)
         .expect('Content-Type', /json/)
         .expect(function (res) {
           assert(res.body.hasOwnProperty('mensaje'));
-          assert(res.body.mensaje === "Microservicio MS Plantilla: home");
+          assert(res.body.mensaje === "Microservicio MS Halterofilia: home");
 
         })
         .end((error) => { error ? done.fail(error) : done() })
     });
-    it('Devuelve MS Plantilla Acerca De', (done) => {
+    it('Devuelve MS Halterofilia Acerca De', (done) => {
       supertest(app)
-        .get('/plantilla/acercade')
+        .get('/halterofilia/acercade')
         .expect(200)
         .expect('Content-Type', /json/)
         .expect(function (res) {
@@ -43,7 +43,7 @@ describe('API Gateway: rutas estáticas', () => {
 
     it('Devuelve F al consultar mediante test_db', (done) => {
         supertest(app)
-          .get('/plantilla/test_db')
+          .get('/halterofilia/test_db')
           .expect(200)
           .expect('Content-Type', /json/)
           .expect(function (res) {
@@ -57,7 +57,7 @@ describe('API Gateway: rutas estáticas', () => {
 
     it('Obtiene todos los deportistas: debe tener un campo data que es distinto de 0', (done) => {
       supertest(app)
-        .get('/plantilla/getTodas')
+        .get('/halterofilia/getTodas')
         .expect(200)
         .expect('Content-Type', /json/)
         .expect(function (res) {
@@ -69,7 +69,7 @@ describe('API Gateway: rutas estáticas', () => {
     });
     it('Devuelve Heavyweight al recuperar los datos de la Persona con id 358470619171389645 mediante getPorId', (done) => {
       supertest(app)
-        .get('/plantilla/getPorId/358470619171389645')
+        .get('/halterofilia/getPorId/358470619171389645')
         .expect(200)
         .expect('Content-Type', /json/)
         .expect(function (res) {
@@ -107,7 +107,7 @@ describe('API Gateway: rutas estáticas', () => {
         sexo_deportista: "F"
     };
       supertest(app)
-        .post('/plantilla/setCampos')
+        .post('/halterofilia/setCampos')
         .send(deportista)
         .expect(200)
         .expect('Content-Type', /json/)
@@ -158,7 +158,7 @@ describe('API Gateway: rutas estáticas', () => {
       };
     
       supertest(app)
-        .post('/plantilla/setNuevoDeportista')
+        .post('/halterofilia/setNuevoDeportista')
         .send(deportista)
         .expect(200)
         .expect('Content-Type', /json/)
@@ -201,7 +201,7 @@ describe('API Gateway: rutas estáticas', () => {
         });
     });
   })
-});
+}); //FIN RUTAS HALTEROFILIA
 
 
 
