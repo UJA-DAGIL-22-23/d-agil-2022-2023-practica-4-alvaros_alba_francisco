@@ -1,6 +1,6 @@
 /**
  * @file routes.js
- * @description Define las rutas ante las que va a responder al MS Plantilla
+ * @description Define las rutas ante las que va a responder al MS Halterofilia
  * @author Alba Gómez Liébana <agl00108@red.ujaen.es>
  * @date 03-feb-2023
  */

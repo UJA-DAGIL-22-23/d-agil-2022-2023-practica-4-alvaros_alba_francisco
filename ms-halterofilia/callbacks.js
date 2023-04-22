@@ -1,6 +1,6 @@
 /**
  * @file callbacks.js
- * @description Callbacks para el MS Plantilla.
+ * @description Callbacks para el MS Halterofilia.
  * Los callbacks son las funciones que se llaman cada vez que se recibe una petición a través de la API.
  * Las peticiones se reciben en las rutas definidas en routes.js, pero se procesan aquí.
  * @author Alba Gómez Liébana <agl00108@red.ujaen.es>

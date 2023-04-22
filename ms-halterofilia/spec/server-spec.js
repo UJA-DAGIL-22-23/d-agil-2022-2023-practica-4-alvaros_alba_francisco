@@ -1,6 +1,6 @@
 /**
  * @file server-spec.js
- * @description Fichero con la especificación de las pruebas TDD para server.js del MS MS Plantilla
+ * @description Fichero con la especificación de las pruebas TDD para server.js del MS Halterofilia
  *              Este fichero DEBE llamarse server-spec.js
  *              Este fichero DEBE ubicarse en el subdirectorio spec/
  * @author Alba Gómez Liébana <agl00108@red.ujaen.es>
@@ -15,7 +15,7 @@ const app = require('../server');
 /**
  * Test para las rutas "estáticas": / y /acerdade
  */
-describe('Servidor PLANTILLA:', () => {
+describe('Servidor HALTEROFILIA:', () => {
   describe('Rutas / y /acercade', () => {
     it('Devuelve MS Plantilla Home Page', (done) => {
       supertest(app)
