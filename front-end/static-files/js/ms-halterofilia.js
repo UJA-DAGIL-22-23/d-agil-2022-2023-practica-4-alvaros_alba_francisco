@@ -131,7 +131,7 @@ Halterofilia.descargarRuta = async function (ruta, callBackFn) {
  */
 Halterofilia.recuperaDeportista = async function (idDeportista, callBackFn) {
     try {
-        const url = Frontend.API_GATEWAY + "/Halterofilia/getPorId/" + idDeportista
+        const url = Frontend.API_GATEWAY + "/halterofilia/getPorId/" + idDeportista
         const response = await fetch(url);
         if (response) {
             const deportista = await response.json()
@@ -150,7 +150,7 @@ Halterofilia.recuperaDeportista = async function (idDeportista, callBackFn) {
  */
 Halterofilia.recuperaDeportistas = async function (campoOrden, callBackFn) {
     try {
-        const url = Frontend.API_GATEWAY + "/Halterofilia/getTodas"
+        const url = Frontend.API_GATEWAY + "/halterofilia/getTodas"
         const response = await fetch(url);
         if (response) {
             const deportistas = await response.json()
@@ -169,7 +169,7 @@ Halterofilia.recuperaDeportistas = async function (campoOrden, callBackFn) {
  */
 Halterofilia.recuperaDeportistasPorNombre = async function (busqueda, callBackFn) {
     try {
-        const url = Frontend.API_GATEWAY + "/Halterofilia/getTodas"
+        const url = Frontend.API_GATEWAY + "/halterofilia/getTodas"
         const response = await fetch(url);
         if (response) {
             const deportistas = await response.json()
@@ -440,7 +440,7 @@ Halterofilia.modificarCampos = function (deportista) {
  */
 Halterofilia.guardarNuevoDeportista = async function () {
     try {
-        let url = Frontend.API_GATEWAY + "/Halterofilia/setNuevoDeportista";
+        let url = Frontend.API_GATEWAY + "/halterofilia/setNuevoDeportista";
         const response = await fetch(url, {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'no-cors', // no-cors, cors, *same-origin
@@ -525,35 +525,35 @@ Halterofilia.nuevoDeportista = function () {
  * Función principal para responder al evento de elegir la opción "Home"
  */
 Halterofilia.procesarHome = function () {
-    this.descargarRuta("/Halterofilia/", this.mostrarHome);
+    this.descargarRuta("/halterofilia/", this.mostrarHome);
 }
 
 /**
  * Función principal para responder al evento de elegir la opción "Acerca de"
  */
 Halterofilia.procesarAcercaDe = function () {
-    this.descargarRuta("/Halterofilia/acercade", this.mostrarAcercaDe);
+    this.descargarRuta("/halterofilia/acercade", this.mostrarAcercaDe);
 }
 
 /**
  * Función principal para recuperar los deportistas desde el MS y, posteriormente, imprimirlas.
  */
 Halterofilia.listar = function () {
-    this.descargarRuta("/Halterofilia/getTodas", this.imprimeDeportistas);
+    this.descargarRuta("/halterofilia/getTodas", this.imprimeDeportistas);
 }
 
 /**
  * Función principal para recuperar los deportistas desde el MS y, posteriormente, imprimirlas ordenados alfabéticamente.
  */
 Halterofilia.listarAlf = function () {
-    this.descargarRuta("/Halterofilia/getTodas", this.imprimeDeportistasAlf);
+    this.descargarRuta("/halterofilia/getTodas", this.imprimeDeportistasAlf);
 }
 
 /**
  * Función principal para recuperar los deportistas desde el MS y, posteriormente, imprimir todos los datos.
  */
 Halterofilia.listarCompleto = function () {
-    this.descargarRuta("/Halterofilia/getTodas", this.imprimeCompleto);
+    this.descargarRuta("/halterofilia/getTodas", this.imprimeCompleto);
 }
 
 /**
@@ -630,7 +630,7 @@ Halterofilia.modifyCampos = function (idDeportista) {
  */
 Halterofilia.guardar = async function (id_deportista) {
     try {
-        let url = Frontend.API_GATEWAY + "/Halterofilia/setCampos/"
+        let url = Frontend.API_GATEWAY + "/halterofilia/setCampos/"
         let id = id_deportista
         const response = await fetch(url, {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
