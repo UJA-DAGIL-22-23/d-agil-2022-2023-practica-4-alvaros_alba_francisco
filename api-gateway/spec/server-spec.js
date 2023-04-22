@@ -11,6 +11,9 @@ const supertest = require('supertest');
 const assert = require('assert')
 const app = require('../server');
 
+/**
+ * @description Rutas de ms-halterofilia
+ */
 describe('API Gateway: rutas estáticas', () => {
   describe('Rutas estáticas de MS Plantilla', () => {
     it('Devuelve MS Plantilla Home Page', (done) => {
