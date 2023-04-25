@@ -46,6 +46,16 @@ const ROUTES = [
                 [`^/voleyPlaya`]: '',
             },
         }
+    },
+    {
+        url: '/natacion',
+        proxy: {
+            target: "http://localhost:8028",
+            changeOrigin: true,
+            pathRewrite: {
+                [`^/natacion`]: '',
+            },
+        }
     } 
     
 ]
