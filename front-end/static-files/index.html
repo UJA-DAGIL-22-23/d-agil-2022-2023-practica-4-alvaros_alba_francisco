@@ -60,6 +60,40 @@
         </div>
     </nav>
 </div>
+
+
+
+
+    <nav>
+        <a href="javascript:Volley.procesarHome()" class="opcion-principal mostrar"
+        title="Llama a la ruta / del MS Plantilla">Home</a>
+    <a href="javascript:Volley.procesarAcercaDe()" class="opcion-principal mostrar"
+        title="Llama a la ruta /acercade del MS Plantilla">Acerca de</a>
+    <a href="javascript:Volley.listarDatos()" class="opcion-principal mostrar"
+        title="Realiza un listado con todos los datos de los jugadores en la BBDD">Mostrar datos</a>
+        <div class="sub-menu" id="sub-menu-datos">
+            <a href="javascript:Volley.listarAlfabeticamenteNombre()" class="sub-menu mostrar">Sort: Nombre</a>
+            <a href="javascript:Volley.listarAlfabeticamenteApellidos()" class="sub-menu mostrar">Sort: Apellido</a>
+            <a href="javascript:Volley.listarOrdenFecha()" class="sub-menu mostrar">Sort: Fecha Nacimiento</a>
+            <a href="javascript:Volley.listarAlfabeticamentePais()" class="sub-menu mostrar">Sort: País</a>
+            <a href="javascript:Volley.listarOrdenParticipaciones()" class="sub-menu mostrar">Sort: Num Participaciones</a>
+            <a href="javascript:Volley.listarAlfabeticamenteClub()" class="sub-menu mostrar">Sort: Club</a>
+            <a href="javascript:Volley.listarAlfabeticamentePosicion()" class="sub-menu mostrar">Sort: Posición</a>
+        </div>
+    <a href="javascript:Volley.listarNombre()" class="opcion-principal mostrar"
+        title="Realiza un listado con todos los nombres de los jugadores en la BBDD">Mostrar Nombres</a>
+    <a href="javascript:Volley.mostrarOtroJugador('-1')" class="opcion-principal mostrar"
+        title="Vuelve al jugador anterior"><</a>
+    <a href="javascript:Volley.mostrarJugador('360465947460370637')" class="opcion-principal mostrar"
+        title="Muestra los datos de un jugador">Mostrar datos de un jugador</a>
+    <a href="javascript:Volley.mostrarOtroJugador('1')" class="opcion-principal mostrar"
+        title="Pasa al jugador siguiente">></a>
+    </nav>
+
+
+
+
+
 <nav>
     <a href="javascript:Plantilla.procesarHome()" class="opcion-principal"
         title="Llama a la ruta / del MS Plantilla">Home</a>
@@ -76,7 +110,7 @@
     <a href="javascript:Surferos.mostrar('359177288543109324')" class="opcion-principal mostrar"
         title="Muestra los datos de una persona como ejemplo">Mostrar una persona de ejemplo</a>
     <a href="javascript:Plantilla.procesarAcercaDe()" class="opcion-principal"
-        title="Llama a la ruta /acercade del MS Plantilla">Acerca de</a>
+        title="Llama a la ruta /acercade del MS">Acerca de</a>
 </nav>
     
 <!-- 
@@ -99,6 +133,7 @@
     <script src="js/front-end.js"></script>
     <script src="js/ms-halterofilia.js"></script>
     <script src="js/surferos.js"></script>
+    <script src="js/ms-voleibol.js"></script>
 
 
     <!-- Cargamos ficheros spec con los tests -->
@@ -106,6 +141,7 @@
     <script src="js/front-end-spec.js"></script>
     <script src="js/ms-halterofilia-spec.js"></script>
     <script src="js/surferos-spec.js"></script>
+    <script src="js/ms-voleibol-spec.js"></script>
     
 
 </body>

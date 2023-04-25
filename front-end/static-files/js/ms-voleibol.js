@@ -340,7 +340,7 @@ Volley.mostrarAcercaDe = function (datosDescargados) {
  * Función principal para responder al evento de elegir la opción "Home"
  */
 Volley.procesarHome = function () {
-    this.descargarRuta("/plantilla/", this.mostrarHome);
+    this.descargarRuta("/volley/", this.mostrarHome);
 }
 
 /**
