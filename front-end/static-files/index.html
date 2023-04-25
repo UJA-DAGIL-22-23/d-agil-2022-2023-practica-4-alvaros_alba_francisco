@@ -60,6 +60,24 @@
         </div>
     </nav>
 </div>
+<nav>
+    <a href="javascript:Plantilla.procesarHome()" class="opcion-principal"
+        title="Llama a la ruta / del MS Plantilla">Home</a>
+    <a href="javascript:Surferos.listar()" class="opcion-principal"
+        title="Llama a la ruta /getTodas del MS Plantilla">Listado de datos completo</a>
+        <a href="javascript:Surferos.listarNombres()" class="opcion-principal"
+        title="Llama a la ruta /getTodas del MS Plantilla">Listado de nombres</a>
+    <a href="javascript:Surferos.procesarListarNombresOrdenados()" class="opcion-principal mostrar"
+        title="Muestra los datos de surferos ordenados alfabeticamente por nombre">Listado alfabeticamente</a>
+        
+    <a href="javascript:Surferos.procesarListarApellidosOrdenados()" class="opcion-principal mostrar"
+    title="Muestra los datos de los surferos por campos">Pulse para ordenar por campos</a>
+
+    <a href="javascript:Surferos.mostrar('359177288543109324')" class="opcion-principal mostrar"
+        title="Muestra los datos de una persona como ejemplo">Mostrar una persona de ejemplo</a>
+    <a href="javascript:Plantilla.procesarAcercaDe()" class="opcion-principal"
+        title="Llama a la ruta /acercade del MS Plantilla">Acerca de</a>
+</nav>
     
 <!-- 
         Article en el que se va a mostrar la info cuando se pinche una opción del menú 
@@ -80,14 +98,14 @@
     <!-- Cargamos ficheros JS propios del proyecto -->
     <script src="js/front-end.js"></script>
     <script src="js/ms-halterofilia.js"></script>
-    <script src="js/ms-voleibolP.js"></script>
+    <script src="js/surferos.js"></script>
 
 
     <!-- Cargamos ficheros spec con los tests -->
     
     <script src="js/front-end-spec.js"></script>
     <script src="js/ms-halterofilia-spec.js"></script>
-    <script src="js/ms-voleibolP-spec.js"></script>
+    <script src="js/surferos-spec.js"></script>
     
 
 </body>
