@@ -36,7 +36,18 @@ const ROUTES = [
                 [`^/surferos`]: '',
             },
         }
-    }
+    },
+    {
+        url: '/voleyPlaya',
+        proxy: {
+            target: "http://localhost:8033",
+            changeOrigin: true,
+            pathRewrite: {
+                [`^/voleyPlaya`]: '',
+            },
+        }
+    } 
+    
 ]
 
 exports.routes = ROUTES;
