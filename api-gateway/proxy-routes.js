@@ -16,6 +16,16 @@ const ROUTES = [
                 [`^/halterofilia`]: '',
             },
         }
+    },
+    {
+        url: '/volley',
+        proxy: {
+            target: "http://localhost:8074",
+            changeOrigin: true,
+            pathRewrite: {
+                [`^/volley`]: '',
+            },
+        }
     }
 ]
 
