@@ -1,11 +1,13 @@
+
 /**
  * @file callbacks.js
  * @description Callbacks para el MS Plantilla.
  * Los callbacks son las funciones que se llaman cada vez que se recibe una petición a través de la API.
  * Las peticiones se reciben en las rutas definidas en routes.js, pero se procesan aquí.
- * @author Alba Gómez Liébana <agl00108@red.ujaen.es>
- * @date 07-mar-2023
+ * @author Víctor M. Rivas <vrivas@ujaen.es>
+ * @date 03-feb-2023
  */
+
 
 
 // Necesario para conectar a la BBDD faunadb
@@ -13,10 +15,10 @@ const faunadb = require('faunadb'),
     q = faunadb.query;
 
 const client = new faunadb.Client({
-    secret: 'fnAE-YylRgAAzRLy7JPO8A04vyLO5ht55mI4WfDO',
+    secret: 'fnAE_A35RaAAzbCSRkCGipSxjLJMJrsuDCyfTtKl',
 });
 
-const COLLECTION = "Deportistas"
+const COLLECTION = "voley-playa"
 
 // CALLBACKS DEL MODELO
 
@@ -42,153 +44,53 @@ function CORS(res) {
  */
 const CB_MODEL_SELECTS = {
     /**
-     * Prueba de conexión a la BBDD: devuelve todas los deportistas que haya en la BBDD.
+     * Prueba de conexión a la BBDD: devuelve todas las personas que haya en la BBDD.
      * @param {*} req Objeto con los parámetros que se han pasado en la llamada a esta URL 
      * @param {*} res Objeto Response con las respuesta que se va a dar a la petición recibida
      */
     test_db: async (req, res) => {
         try {
-            let deportistas = await client.query(
+            let personas = await client.query(
                 q.Map(
                     q.Paginate(q.Documents(q.Collection(COLLECTION))),
                     q.Lambda("X", q.Get(q.Var("X")))
                 )
             )
-            res.status(200).json(deportistas)
+            res.status(200).json(personas)
         } catch (error) {
             res.status(500).json({ error: error.description })
         }
     },
-
+    
     /**
-     * Método para obtener todas los deportistas de la BBDD.
-     * @param {*} req Objeto con los parámetros que se han pasado en la llamada a esta URL 
-     * @param {*} res Objeto Response con las respuesta que se va a dar a la petición recibida
-     */
-    getTodas: async (req, res) => {
-        try {
-            let deportistas = await client.query(
+         * Método para obtener todas las personas de la BBDD.
+         * @param {*} req Objeto con los parámetros que se han pasado en la llamada a esta URL 
+         * @param {*} res Objeto Response con las respuesta que se va a dar a la petición recibida
+         */
+    listanPersonas: async (req,res) => {
+        try{
+            let personas = await client.query(
                 q.Map(
-                    q.Paginate(q.Documents(q.Collection(COLLECTION))),
+                    q.Paginate(q.Documents(q.Collection("voley-playa"))),
                     q.Lambda("X", q.Get(q.Var("X")))
                 )
             )
-            CORS(res)
-                .status(200)
-                .json(deportistas)
-        } catch (error) {
+            CORS(res).status(200).json(personas)
+        }catch (error) {
             CORS(res).status(500).json({ error: error.description })
         }
     },
 
-    /**
-    * Método para cambiar los datos de un deportista
-    * @param {*} req Objeto con los parámetros que se han pasado en la llamada a esta URL 
-    * @param {*} res Objeto Response con las respuesta que se va a dar a la petición recibida
-    */
-    setCampos: async (req, res) => 
-    {
-        try 
-        {
-            let valorDevuelto = {}
-            let data = (Object.values(req.body)[0] === '') ? JSON.parse(Object.keys(req.body)[0]) : req.body
-            let deportista = await client.query(
-                q.Update(
-                    q.Ref(q.Collection(COLLECTION), data.id_deportista),
-                    {
-                        data: 
-                        {
-                            nombre: data.nombre_deportista,
-                            apellidos: data.apellidos_deportista,
-                            pais: data.pais_deportista,
-                            categoria: data.categoria_deportista,
-                        },
-                    },
-                )
-            )
-                .then((ret) => {
-                    valorDevuelto = ret
-                    CORS(res)
-                        .status(200)
-                        .header( 'Content-Type', 'application/json' )
-                        .json(valorDevuelto)
-                })
-
-        } catch (error) {
-            CORS(res).status(500).json({ error: error.description })
-        }
-    },
-
-    /**
-    * Método para agregar un nuevo deportista
-    * @param {*} req Objeto con los parámetros que se han pasado en la llamada a esta URL 
-    * @param {*} res Objeto Response con las respuesta que se va a dar a la petición recibida
-    */
-    setNuevoDeportista: async (req, res) => 
-    {
-        try 
-        {
-          let valorDevuelto = {}
-          let data = (Object.values(req.body)[0] === '') ? JSON.parse(Object.keys(req.body)[0]) : req.body
-          let nuevoDeportista = await client.query(
-            q.Create(
-              q.Collection(COLLECTION),
-              {
-                data: {
-                    nombre: data.nombre_deportista,
-                    apellidos: data.apellidos_deportista,
-                    fechaNacimiento: data.fechaNacimiento_deportista,
-                    aniosParticipacionOlimpiadas: data.aniosParticipacionOlimpiadas_deportista,
-                    numMedallasGanadas: data.numMedallasGanadas_deportista,
-                    logros: data.logros_deportista,
-                    pais: data.pais_deportista,
-                    categoria: data.categoria_deportista,
-                    sexo: data.sexo_deportista
-                  },
-                },
-            )
-            )
-            .then((ret) => {
-                valorDevuelto = ret
-                CORS(res)
-                    .status(200)
-                    .header( 'Content-Type', 'application/json' )
-                    .json(valorDevuelto)
-            })
-        
-        } catch (error) 
-        {
-          console.log(error);
-          CORS(res).status(500).json({ error: error.description });
-        }
-      },
-      
-
-    /**
-     * Método para obtener una persona de la BBDD por su id.
-     * @param {*} req Objeto con los parámetros que se han pasado en la llamada a esta URL 
-     * @param {*} res Objeto Response con las respuesta que se va a dar a la petición recibida
-     */
-    getPorId: async (req, res) => {
-        try {
-            let deportista = await client.query(
-                q.Get(q.Ref(q.Collection(COLLECTION), req.params.idDeportista))
-            )
-            CORS(res)
-                .status(200)
-                .json(deportista)
-        } catch (error) {
-            CORS(res).status(500).json({ error: error.description })
-        }
-        },
 }
 
+
+
 // CALLBACKS ADICIONALES
+
 /**
  * Callbacks adicionales. Fundamentalmente para comprobar que el ms funciona.
  */
-const CB_OTHERS = 
-{
+const CB_OTHERS = {
     /**
      * Devuelve un mensaje indicando que se ha accedido a la home del microservicio
      * @param {*} req Objeto con los parámetros que se han pasado en la llamada a esta URL 
@@ -210,15 +112,18 @@ const CB_OTHERS =
     acercaDe: async (req, res) => {
         try {
             CORS(res).status(200).json({
-                mensaje: "Datos de la autora",
-                autor: "Alba Gómez Liébana",
-                email: "agl00108@red.ujaen.es",
-                fecha: "07/03/2023"
+                mensaje: "Microservicio MS Plantilla: acerca de",
+                autor: "Álvaro Ordóñez Romero",
+                email: "aor00039@red.ujaen.es",
+                fecha: "28-03-2023"
             });
         } catch (error) {
             CORS(res).status(500).json({ error: error.description })
         }
     },
+
+    //Aquí va el getTodos
+
 }
 
 // Une todos los callbacks en un solo objeto para poder exportarlos.
