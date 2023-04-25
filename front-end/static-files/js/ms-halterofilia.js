@@ -626,6 +626,20 @@ Halterofilia.modifyCampos = function (idDeportista) {
 }
 
 /**
+ * Función principal para mostrar todas las opciones de halterofilia
+ */
+function mostrarOpciones() 
+{
+    var opciones = document.getElementById("opciones");
+    if (opciones.style.display === "none") {
+      opciones.style.display = "block";
+    } else {
+      opciones.style.display = "none";
+    }
+  }
+  
+
+/**
  * Función para guardar los datos de un deportista al que se le va a cambiar el nombre
  */
 Halterofilia.guardar = async function (id_deportista) {
