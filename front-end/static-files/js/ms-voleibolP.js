@@ -484,7 +484,7 @@ voleyPlaya.buscador = function(vector) {
     return mensaje;
   }
 
-  function mostrarOpciones() 
+  function mostrarOpcionesVoleyPlaya() 
 {
     var opciones = document.getElementById("opciones");
     if (opciones.style.display === "none") {
