@@ -26,6 +26,16 @@ const ROUTES = [
                 [`^/volley`]: '',
             },
         }
+    },
+    {
+        url: '/surferos',
+        proxy: {
+            target: "http://localhost:8023",
+            changeOrigin: true,
+            pathRewrite: {
+                [`^/surferos`]: '',
+            },
+        }
     }
 ]
 
