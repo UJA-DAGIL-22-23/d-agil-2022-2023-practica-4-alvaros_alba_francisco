@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Aplicación Microservicios Plantilla</title>
+    <title>Aplicación Microservicios natacion</title>
 
     <!-- Cargamos biblioteca Jasmine -->
     <!-- 
@@ -24,9 +24,9 @@
 <div id="opciones" style="display: none;">
     <nav>
         <a href="javascript:Halterofilia.procesarHome()" class="opcion-principal"
-            title="Llama a la ruta / del MS Plantilla">Home</a>
+            title="Llama a la ruta / del MS natacion">Home</a>
         <a href="javascript:Halterofilia.procesarAcercaDe()" class="opcion-principal"
-            title="Llama a la ruta /acercade del MS Plantilla">Acerca de</a>
+            title="Llama a la ruta /acercade del MS natacion">Acerca de</a>
         <a href="javascript:Halterofilia.listar()" class="opcion-principal mostrar"
             title="Listar todos los nombres de los deportistas en la base de datos">Lista de Nombres</a>
         <a href="javascript:Halterofilia.listarCompleto()" class="opcion-principal mostrar"
@@ -62,13 +62,13 @@
 </div>
 
 
-
+<!-- Seccion volley -->
 
     <nav>
         <a href="javascript:Volley.procesarHome()" class="opcion-principal mostrar"
-        title="Llama a la ruta / del MS Plantilla">Home</a>
+        title="Llama a la ruta / del MS natacion">Home</a>
     <a href="javascript:Volley.procesarAcercaDe()" class="opcion-principal mostrar"
-        title="Llama a la ruta /acercade del MS Plantilla">Acerca de</a>
+        title="Llama a la ruta /acercade del MS natacion">Acerca de</a>
     <a href="javascript:Volley.listarDatos()" class="opcion-principal mostrar"
         title="Realiza un listado con todos los datos de los jugadores en la BBDD">Mostrar datos</a>
         <div class="sub-menu" id="sub-menu-datos">
@@ -92,15 +92,37 @@
 
 
 
+<!-- Seccion natacion -->
+
+<nav>
+
+<a href="javascript:natacion.procesarAcercaDe()" class="opcion-principal"
+            title="Llama a la ruta /acercade del MS natacion">Acerca de</a>
+        <a href="javascript:natacion.procesarListarNombres()" class="opcion-principal"
+            >Listar nombres de personas</a>
+            <a href="javascript:natacion.procesarListarNombresOrden()" class="opcion-principal"
+            >Listar nombres de personas en orden</a>
+            <a href="javascript:natacion.procesarPersonasConTodo()" class="opcion-principal"
+            >Listar personas con todos sus datos</a>
+            <a href="javascript:natacion.cambiarOrden()" class="opcion-principal"
+            >Listar personas con diferente orden</a>
+            <a href="javascript:natacion.mostrar(1009)" class="opcion-principal"
+           >Mostrar los datos de una persona</a>
+            <a href="javascript:natacion.buscarNombre()" class="opcion-principal"
+            >Buscar una persona por nombre</a>
+            <a href="javascript:natacion.buscarDiferentesCampos()" class="opcion-principal">Buscar por diferentes campos</a>
 
 
 <nav>
-    <a href="javascript:Plantilla.procesarHome()" class="opcion-principal"
-        title="Llama a la ruta / del MS Plantilla">Home</a>
+
+
+
+    <a href="javascript:natacion.procesarHome()" class="opcion-principal"
+        title="Llama a la ruta / del MS natacion">Home</a>
     <a href="javascript:Surferos.listar()" class="opcion-principal"
-        title="Llama a la ruta /getTodas del MS Plantilla">Listado de datos completo</a>
+        title="Llama a la ruta /getTodas del MS natacion">Listado de datos completo</a>
         <a href="javascript:Surferos.listarNombres()" class="opcion-principal"
-        title="Llama a la ruta /getTodas del MS Plantilla">Listado de nombres</a>
+        title="Llama a la ruta /getTodas del MS natacion">Listado de nombres</a>
     <a href="javascript:Surferos.procesarListarNombresOrdenados()" class="opcion-principal mostrar"
         title="Muestra los datos de surferos ordenados alfabeticamente por nombre">Listado alfabeticamente</a>
         
@@ -109,7 +131,7 @@
 
     <a href="javascript:Surferos.mostrar('359177288543109324')" class="opcion-principal mostrar"
         title="Muestra los datos de una persona como ejemplo">Mostrar una persona de ejemplo</a>
-    <a href="javascript:Plantilla.procesarAcercaDe()" class="opcion-principal"
+    <a href="javascript:natacion.procesarAcercaDe()" class="opcion-principal"
         title="Llama a la ruta /acercade del MS">Acerca de</a>
 </nav>
     

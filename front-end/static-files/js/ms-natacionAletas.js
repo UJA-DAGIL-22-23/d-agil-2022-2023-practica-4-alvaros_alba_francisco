@@ -1,6 +1,6 @@
 /**
- * @file Plantilla.js
- * @description Funciones para el procesamiento de la info enviada por el MS Plantilla
+ * @file natacion.js
+ * @description Funciones para el procesamiento de la info enviada por el MS natacion
  * @author Víctor M. Rivas <vrivas@ujaen.es>
  * @date 03-feb-2023
  */
@@ -23,7 +23,7 @@ var idPrimeraPersona = 1000;
 var idActual = 1000;
 
 var vecesMostrado = 0;
-// Plantilla de datosDescargados vacíos
+// natacion de datosDescargados vacíos
 natacion.datosDescargadosNulos = {
     mensaje: "Datos Descargados No válidos",
     autor: "",
@@ -31,7 +31,7 @@ natacion.datosDescargadosNulos = {
     fecha: ""
 }
 
-natacion.plantillaTags = {
+natacion.natacionTags = {
     "ID": "### ID ###",
     "nombre": "### nombre ###",
     "apellidos": "### apellidos ###",
@@ -46,14 +46,14 @@ natacion.plantillaTags = {
 
 
 /**
- * Función que descarga la info MS Plantilla al llamar a una de sus rutas
+ * Función que descarga la info MS natacion al llamar a una de sus rutas
  * @param {string} ruta Ruta a descargar
  * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
  */
 natacion.descargarRuta = async function (ruta, callBackFn) {
     let response = null
 
-    // Intento conectar con el microservicio Plantilla
+    // Intento conectar con el microservicio natacion
     try {
         const url = Frontend.API_GATEWAY + ruta
         response = await fetch(url)
@@ -74,7 +74,7 @@ natacion.descargarRuta = async function (ruta, callBackFn) {
 
 
 /**
- * Función principal para mostrar los datos enviados por la ruta "home" de MS Plantilla
+ * Función principal para mostrar los datos enviados por la ruta "home" de MS natacion
  */
 natacion.mostrarHome = function (datosDescargados) {
     // Si no se ha proporcionado valor para datosDescargados
@@ -86,11 +86,11 @@ natacion.mostrarHome = function (datosDescargados) {
     // Si datos descargados NO contiene el campo mensaje
     if (typeof datosDescargados.mensaje === "undefined") datosDescargados = this.datosDescargadosNulos
 
-    Frontend.Article.actualizar("Plantilla Home", datosDescargados.mensaje)
+    Frontend.Article.actualizar("natacion Home", datosDescargados.mensaje)
 }
 
 /**
- * Función principal para mostrar los datos enviados por la ruta "acerca de" de MS Plantilla
+ * Función principal para mostrar los datos enviados por la ruta "acerca de" de MS natacion
  */
 natacion.mostrarAcercaDe = function (datosDescargados) {
     // Si no se ha proporcionado valor para datosDescargados
@@ -115,7 +115,7 @@ natacion.mostrarAcercaDe = function (datosDescargados) {
     </ul>
     </div>
     `;
-    Frontend.Article.actualizar("Plantilla Acerca de", mensajeAMostrar)
+    Frontend.Article.actualizar("natacion Acerca de", mensajeAMostrar)
 }
 
 
@@ -123,14 +123,14 @@ natacion.mostrarAcercaDe = function (datosDescargados) {
  * Función principal para responder al evento de elegir la opción "Home"
  */
 natacion.procesarHome = function () {
-    this.descargarRuta("/plantilla/", this.mostrarHome);
+    this.descargarRuta("/natacion/", this.mostrarHome);
 }
 
 /**
  * Función principal para responder al evento de elegir la opción "Acerca de"
  */
 natacion.procesarAcercaDe = function () {
-    this.descargarRuta("/plantilla/acercade", this.mostrarAcercaDe);
+    this.descargarRuta("/natacion/acercade", this.mostrarAcercaDe);
 }
 
 /**
@@ -180,7 +180,7 @@ natacion.procesarListarNombresOrden = function () {
 natacion.recupera = async function (callBackFn) {
     let respuesta = null
     try{
-        const url = Frontend.API_GATEWAY + "/plantilla/listarnPersonas"
+        const url = Frontend.API_GATEWAY + "/natacion/listarnPersonas"
         respuesta = await fetch(url)
     }catch (error){
         alert("Error: No se han podido acceder al API Gateway")
@@ -390,23 +390,23 @@ natacion.creaBoton = function(){
     let num = (tipoOrden%5);
     if(num == 0 ||vecesMostrado == 0){
         vecesMostrado++;
-        return `<div class="contenedor"><button class="miBoton" onclick="Plantilla.nuevoOrden()">Cambiar orden</button></div><a class="subtitulo">Ordenado por ID</a><br></br>`
+        return `<div class="contenedor"><button class="miBoton" onclick="natacion.nuevoOrden()">Cambiar orden</button></div><a class="subtitulo">Ordenado por ID</a><br></br>`
     }
     if(num == 1){
         vecesMostrado++;
-        return `<div class="contenedor"><button class="miBoton" onclick="Plantilla.nuevoOrden()">Cambiar orden</button></div><a class="subtitulo">Ordenado por Nombre</a><br></br>`
+        return `<div class="contenedor"><button class="miBoton" onclick="natacion.nuevoOrden()">Cambiar orden</button></div><a class="subtitulo">Ordenado por Nombre</a><br></br>`
     }
     if(num == 2){
         vecesMostrado++;
-        return `<div class="contenedor"><button class="miBoton" onclick="Plantilla.nuevoOrden()">Cambiar orden</button></div><a class="subtitulo">Ordenado por Apellidos</a><br></br>`
+        return `<div class="contenedor"><button class="miBoton" onclick="natacion.nuevoOrden()">Cambiar orden</button></div><a class="subtitulo">Ordenado por Apellidos</a><br></br>`
     }
     if(num == 3){
         vecesMostrado++;
-        return `<div class="contenedor"><button class="miBoton" onclick="Plantilla.nuevoOrden()">Cambiar orden</button></div><a class="subtitulo">Ordenado por Altura</a><br></br>`
+        return `<div class="contenedor"><button class="miBoton" onclick="natacion.nuevoOrden()">Cambiar orden</button></div><a class="subtitulo">Ordenado por Altura</a><br></br>`
     }
     if(num == 4){
         vecesMostrado++;
-        return `<div class="contenedor"><button class="miBoton" onclick="Plantilla.nuevoOrden()">Cambiar orden</button></div><a class="subtitulo" >Ordenado por Número de podios conseguidos</a><br></br>`
+        return `<div class="contenedor"><button class="miBoton" onclick="natacion.nuevoOrden()">Cambiar orden</button></div><a class="subtitulo" >Ordenado por Número de podios conseguidos</a><br></br>`
     }
 }
 
@@ -438,7 +438,7 @@ natacion.imprimeUnaPersona = function (persona) {
         msj+="No se ha encontrado a la persona";
     }else{
         idActual = persona.data.ID;
-        msj += '<div class="botones"><button class="anterior" onclick="Plantilla.anteriorPersona(idActual)">Anterior</button><button class="siguiente" onclick="Plantilla.siguientePersona(idActual)">Siguiente</button></div>' + natacion.cabeceraTablaConTodo() + natacion.cuerpoListarConTodo(persona) + natacion.pieTabla() 
+        msj += '<div class="botones"><button class="anterior" onclick="natacion.anteriorPersona(idActual)">Anterior</button><button class="siguiente" onclick="natacion.siguientePersona(idActual)">Siguiente</button></div>' + natacion.cabeceraTablaConTodo() + natacion.cuerpoListarConTodo(persona) + natacion.pieTabla() 
         
     }
     
@@ -470,7 +470,7 @@ natacion.anteriorPersona=function(id){
 
 natacion.pantallaBuscarNombre=function(){
     let mensaje = "";
-    mensaje+='<input type="text" id="buscar" placeholder="Introduce un nombre"><button onclick="Plantilla.busca(vDatos)">Buscar</button>'
+    mensaje+='<input type="text" id="buscar" placeholder="Introduce un nombre"><button onclick="natacion.busca(vDatos)">Buscar</button>'
     Frontend.Article.actualizar("Buscar persona por nombre", mensaje);
     return mensaje;
 }
@@ -478,9 +478,9 @@ natacion.pantallaBuscarNombre=function(){
 natacion.mostrarPBuscada=function(persona) {
     let mensaje = "";
     if(persona==undefined){
-        mensaje+='<input type="text" id="buscar" placeholder="Introduce un nombre"><button onclick="Plantilla.busca(vDatos)">Buscar</button>' + '<div class="error"><p>¡Error! No se ha encontrado el nombre.</p> </div>'
+        mensaje+='<input type="text" id="buscar" placeholder="Introduce un nombre"><button onclick="natacion.busca(vDatos)">Buscar</button>' + '<div class="error"><p>¡Error! No se ha encontrado el nombre.</p> </div>'
     }else{
-    mensaje+='<input type="text" id="buscar" placeholder="Introduce un nombre"><button onclick="Plantilla.busca(vDatos)">Buscar</button>'+natacion.cabeceraTablaConTodo() + natacion.cuerpoListarConTodo(persona) + natacion.pieTabla() 
+    mensaje+='<input type="text" id="buscar" placeholder="Introduce un nombre"><button onclick="natacion.busca(vDatos)">Buscar</button>'+natacion.cabeceraTablaConTodo() + natacion.cuerpoListarConTodo(persona) + natacion.pieTabla() 
     }
     Frontend.Article.actualizar("Buscar persona por nombre", mensaje);
     return mensaje;
@@ -501,13 +501,13 @@ natacion.busca = function(vector){
 
 natacion.pantalllaBuscarCampos = function(){
     let mensaje = "";
-    mensaje+='<input type="text" id="buscarID" placeholder="Introduce un ID"><button id="boton1" onclick="Plantilla.buscaDifParametros(vDatos,1)">Buscar</button>'  
-    mensaje+='<input type="text" id="buscarApellidos" placeholder="Introduce unos apellidos"><button id="boton2" onclick="Plantilla.buscaDifParametros(vDatos,2)">Buscar</button>'
-    mensaje+='<input type="number" id="buscarAltura" min = "0" placeholder="Altura maxima (cm)"><button id="boton3" onclick="Plantilla.buscaDifParametros(vDatos,3)">Buscar</button>'
-    mensaje+='<input type="date" id="buscarFecha" placeholder="Introduce una fecha"><button id="boton4" onclick="Plantilla.buscaDifParametros(vDatos,4)">Buscar</button>'
-    mensaje+='<input type="text" id="buscarLugar" placeholder="Introduce un lugar de nacimiento"><button id="boton5" onclick="Plantilla.buscaDifParametros(vDatos,5)">Buscar</button>'
-    mensaje+='<input type="number" id="buscarAño" min = "0" placeholder="Año de participación"><button id="boton6" onclick="Plantilla.buscaDifParametros(vDatos,6)">Buscar</button>'
-    mensaje+='<input type="number" id="buscarPodios" min = "0" placeholder="Introduce un numero de podios"><button id="boton7" onclick="Plantilla.buscaDifParametros(vDatos,7)">Buscar</button>'
+    mensaje+='<input type="text" id="buscarID" placeholder="Introduce un ID"><button id="boton1" onclick="natacion.buscaDifParametros(vDatos,1)">Buscar</button>'  
+    mensaje+='<input type="text" id="buscarApellidos" placeholder="Introduce unos apellidos"><button id="boton2" onclick="natacion.buscaDifParametros(vDatos,2)">Buscar</button>'
+    mensaje+='<input type="number" id="buscarAltura" min = "0" placeholder="Altura maxima (cm)"><button id="boton3" onclick="natacion.buscaDifParametros(vDatos,3)">Buscar</button>'
+    mensaje+='<input type="date" id="buscarFecha" placeholder="Introduce una fecha"><button id="boton4" onclick="natacion.buscaDifParametros(vDatos,4)">Buscar</button>'
+    mensaje+='<input type="text" id="buscarLugar" placeholder="Introduce un lugar de nacimiento"><button id="boton5" onclick="natacion.buscaDifParametros(vDatos,5)">Buscar</button>'
+    mensaje+='<input type="number" id="buscarAño" min = "0" placeholder="Año de participación"><button id="boton6" onclick="natacion.buscaDifParametros(vDatos,6)">Buscar</button>'
+    mensaje+='<input type="number" id="buscarPodios" min = "0" placeholder="Introduce un numero de podios"><button id="boton7" onclick="natacion.buscaDifParametros(vDatos,7)">Buscar</button>'
     Frontend.Article.actualizar("Buscar persona por diferentes campos", mensaje);
     return mensaje;
 }
@@ -515,13 +515,13 @@ natacion.pantalllaBuscarCampos = function(){
 
 natacion.imprimirPersonasBuscada = function(vector, modo){
     let mensaje = "";
-    mensaje+='<input type="text" id="buscarID" placeholder="Introduce un ID"><button id="boton1" onclick="Plantilla.buscaDifParametros(vDatos,1)">Buscar</button>'  
-    mensaje+='<input type="text" id="buscarApellidos" placeholder="Introduce unos apellidos"><button id="boton2" onclick="Plantilla.buscaDifParametros(vDatos,2)">Buscar</button>'
-    mensaje+='<input type="number" id="buscarAltura" min = "0" placeholder="Altura maxima (cm)"><button id="boton3" onclick="Plantilla.buscaDifParametros(vDatos,3)">Buscar</button>'
-    mensaje+='<input type="date" id="buscarFecha" placeholder="Introduce una fecha"><button id="boton4" onclick="Plantilla.buscaDifParametros(vDatos,4)">Buscar</button>'
-    mensaje+='<input type="text" id="buscarLugar" placeholder="Introduce un lugar de nacimiento"><button id="boton5" onclick="Plantilla.buscaDifParametros(vDatos,5)">Buscar</button>'
-    mensaje+='<input type="number" id="buscarAño" min = "0" placeholder="Año de participación"><button id="boton6" onclick="Plantilla.buscaDifParametros(vDatos,6)">Buscar</button>'
-    mensaje+='<input type="number" id="buscarPodios" min = "0" placeholder="Introduce un numero de podios"><button id="boton7" onclick="Plantilla.buscaDifParametros(vDatos,7)">Buscar</button>'
+    mensaje+='<input type="text" id="buscarID" placeholder="Introduce un ID"><button id="boton1" onclick="natacion.buscaDifParametros(vDatos,1)">Buscar</button>'  
+    mensaje+='<input type="text" id="buscarApellidos" placeholder="Introduce unos apellidos"><button id="boton2" onclick="natacion.buscaDifParametros(vDatos,2)">Buscar</button>'
+    mensaje+='<input type="number" id="buscarAltura" min = "0" placeholder="Altura maxima (cm)"><button id="boton3" onclick="natacion.buscaDifParametros(vDatos,3)">Buscar</button>'
+    mensaje+='<input type="date" id="buscarFecha" placeholder="Introduce una fecha"><button id="boton4" onclick="natacion.buscaDifParametros(vDatos,4)">Buscar</button>'
+    mensaje+='<input type="text" id="buscarLugar" placeholder="Introduce un lugar de nacimiento"><button id="boton5" onclick="natacion.buscaDifParametros(vDatos,5)">Buscar</button>'
+    mensaje+='<input type="number" id="buscarAño" min = "0" placeholder="Año de participación"><button id="boton6" onclick="natacion.buscaDifParametros(vDatos,6)">Buscar</button>'
+    mensaje+='<input type="number" id="buscarPodios" min = "0" placeholder="Introduce un numero de podios"><button id="boton7" onclick="natacion.buscaDifParametros(vDatos,7)">Buscar</button>'
     if(vector.length == 0){
         mensaje+='<div class="error"><p>¡Error! No se ha encontrado lo que buscabas.</p> </div>'
     }else{
