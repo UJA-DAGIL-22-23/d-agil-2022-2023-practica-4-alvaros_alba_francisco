@@ -630,12 +630,11 @@ Halterofilia.modifyCampos = function (idDeportista) {
  */
 function mostrarOpciones() 
 {
-    var opciones = document.getElementById("opciones");
-    if (opciones.style.display === "none") {
-      opciones.style.display = "block";
-    } else {
-      opciones.style.display = "none";
-    }
+    document.getElementById("volley").style.display = "none";
+     document.getElementById("opcionesVolleyPlaya").style.display = "none";
+     document.getElementById("natacion").style.display = "none";
+     document.getElementById("surferos").style.display = "none";
+     document.getElementById("opciones").style.display = "block";
   }
   
 

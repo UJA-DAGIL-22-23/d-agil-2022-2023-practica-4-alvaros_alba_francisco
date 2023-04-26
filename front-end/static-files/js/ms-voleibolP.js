@@ -486,12 +486,22 @@ voleyPlaya.buscador = function(vector) {
 
   function mostrarOpcionesVoleyPlaya() 
 {
-    var opciones = document.getElementById("opciones");
-    if (opciones.style.display === "none") {
-      opciones.style.display = "block";
-    } else {
-      opciones.style.display = "none";
-    }
+     // Oculta las opciones de Halterofilia
+     document.getElementById("opciones").style.display = "none";
+     document.getElementById("volley").style.display = "none";
+     document.getElementById("natacion").style.display = "none";
+     document.getElementById("surferos").style.display = "none";
+     // Muestra las opciones de Volley-Playa
+     document.getElementById("opcionesVolleyPlaya").style.display = "block";
 }
+
+function mostrarInicio() 
+{
+    document.getElementById("opciones").style.display = "none";
+     document.getElementById("opcionesVolleyPlaya").style.display = "none";
+     document.getElementById("natacion").style.display = "none";
+     document.getElementById("volley").style.display = "none";
+     document.getElementById("surferos").style.display = "none";
+  }
   
  

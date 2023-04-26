@@ -628,3 +628,12 @@ Volley.guardar = async function () {
         console.error(error)
     }
 }
+
+function mostrarOpcionesVoley() 
+{
+    document.getElementById("opciones").style.display = "none";
+     document.getElementById("opcionesVolleyPlaya").style.display = "none";
+     document.getElementById("natacion").style.display = "none";
+     document.getElementById("surferos").style.display = "none";
+     document.getElementById("volley").style.display = "block";
+  }

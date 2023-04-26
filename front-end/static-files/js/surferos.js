@@ -652,3 +652,12 @@ Surferos.imprimexApellidos = function (vector,campo) {
 
     Frontend.Article.actualizar("Listado de personas ordenado por nombre", mensaje);
 }
+
+function mostrarOpcionessurf() 
+{
+    document.getElementById("opciones").style.display = "none";
+     document.getElementById("opcionesVolleyPlaya").style.display = "none";
+     document.getElementById("natacion").style.display = "none";
+     document.getElementById("volley").style.display = "none";
+     document.getElementById("surferos").style.display = "block";
+  }

@@ -637,3 +637,12 @@ natacion.buscaDifParametros = function (vector, parametro){
         return this.imprimirPersonasBuscada(vectorSalida, 7);
     }return this.imprimirPersonasBuscada(vectorSalida, 0);
 }
+
+function mostrarOpcionesnatacion() 
+{
+    document.getElementById("opciones").style.display = "none";
+     document.getElementById("opcionesVolleyPlaya").style.display = "none";
+     document.getElementById("volley").style.display = "none";
+     document.getElementById("surferos").style.display = "none";
+     document.getElementById("natacion").style.display = "block";
+  }
