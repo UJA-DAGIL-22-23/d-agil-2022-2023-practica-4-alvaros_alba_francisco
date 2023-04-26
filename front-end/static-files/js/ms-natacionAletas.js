@@ -195,7 +195,7 @@ natacion.recupera = async function (callBackFn) {
 }
 
 natacion.cabeceraTablaNombres = function () {
-    return `<table class="listado-proyectos"><thead><th>ID</th><th>Nombre</th><th>Apellidos</th></thead><tbody>`;
+    return `<table class="listado-nombres"><thead><th>ID</th><th>Nombre</th><th>Apellidos</th></thead><tbody>`;
 }
 
 natacion.pieTabla = function () {
@@ -270,7 +270,7 @@ natacion.ordenarPorApellido = function (vector) {
 }
 
 natacion.cabeceraTablaConTodo = function () {
-    return `<table class="listado-proyectos"><thead><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Altura (cm)</th><th>Nacimiento</th><th>Participaciones en JJOO</th><th>Podios conseguidos</th></thead><tbody>`;
+    return `<table class="listado-nombres"><thead><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Altura (cm)</th><th>Nacimiento</th><th>Participaciones en JJOO</th><th>Podios conseguidos</th></thead><tbody>`;
 }
 
 natacion.cuerpoListarConTodo = function (p) {

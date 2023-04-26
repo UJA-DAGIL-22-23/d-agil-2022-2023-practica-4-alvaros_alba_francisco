@@ -6,7 +6,7 @@
  */
  table.listado-nombres 
  {
-    width: 30%;
+    width: 100%;
     border: 1px solid #f7d1d1;
 }
 
@@ -92,3 +92,86 @@ table.listado-deportistas tbody tr
     font-weight: bold;
   }
   
+  /* Boton de cambiar de orden en la natacion con aletas */
+  .miBoton{
+    background-color: #4CAF50; 
+	border: none; 
+	color: white; 
+	padding: 15px 32px; 
+	text-align: center;
+	text-decoration: none; 
+	display: inline-block; 
+	font-size: 16px; 
+	margin: 4px 2px; 
+	cursor: pointer; 
+	border-radius: 8px; 
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+/* botones de anterior y siguiente en la natacion con aletas*/
+
+  
+  .anterior {
+    float: left;
+    background-color: #f30707; 
+	border: none; 
+	color: white; 
+	padding: 10px 27px; 
+	text-align: center;
+	text-decoration: none; 
+	font-size: 13px; 
+	margin: 4px 2px; 
+	cursor: pointer; 
+	border-radius: 8px; 
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  }
+  
+  .siguiente {
+    float: right;
+    background-color: #4CAF50; 
+	border: none; 
+	color: white; 
+	padding: 10px 27px; 
+	text-align: center;
+	text-decoration: none; 
+	font-size: 13px; 
+	margin: 4px 2px; 
+	cursor: pointer; 
+	border-radius: 8px; 
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  }
+
+  input {
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+  .prueba {
+    width: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    visibility: hidden;
+  }
