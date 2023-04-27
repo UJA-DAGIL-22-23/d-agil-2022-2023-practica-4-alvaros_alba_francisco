@@ -145,7 +145,7 @@ voleyPlaya.imprime = function (vector) {
 }
 
 voleyPlaya.cabeceraTablaNombres = function () {
-    return `<table class="listado-proyectos"><thead><th>ID</th><th>Nombre</th></thead><tbody>`;
+    return `<table class="listado-nombres"><thead><th>ID</th><th>Nombre</th></thead><tbody>`;
 }
 
 voleyPlaya.cuerpoListarPersonas = function (p) {
@@ -223,7 +223,7 @@ voleyPlaya.imprimeTodos = function (vector) {
 }
 
 voleyPlaya.cabeceraTablaTodos = function () {
-    return `<table class="listado-proyectos"><thead><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Día</th><th>Mes</th><th>Año</th><th>Ciudad</th><th>País</th><th>VECTORCOMPETICIONES</th><th>Talla</th><th>NUMMEDALLASOLIMPICAS</th><th>Posicion</th></thead><tbody>`;
+    return `<table class="listado-nombres"><thead><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Día</th><th>Mes</th><th>Año</th><th>Ciudad</th><th>País</th><th>VECTORCOMPETICIONES</th><th>Talla</th><th>NUMMEDALLASOLIMPICAS</th><th>Posicion</th></thead><tbody>`;
   }
 
   voleyPlaya.cuerpoListarTodos = function (p) {
@@ -310,11 +310,11 @@ voleyPlaya.ordenarCampo = function(tipo, vDatos){
 voleyPlaya.ordenarBoton = function(vector){
     let mensaje = "";
     vDatos = vector;
-    mensaje += `<div class="contenedor"><button class="miBoton" onclick="Plantilla.ordenarCampo(0, vDatos)">Ordenar por ID</button></div><br></br>`;
-    mensaje += `<div class="contenedor"><button class="miBoton" onclick="Plantilla.ordenarCampo(1, vDatos)">Ordenar por Nombre</button></div><br></br>`;
-    mensaje += `<div class="contenedor"><button class="miBoton" onclick="Plantilla.ordenarCampo(2, vDatos)">Ordenar por Apellidos</button></div><br></br>`;
-    mensaje += `<div class="contenedor"><button class="miBoton" onclick="Plantilla.ordenarCampo(3, vDatos)">Ordenar por Altura</button></div><br></br>`;
-    mensaje += `<div class="contenedor"><button class="miBoton" onclick="Plantilla.ordenarCampo(4, vDatos)">Ordenar por Número de medallas olímpicas</button></div><br></br>`;
+    mensaje += `<div class="botones"><button class="miBoton" onclick="voleyPlaya.ordenarCampo(0, vDatos)">Ordenar por ID</button></div><br></br>`;
+    mensaje += `<div class="botones"><button class="miBoton" onclick="voleyPlaya.ordenarCampo(1, vDatos)">Ordenar por Nombre</button></div><br></br>`;
+    mensaje += `<div class="botones"><button class="miBoton" onclick="voleyPlaya.ordenarCampo(2, vDatos)">Ordenar por Apellidos</button></div><br></br>`;
+    mensaje += `<div class="botones"><button class="miBoton" onclick="voleyPlaya.ordenarCampo(3, vDatos)">Ordenar por Altura</button></div><br></br>`;
+    mensaje += `<div class="botones"><button class="miBoton" onclick="voleyPlaya.ordenarCampo(4, vDatos)">Ordenar por Número de medallas olímpicas</button></div><br></br>`;
     mensaje += voleyPlaya.cabeceraTablaTodos();
     vector.forEach(e => mensaje+= voleyPlaya.cuerpoListarTodos(e));
     mensaje += voleyPlaya.pieTabla();
@@ -381,8 +381,8 @@ voleyPlaya.siguienteJugador = function () {
 voleyPlaya.mostrarPersona = function (persona, indiceActual) {
   const d = persona.data;
   let mensaje = "";
-  mensaje += `<div class="contenedor"><button class="miBoton" onclick="Plantilla.anteriorJugador()">Anterior</button></div><br></br>`;
-  mensaje += `<div class="contenedor"><button class="miBoton" onclick="Plantilla.siguienteJugador()">Siguiente</button></div><br></br>`;
+  mensaje += `<div class="botones"><button class="anterior" onclick="voleyPlaya.anteriorJugador()">Anterior</button></div><br></br>`;
+  mensaje += `<div class="botones"><button class="siguiente" onclick="voleyPlaya.siguienteJugador()">Siguiente</button></div><br></br>`;
   mensaje += voleyPlaya.cabeceraTablaTodos();
   mensaje += `<tr title="${persona.ref['@ref'].ID}"><td>${indiceActual+1}</td><td>${d.nombre}</td><td>${d.apellidos}</td><td>${d.nacimiento.dia}</td><td>${d.nacimiento.mes}</td><td>${d.nacimiento.Año}</td><td>${d.direccion.ciudad}</td><td>${d.direccion.pais}</td><td>${d.vectorCompeticiones}</td><td>${d.talla}</td><td>${d.numMedallasOlimpicas}</td><td>${d.posicion}</td></tr>`;
   mensaje += voleyPlaya.pieTabla();
@@ -399,7 +399,7 @@ voleyPlaya.buscarNombre = function(){
 voleyPlaya.pantallaBuscarNombre=function(vector){
     vDatos=vector;
     let mensaje = "";
-    mensaje+='<input type="text" id="buscar" placeholder="Introduce un nombre"><button onclick="Plantilla.busca(vDatos)">Buscar</button>'
+    mensaje+='<input type="text" id="buscar" placeholder="Introduce un nombre"><button onclick="voleyPlaya.busca(vDatos)">Buscar</button>'
     Frontend.Article.actualizar("Buscar persona por nombre", mensaje);
     return mensaje;
 }
@@ -421,9 +421,9 @@ voleyPlaya.busca = function(vector){
   
   voleyPlaya.generarMensaje = function(mensaje, encontrada) {
     if (encontrada) {
-      mensaje+='<input type="text" id="buscar" placeholder="Introduce un nombre"><button onclick="Plantilla.busca(vDatos)">Buscar</button>';
+      mensaje+='<input type="text" id="buscar" placeholder="Introduce un nombre"><button onclick="voleyPlaya.busca(vDatos)">Buscar</button>';
     } else {
-      mensaje+='<input type="text" id="buscar" placeholder="Introduce un nombre"><button onclick="Plantilla.busca(vDatos)">Buscar</button>' + '<div class="error"><p>¡Error! No se ha encontrado el nombre.</p> </div>';
+      mensaje+='<input type="text" id="buscar" placeholder="Introduce un nombre"><button onclick="voleyPlaya.busca(vDatos)">Buscar</button>' + '<div class="error"><p>¡Error! No se ha encontrado el nombre.</p> </div>';
     }
     return mensaje;
   }
@@ -445,7 +445,7 @@ voleyPlaya.busca = function(vector){
     mensaje += '<option value="posicion">Posición</option>';
     mensaje += '</select>';
     mensaje += '<input type="text" id="buscar" placeholder="Introduce el valor a buscar">';
-    mensaje += '<button onclick="Plantilla.buscador(vDatos)">Buscar</button>';
+    mensaje += '<button onclick="voleyPlaya.buscador(vDatos)">Buscar</button>';
     Frontend.Article.actualizar("Buscar persona por campo", mensaje);
     return mensaje;
   }
