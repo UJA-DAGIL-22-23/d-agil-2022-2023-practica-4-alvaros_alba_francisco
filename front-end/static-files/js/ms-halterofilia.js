@@ -628,13 +628,23 @@ Halterofilia.modifyCampos = function (idDeportista) {
 /**
  * Función principal para mostrar todas las opciones de halterofilia
  */
-function mostrarOpciones() 
+/*function mostrarOpciones() 
 {
+    var opciones = documen.getElementById("opciones")
     document.getElementById("volley").style.display = "none";
      document.getElementById("opcionesVolleyPlaya").style.display = "none";
      document.getElementById("natacion").style.display = "none";
      document.getElementById("surferos").style.display = "none";
      document.getElementById("opciones").style.display = "block";
+  }*/
+
+  function mostrarOpcionesHalterofilia() 
+  {
+    document.getElementById("opciones-halterofilia").style.display = "block";
+    document.getElementById("opciones-volley-playa").style.display = "none";
+    document.getElementById("opciones-natacion").style.display = "none";
+    document.getElementById("opciones-volley").style.display = "none";
+    document.getElementById("opciones-surf").style.display = "none";
   }
   
 

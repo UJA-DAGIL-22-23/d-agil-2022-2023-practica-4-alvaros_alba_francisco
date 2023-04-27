@@ -640,9 +640,9 @@ natacion.buscaDifParametros = function (vector, parametro){
 
 function mostrarOpcionesnatacion() 
 {
-    document.getElementById("opciones").style.display = "none";
-     document.getElementById("opcionesVolleyPlaya").style.display = "none";
-     document.getElementById("volley").style.display = "none";
-     document.getElementById("surferos").style.display = "none";
-     document.getElementById("natacion").style.display = "block";
-  }
+    document.getElementById("opciones-halterofilia").style.display = "none";
+    document.getElementById("opciones-volley-playa").style.display = "none";
+    document.getElementById("opciones-natacion").style.display = "block";
+    document.getElementById("opciones-volley").style.display = "none";
+    document.getElementById("opciones-surf").style.display = "none";
+}

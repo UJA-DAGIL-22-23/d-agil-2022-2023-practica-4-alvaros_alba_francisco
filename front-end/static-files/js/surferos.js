@@ -653,11 +653,11 @@ Surferos.imprimexApellidos = function (vector,campo) {
     Frontend.Article.actualizar("Listado de personas ordenado por nombre", mensaje);
 }
 
-function mostrarOpcionessurf() 
+function mostrarOpcionesSurf() 
 {
-    document.getElementById("opciones").style.display = "none";
-     document.getElementById("opcionesVolleyPlaya").style.display = "none";
-     document.getElementById("natacion").style.display = "none";
-     document.getElementById("volley").style.display = "none";
-     document.getElementById("surferos").style.display = "block";
-  }
+    document.getElementById("opciones-halterofilia").style.display = "none";
+    document.getElementById("opciones-volley-playa").style.display = "none";
+    document.getElementById("opciones-natacion").style.display = "none";
+    document.getElementById("opciones-volley").style.display = "none";
+    document.getElementById("opciones-surf").style.display = "block";
+}

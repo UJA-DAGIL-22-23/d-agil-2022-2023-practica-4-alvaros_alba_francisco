@@ -14,6 +14,29 @@
   
   #seccion-principal {
     width: 100%;
+    display: inline-block;
+    margin-right: 10px;
+  }
+
+  #seccion-volley-playa{
+    width: 100%;
+    display: inline-block;
+    margin-right: 10px;
+  }
+  #seccion-volley{
+    width: 100%;
+    display: inline-block;
+    margin-right: 10px;
+  }
+  #seccion-natacion{
+    width: 100%;
+    display: inline-block;
+    margin-right: 10px;
+  }
+  #seccion-surf{
+    width: 100%;
+    display: inline-block;
+    margin-right: 10px;
   }
   
   .mostrar {
@@ -27,6 +50,8 @@
     text-decoration: none;
     background-color: rgba(79, 129, 189, 0.1);
     color: #1e304d;
+    display: inline-block;
+    margin-right: 10px;
   }
   
   .opcion-principal:hover {

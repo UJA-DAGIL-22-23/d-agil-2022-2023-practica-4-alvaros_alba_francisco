@@ -1,4 +1,3 @@
-
 /**
  * @file callbacks.js
  * @description Callbacks para el MS Plantilla.
@@ -130,3 +129,4 @@ const CB_OTHERS = {
 // MUY IMPORTANTE: No debe haber callbacks con el mismo nombre en los distintos objetos, porque si no
 //                 el último que haya SOBREESCRIBE a todos los anteriores.
 exports.callbacks = { ...CB_MODEL_SELECTS, ...CB_OTHERS }
+

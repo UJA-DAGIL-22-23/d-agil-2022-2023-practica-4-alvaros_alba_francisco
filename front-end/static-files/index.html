@@ -20,138 +20,146 @@
 <body>
     <h1>ALBARICOS <span>Aprobando Desarrollo Ágil</span></h1>
 
-    <button class="opcion-principal" onclick="mostrarOpciones()">Halterofilia</button>
+    <!--<button class="opcion-principal" onclick="mostrarOpciones()">Halterofilia</button>
     <button class="opcion-principal" onclick="mostrarOpcionesVoleyPlaya()">Volley-Playa</button>
     <button class="opcion-principal" onclick="mostrarOpcionesVoley()">Volley</button>
     <button class="opcion-principal" onclick="mostrarOpcionesnatacion()">Natacion</button>
     <button class="opcion-principal" onclick="mostrarOpcionessurf()">Surf</button>
-    <button class="opcion-principal" onclick="mostrarInicio()">Inicio</button>
+    <button class="opcion-principal" onclick="mostrarInicio()">Inicio</button>-->
 
-<div id="opciones" style="display: none;">
-    <nav>
-        <a href="javascript:Halterofilia.procesarHome()" class="opcion-principal"
-            title="Llama a la ruta / del MS natacion">Home</a>
-        <a href="javascript:Halterofilia.procesarAcercaDe()" class="opcion-principal"
-            title="Llama a la ruta /acercade del MS natacion">Acerca de</a>
-        <a href="javascript:Halterofilia.listar()" class="opcion-principal mostrar"
-            title="Listar todos los nombres de los deportistas en la base de datos">Lista de Nombres</a>
-        <a href="javascript:Halterofilia.listarCompleto()" class="opcion-principal mostrar"
-            title="Listar todos los deportistas en la base de datos">Lista Completa</a> 
-        <a href="javascript:Halterofilia.nuevoDeportista()" class="opcion-principal mostrar"
-            title="Crear un nuevo deportista">Crear Deportista</a>
-        <a href="javascript:Halterofilia.listarCompletoT()" class="opcion-principal mostrar" title="Listar por un campo">Lista Ordenada</a>
-        <div id="formulario" style="display: none;">
-        <form>
-            <label for="campo">Campo por el cual ordenar:</label>
-            <select id="campo" name="campo">
-            <option value="nombre">Nombre</option>
-            <option value="apellidos">Apellidos</option>
-            <option value="pais">País</option>
-            <option value="categoria">Categoría</option>
-            <option value="sexo">Sexo</option>
-            <option value="fechaNacimiento">Edad</option>
-            <option value="numMedallasGanadas">Medallas Ganadas</option>
-            <option value="aniosParticipacionOlimpiadas">Número de participaciones</option>
-            </select>
-            <button type="submit" id="boton-listar">Listar</button>
-        </form>
+    <div class="seccion-halterofilia">
+        <button class="opcion-principal" onclick="mostrarOpcionesHalterofilia()">Halterofilia</button>
+        <div id="opciones-halterofilia" style="display: none;">
+            <nav>
+                <a href="javascript:Halterofilia.procesarHome()" class="opcion-principal"
+                    title="Llama a la ruta / del MS natacion">Home</a>
+                <a href="javascript:Halterofilia.procesarAcercaDe()" class="opcion-principal"
+                    title="Llama a la ruta /acercade del MS natacion">Acerca de</a>
+                <a href="javascript:Halterofilia.listar()" class="opcion-principal mostrar"
+                    title="Listar todos los nombres de los deportistas en la base de datos">Lista de Nombres</a>
+                <a href="javascript:Halterofilia.listarCompleto()" class="opcion-principal mostrar"
+                    title="Listar todos los deportistas en la base de datos">Lista Completa</a> 
+                <a href="javascript:Halterofilia.nuevoDeportista()" class="opcion-principal mostrar"
+                    title="Crear un nuevo deportista">Crear Deportista</a>
+                <a href="javascript:Halterofilia.listarCompletoT()" class="opcion-principal mostrar" title="Listar por un campo">Lista Ordenada</a>
+                <div id="formulario" style="display: none;">
+                <form>
+                    <label for="campo">Campo por el cual ordenar:</label>
+                    <select id="campo" name="campo">
+                    <option value="nombre">Nombre</option>
+                    <option value="apellidos">Apellidos</option>
+                    <option value="pais">País</option>
+                    <option value="categoria">Categoría</option>
+                    <option value="sexo">Sexo</option>
+                    <option value="fechaNacimiento">Edad</option>
+                    <option value="numMedallasGanadas">Medallas Ganadas</option>
+                    <option value="aniosParticipacionOlimpiadas">Número de participaciones</option>
+                    </select>
+                    <button type="submit" id="boton-listar">Listar</button>
+                </form>
+                </div>
+                <a href="javascript:Halterofilia.busquedaNombre()" class="opcion-principal mostrar" title="Listar por un nombre">Búsqueda</a>
+                <div id="formulario2" style="display: none;">
+                    <form>
+                        <label for="busqueda">Buscar por nombre:</label>
+                        <input type="text" id="busqueda" name="busqueda">
+                        <button type="submit" id="buscar">Buscar</button>
+                    </form>
+                </div>
+            </nav>
+            <div id="resultados-halterofilia"></div>
         </div>
-        <a href="javascript:Halterofilia.busquedaNombre()" class="opcion-principal mostrar" title="Listar por un nombre">Búsqueda</a>
-        <div id="formulario2" style="display: none;">
-            <form>
-                <label for="busqueda">Buscar por nombre:</label>
-                <input type="text" id="busqueda" name="busqueda">
-                <button type="submit" id="buscar">Buscar</button>
-            </form>
-        </div>
-    </nav>
-</div>
+    </div>
 
 <!--Volley Playa-->
-<div id="opcionesVolleyPlaya" style="display: none;">
-    <nav>
-        <a href="javascript:voleyPlaya.procesarHome()" class="opcion-principal"
-            title="Llama a la ruta / del MS Plantilla">Home</a>
-        <a href="javascript:voleyPlaya.procesarAcercaDe()" class="opcion-principal"
-            title="Llama a la ruta /acercade del MS Plantilla">Acerca de</a>
-        <a href="javascript:voleyPlaya.procesarListarNombres()" class="opcion-principal"
-            title="Llama a la ruta /getTodas del MS Plantilla">Listado de nombres</a>
-        <a href="javascript:voleyPlaya.procesarListarNombresOrdenados()" class="opcion-principal"
-            title="Listado de nombres ordenados">Listado de nombres ordenados</a>
-        <a href="javascript:voleyPlaya.procesarListarTodos()" class="opcion-principal"
-            title="Listado de datos de todos los jugadores">Listado de datos de jugadores</a>
-        <a href="javascript:voleyPlaya.cambiarOrden()" class="opcion-principal"
-            title="Listado de datos de todos los jugadores ordenados segun un criterio">Listado para ordenar según campo a desear</a>
-        <a href="javascript:voleyPlaya.muestroPersona(359175635380207820)" class="opcion-principal"
-            title="Listado de datos de jugadores">Datos de un solo jugador</a>
-        <a href="javascript:voleyPlaya.buscarNombre()" class="opcion-principal"
-            title="Listado de datos de jugadores buscados por un nombre">Buscador por nombres</a>
-        <a href="javascript:voleyPlaya.buscarCampos()" class="opcion-principal"
-            title="Listado de datos de jugadores buscados por un campo">Buscador por campos</a>
-    </nav>
-</div>
-
-
-<!-- Seccion volley -->
-<div id="volley" style="display: none;">
-    <nav>
-    <a href="javascript:Volley.procesarHome()" class="opcion-principal mostrar"
-        title="Llama a la ruta / del MS natacion">Home</a>
-    <a href="javascript:Volley.procesarAcercaDe()" class="opcion-principal mostrar"
-        title="Llama a la ruta /acercade del MS natacion">Acerca de</a>
-    <a href="javascript:Volley.listarDatos()" class="opcion-principal mostrar"
-        title="Realiza un listado con todos los datos de los jugadores en la BBDD">Mostrar datos</a>
-        <div class="sub-menu" id="sub-menu-datos">
-            <a href="javascript:Volley.listarAlfabeticamenteNombre()" class="sub-menu mostrar">Sort: Nombre</a>
-            <a href="javascript:Volley.listarAlfabeticamenteApellidos()" class="sub-menu mostrar">Sort: Apellido</a>
-            <a href="javascript:Volley.listarOrdenFecha()" class="sub-menu mostrar">Sort: Fecha Nacimiento</a>
-            <a href="javascript:Volley.listarAlfabeticamentePais()" class="sub-menu mostrar">Sort: País</a>
-            <a href="javascript:Volley.listarOrdenParticipaciones()" class="sub-menu mostrar">Sort: Num Participaciones</a>
-            <a href="javascript:Volley.listarAlfabeticamenteClub()" class="sub-menu mostrar">Sort: Club</a>
-            <a href="javascript:Volley.listarAlfabeticamentePosicion()" class="sub-menu mostrar">Sort: Posición</a>
+<div class="seccion-volley-playa">
+    <button class="opcion-principal" onclick="mostrarOpcionesVolleyPlaya()">Volley Playa</button>
+    <div id="opciones-volley-playa" style="display: none;">
+        <nav>
+            <a href="javascript:voleyPlaya.procesarHome()" class="opcion-principal"
+                title="Llama a la ruta / del MS Plantilla">Home</a>
+            <a href="javascript:voleyPlaya.procesarAcercaDe()" class="opcion-principal"
+                title="Llama a la ruta /acercade del MS Plantilla">Acerca de</a>
+            <a href="javascript:voleyPlaya.procesarListarNombres()" class="opcion-principal"
+                title="Llama a la ruta /getTodas del MS Plantilla">Listado de nombres</a>
+            <a href="javascript:voleyPlaya.procesarListarNombresOrdenados()" class="opcion-principal"
+                title="Listado de nombres ordenados">Listado de nombres ordenados</a>
+            <a href="javascript:voleyPlaya.procesarListarTodos()" class="opcion-principal"
+                title="Listado de datos de todos los jugadores">Listado de datos de jugadores</a>
+            <a href="javascript:voleyPlaya.cambiarOrden()" class="opcion-principal"
+                title="Listado de datos de todos los jugadores ordenados segun un criterio">Listado para ordenar según campo a desear</a>
+            <a href="javascript:voleyPlaya.muestroPersona(359175635380207820)" class="opcion-principal"
+                title="Listado de datos de jugadores">Datos de un solo jugador</a>
+            <a href="javascript:voleyPlaya.buscarNombre()" class="opcion-principal"
+                title="Listado de datos de jugadores buscados por un nombre">Buscador por nombres</a>
+            <a href="javascript:voleyPlaya.buscarCampos()" class="opcion-principal"
+                title="Listado de datos de jugadores buscados por un campo">Buscador por campos</a>
+        </nav>
         </div>
-    <a href="javascript:Volley.listarNombre()" class="opcion-principal mostrar"
-        title="Realiza un listado con todos los nombres de los jugadores en la BBDD">Mostrar Nombres</a>
-    <a href="javascript:Volley.mostrarOtroJugador('-1')" class="opcion-principal mostrar"
-        title="Vuelve al jugador anterior"><</a>
-    <a href="javascript:Volley.mostrarJugador('360465947460370637')" class="opcion-principal mostrar"
-        title="Muestra los datos de un jugador">Mostrar datos de un jugador</a>
-    <a href="javascript:Volley.mostrarOtroJugador('1')" class="opcion-principal mostrar"
-        title="Pasa al jugador siguiente">></a>
-    </nav>
+    </button>
 </div>
 
+<div class="seccion-natacion">
+    <button class="opcion-principal" onclick="mostrarOpcionesnatacion()">Natacion</button>
+    <div id="opciones-natacion" style="display: none;">
+        <nav>
+            <a href="javascript:natacion.procesarAcercaDe()" class="opcion-principal"
+                        title="Llama a la ruta /acercade del MS natacion">Acerca de</a>
+                    <a href="javascript:natacion.procesarListarNombres()" class="opcion-principal"
+                        >Listar nombres de personas</a>
+                        <a href="javascript:natacion.procesarListarNombresOrden()" class="opcion-principal"
+                        >Listar nombres de personas en orden</a>
+                        <a href="javascript:natacion.procesarPersonasConTodo()" class="opcion-principal"
+                        >Listar personas con todos sus datos</a>
+                        <a href="javascript:natacion.cambiarOrden()" class="opcion-principal"
+                        >Listar personas con diferente orden</a>
+                        <a href="javascript:natacion.mostrar(1009)" class="opcion-principal"
+                       >Mostrar los datos de una persona</a>
+                        <a href="javascript:natacion.buscarNombre()" class="opcion-principal"
+                        >Buscar una persona por nombre</a>
+                        <a href="javascript:natacion.buscarDiferentesCampos()" class="opcion-principal">Buscar por diferentes campos</a>
+            <nav>            
+        </div>
+    </button>
+</div>
 
-
-<!-- Seccion natacion -->
-
-<div id="natacion" style="display: none;">
-<nav>
-<a href="javascript:natacion.procesarAcercaDe()" class="opcion-principal"
+<div class="seccion-volley">
+    <button class="opcion-principal" onclick="mostrarOpcionesVolley()">Volley</button>
+    <div id="opciones-volley" style="display: none;">
+        <nav>
+            <a href="javascript:Volley.procesarHome()" class="opcion-principal mostrar"
+            title="Llama a la ruta / del MS natacion">Home</a>
+        <a href="javascript:Volley.procesarAcercaDe()" class="opcion-principal mostrar"
             title="Llama a la ruta /acercade del MS natacion">Acerca de</a>
-        <a href="javascript:natacion.procesarListarNombres()" class="opcion-principal"
-            >Listar nombres de personas</a>
-            <a href="javascript:natacion.procesarListarNombresOrden()" class="opcion-principal"
-            >Listar nombres de personas en orden</a>
-            <a href="javascript:natacion.procesarPersonasConTodo()" class="opcion-principal"
-            >Listar personas con todos sus datos</a>
-            <a href="javascript:natacion.cambiarOrden()" class="opcion-principal"
-            >Listar personas con diferente orden</a>
-            <a href="javascript:natacion.mostrar(1009)" class="opcion-principal"
-           >Mostrar los datos de una persona</a>
-            <a href="javascript:natacion.buscarNombre()" class="opcion-principal"
-            >Buscar una persona por nombre</a>
-            <a href="javascript:natacion.buscarDiferentesCampos()" class="opcion-principal">Buscar por diferentes campos</a>
+        <a href="javascript:Volley.listarDatos()" class="opcion-principal mostrar"
+            title="Realiza un listado con todos los datos de los jugadores en la BBDD">Mostrar datos</a>
+            <div class="sub-menu" id="sub-menu-datos">
+                <a href="javascript:Volley.listarAlfabeticamenteNombre()" class="sub-menu mostrar">Sort: Nombre</a>
+                <a href="javascript:Volley.listarAlfabeticamenteApellidos()" class="sub-menu mostrar">Sort: Apellido</a>
+                <a href="javascript:Volley.listarOrdenFecha()" class="sub-menu mostrar">Sort: Fecha Nacimiento</a>
+                <a href="javascript:Volley.listarAlfabeticamentePais()" class="sub-menu mostrar">Sort: País</a>
+                <a href="javascript:Volley.listarOrdenParticipaciones()" class="sub-menu mostrar">Sort: Num Participaciones</a>
+                <a href="javascript:Volley.listarAlfabeticamenteClub()" class="sub-menu mostrar">Sort: Club</a>
+                <a href="javascript:Volley.listarAlfabeticamentePosicion()" class="sub-menu mostrar">Sort: Posición</a>
+            </div>
+        <a href="javascript:Volley.listarNombre()" class="opcion-principal mostrar"
+            title="Realiza un listado con todos los nombres de los jugadores en la BBDD">Mostrar Nombres</a>
+        <a href="javascript:Volley.mostrarOtroJugador('-1')" class="opcion-principal mostrar"
+            title="Vuelve al jugador anterior"><</a>
+        <a href="javascript:Volley.mostrarJugador('360465947460370637')" class="opcion-principal mostrar"
+            title="Muestra los datos de un jugador">Mostrar datos de un jugador</a>
+        <a href="javascript:Volley.mostrarOtroJugador('1')" class="opcion-principal mostrar"
+            title="Pasa al jugador siguiente">></a>
+        </nav>     
+        </div>
+    </button>
+</div>
 
-    <a href="javascript:natacion.procesarHome()" class="opcion-principal"
-        title="Llama a la ruta / del MS natacion">Home</a>
-    </nav>
- </div>
-
- <!--Natacion-->
-<div id="surferos" style="display: none;">
-<nav>
-    <a href="javascript:Surferos.listar()" class="opcion-principal"
+<div class="seccion-surf">
+    <button class="opcion-principal" onclick="mostrarOpcionesSurf()">Surf</button>
+    <div id="opciones-surf" style="display: none;">
+        <nav>
+        <a href="javascript:Surferos.listar()" class="opcion-principal"
         title="Llama a la ruta /getTodas del MS natacion">Listado de datos completo</a>
         <a href="javascript:Surferos.listarNombres()" class="opcion-principal"
         title="Llama a la ruta /getTodas del MS natacion">Listado de nombres</a>
@@ -166,6 +174,11 @@
     <a href="javascript:natacion.procesarAcercaDe()" class="opcion-principal"
         title="Llama a la ruta /acercade del MS">Acerca de</a>
 </nav>
+        </div>
+    </button>
+</div>
+
+
 
 <!-- 
         Article en el que se va a mostrar la info cuando se pinche una opción del menú 
