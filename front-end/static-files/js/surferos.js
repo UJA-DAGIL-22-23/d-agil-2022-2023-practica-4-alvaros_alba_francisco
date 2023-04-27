@@ -23,7 +23,7 @@ Surferos.plantillaTablaPersonas = {}
 
 
 // Cabecera de la tabla
-Surferos.plantillaTablaPersonas.cabecera = `<style>table, th, td { border: 1px solid black;}</style><table width="100%" class="listado-personas"><thead><th width="15%">Id</th><th width="10%">Nombre</th><th width="10%">Apellidos</th><th width="15%">Lugar nacimiento</th><th width="15%">Numero de campeonatos disputados</th><th width="20%">Años compitiendo</th><th width="10%">Puntuación máxima</th><th width="10%">Numero de victorias</th></thead><tbody>`;
+Surferos.plantillaTablaPersonas.cabecera = `<table width="100%" class="listado-nombres"><thead><th width="15%">Id</th><th width="10%">Nombre</th><th width="10%">Apellidos</th><th width="15%">Lugar nacimiento</th><th width="15%">Numero de campeonatos disputados</th><th width="20%">Años compitiendo</th><th width="10%">Puntuación máxima</th><th width="10%">Numero de victorias</th></thead><tbody>`;
 
 // Elemento TR que muestra los datos de una persona
 Surferos.plantillaTablaPersonas.cuerpo = `<tr title="${Surferos.plantillaTags.ID}"><td>${Surferos.plantillaTags.ID}</td><td>${Surferos.plantillaTags.NOMBRE}</td><td>${Surferos.plantillaTags.APELLIDOS}</td><td>${Surferos.plantillaTags.CIUDAD}, ${Surferos.plantillaTags.PAIS}</td><td>${Surferos.plantillaTags.NUM} (${Surferos.plantillaTags.EVENTO})</td><td>${Surferos.plantillaTags["AÑOS COMPITIENDO"]}</td><td>${Surferos.plantillaTags.PUNTUACION}</td><td>${Surferos.plantillaTags["NUM VICTORIAS"]}</td></tr>`;
@@ -42,7 +42,7 @@ Surferos.plantillaTablaNombres = {}
 // Cabecera de la tabla
 Surferos.plantillaTablaNombres.cabecera = function()
 { 
-    return `<style>table, th, td {border: 1px solid black;}</style><table width="100%" class="listado-personas"><thead><th width="15%">Id</th><th width="10%">Nombre</th></thead><tbody>`;
+    return `<table width="100%" class="listado-nombres"><thead><th width="15%">Id</th><th width="10%">Nombre</th></thead><tbody>`;
 }
 
 // Elemento TR que muestra los datos de una persona
@@ -246,7 +246,7 @@ Surferos.plantillaFormularioPersona = {}
 // Cabecera del formulario
 Surferos.plantillaFormularioPersona.formulario = `
 <form method='post' action=''>
-    <table width="100%" class="listado-personas">
+    <table width="100%" class="listado-nombres">
         <thead>
         <th width="15%">Id</th>
         <th width="10%">Nombre</th>
