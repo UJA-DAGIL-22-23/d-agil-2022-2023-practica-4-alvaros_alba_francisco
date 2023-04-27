@@ -50,7 +50,7 @@ Volley.plantillaTablaJugadores = {}
 
 
 // Cabecera de la tabla
-Volley.plantillaTablaJugadores.cabecera = `<table width="100%" class="listado-jugadores">
+Volley.plantillaTablaJugadores.cabecera = `<table width="100%" class="listado-nombres">
                     <thead>
                         <th width="10%">Id</th>
                         <th width="20%">Nombre</th>
@@ -94,7 +94,7 @@ Volley.plantillaFormularioJugador = {}
 Volley.plantillaFormularioJugador.formulario = 
 `
 <form method='post' action=''>
-    <table width="100%" class="listado-jugadores">
+    <table width="100%" class="listado-nombres">
         <thead>
         <th width="10%">Id</th>
         <th width="20%">Nombre</th>
@@ -397,7 +397,7 @@ Volley.recuperaUnJugador = async function (idJug, callBackFn) {
  */
 
 Volley.cabeceraTable = function () {
-    return `<table class="listado-jugadores">
+    return `<table class="listado-nombres">
         <thead>
         <th>Nombre</th><th>Apellidos</th><th>Nacimiento</th><th>Pais</th><th>Mundiales</th><th>Num. Participaciones</th><th>Club Actual</th><th>Posicion</th>
         </thead>
@@ -423,7 +423,7 @@ Volley.imprime = function (vector) {
 Volley.imprimeNombre = function (vector) {
     //console.log( vector ) // Para comprobar lo que hay en vector
     let msj = "";
-    msj += `<table class="listado-jugadores">
+    msj += `<table class="listado-nombres">
     <thead>
     <th>Nombre</th>
     </thead>
