@@ -661,3 +661,117 @@ function mostrarOpcionesSurf()
     document.getElementById("opciones-volley").style.display = "none";
     document.getElementById("opciones-surf").style.display = "block";
 }
+
+Surferos.descargarRuta = async function (ruta, callBackFn) {
+    let response = null
+
+    // Intento conectar con el microservicio Plantilla
+    try {
+        const url = Frontend.API_GATEWAY + ruta
+        response = await fetch(url)
+
+    } catch (error) {
+        alert("Error: No se han podido acceder al API Gateway")
+        console.error(error)
+        //throw error
+    }
+
+    // Muestro la info que se han descargado
+    let datosDescargados = null
+    if (response) {
+        datosDescargados = await response.json()
+        callBackFn(datosDescargados)
+    }
+}
+
+
+/**
+ * Función principal para mostrar los datos enviados por la ruta "home" de MS Plantilla
+ */
+Surferos.mostrarHome = function (datosDescargados) {
+    // Si no se ha proporcionado valor para datosDescargados
+    datosDescargados = datosDescargados || this.datosDescargadosNulos
+
+    // Si datos descargados NO es un objeto 
+    if (typeof datosDescargados !== "object") datosDescargados = this.datosDescargadosNulos
+
+    // Si datos descargados NO contiene el campo mensaje
+    if (typeof datosDescargados.mensaje === "undefined") datosDescargados = this.datosDescargadosNulos
+
+    Frontend.Article.actualizar("Plantilla Home", datosDescargados.mensaje)
+}
+
+/**
+ * Función principal para mostrar los datos enviados por la ruta "acerca de" de MS Plantilla
+ */
+Surferos.mostrarAcercaDe = function (datosDescargados) {
+    // Si no se ha proporcionado valor para datosDescargados
+    datosDescargados = datosDescargados || this.datosDescargadosNulos
+
+    // Si datos descargados NO es un objeto 
+    if (typeof datosDescargados !== "object") datosDescargados = this.datosDescargadosNulos
+
+    // Si datos descargados NO contiene los campos mensaje, autor, o email
+    if (typeof datosDescargados.mensaje === "undefined" ||
+        typeof datosDescargados.autor === "undefined" ||
+        typeof datosDescargados.email === "undefined" ||
+        typeof datosDescargados.fecha === "undefined"
+    ) datosDescargados = this.datosDescargadosNulos
+
+    const mensajeAMostrar = `<div>
+    <p>${datosDescargados.mensaje}</p>
+    <ul>
+        <li><b>Autor/a</b>: ${datosDescargados.autor}</li>
+        <li><b>E-mail</b>: ${datosDescargados.email}</li>
+        <li><b>Fecha</b>: ${datosDescargados.fecha}</li>
+    </ul>
+    </div>
+    `;
+    Frontend.Article.actualizar("Plantilla Acerca de", mensajeAMostrar)
+}
+
+/**
+ * Función principal para mostrar los datos enviados por la ruta "acerca de" de MS Plantilla
+ */
+Surferos.listadoDeNombres = function (datosDescargados) {
+    // Si no se ha proporcionado valor para datosDescargados
+    datosDescargados = datosDescargados || this.datosDescargadosNulos
+
+    // Si datos descargados NO es un objeto 
+    if (typeof datosDescargados !== "object") datosDescargados = this.datosDescargadosNulos
+
+    // Si datos descargados NO contiene los campos mensaje, autor, o email
+    if (typeof datosDescargados.nombre === "undefined" ||
+        typeof datosDescargados.apellidos === "undefined" ||
+        typeof datosDescargados.email === "undefined" ||
+        typeof datosDescargados.fecha === "undefined"
+    ) datosDescargados = this.datosDescargadosNulos
+
+    const mensajeAMostrar = `<div>
+    <p>${datosDescargados.mensaje}</p>
+    <ul>
+        <li><b>Autor/a</b>: ${datosDescargados.autor}</li>
+        <li><b>E-mail</b>: ${datosDescargados.email}</li>
+        <li><b>Fecha</b>: ${datosDescargados.fecha}</li>
+    </ul>
+    </div>
+    `;
+    Frontend.Article.actualizar("Plantilla Acerca de", mensajeAMostrar)
+}
+
+
+
+/**
+ * Función principal para responder al evento de elegir la opción "Home"
+ */
+Surferos.procesarHome = function () {
+    this.descargarRuta("/surferos/", this.mostrarHome);
+}
+
+/**
+ * Función principal para responder al evento de elegir la opción "Acerca de"
+ */
+Surferos.procesarAcercaDe = function () {
+    this.descargarRuta("/surferos/acercade", this.mostrarAcercaDe);
+}
+
