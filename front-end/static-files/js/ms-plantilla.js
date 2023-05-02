@@ -42,28 +42,32 @@ Plantilla.pieTable = function () {
     return "</tbody></table>";
 }
 
-Plantilla.descargarRuta = async function (ruta, callBackFn) 
-{
+/**
+ * Función que descarga la info de los microservicios al llamar a una de sus rutas
+ * @param {string} ruta Ruta a descargar
+ * @param {integer} posicion posición del dato descargado en el vector final
+ * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
+ */
+Plantilla.descargarRuta = async function (ruta, posicion, callBackFn) {
     let response = null
-
+  
     // Intento conectar con el microservicio Halterofilia
     try {
-        const url = Frontend.API_GATEWAY + ruta
-        response = await fetch(url)
-
+      const url = Frontend.API_GATEWAY + ruta
+      response = await fetch(url)
     } catch (error) {
-        alert("Error: No se han podido acceder al API Gateway")
-        console.error(error)
-        //throw error
+      alert("Error: No se han podido acceder al API Gateway")
+      console.error(error)
     }
-
+  
     // Muestro la info que se han descargado
     let datosDescargados = null
     if (response) {
-        datosDescargados = await response.json()
-        callBackFn(datosDescargados)
+      datosDescargados = await response.json()
+      callBackFn(datosDescargados, posicion)
     }
-}
+  }
+  
 
 /**
  * Función para mostrar en pantalla todos los deportistas que se han recuperado de la BBDD.
