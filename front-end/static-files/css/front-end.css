@@ -38,6 +38,11 @@
     display: inline-block;
     margin-right: 10px;
   }
+  #seccion-comun{
+    width: 100%;
+    display: inline-block;
+    margin-right: 10px;
+  }
   
   .mostrar {
     display: inline-block;

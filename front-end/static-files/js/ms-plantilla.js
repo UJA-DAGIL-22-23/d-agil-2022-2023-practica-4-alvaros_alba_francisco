@@ -42,3 +42,77 @@ Plantilla.pieTable = function () {
     return "</tbody></table>";
 }
 
+function mostrarOpcionesPlantilla() 
+{
+    document.getElementById("opciones-halterofilia").style.display = "none";
+    document.getElementById("opciones-volley-playa").style.display = "none";
+    document.getElementById("opciones-natacion").style.display = "none";
+    document.getElementById("opciones-volley").style.display = "none";
+    document.getElementById("opciones-surf").style.display = "none";
+    document.getElementById("opciones-comun").style.display = "block";
+}
+
+
+Plantilla.descargarRuta = async function (ruta, callBackFn) {
+    let response = null
+
+    // Intento conectar con el microservicio Plantilla
+    try {
+        const url = Frontend.API_GATEWAY + ruta
+        response = await fetch(url)
+
+    } catch (error) {
+        alert("Error: No se han podido acceder al API Gateway")
+        console.error(error)
+        //throw error
+    }
+
+    // Muestro la info que se han descargado
+    let datosDescargados = null
+    if (response) {
+        datosDescargados = await response.json()
+        callBackFn(datosDescargados)
+    }
+}
+
+
+Plantilla.mostrarAcercaDe = function (datosDescargados)
+{
+    // Si no se ha proporcionado valor para datosDescargados
+    datosDescargados = datosDescargados || this.datosDescargadosNulos
+
+    // Si datos descargados NO es un objeto 
+    if (typeof datosDescargados !== "object") datosDescargados = this.datosDescargadosNulos
+
+    // Si datos descargados NO contiene los campos mensaje, autor, o email
+    if (typeof datosDescargados.mensaje === "undefined" ||
+        typeof datosDescargados.autor === "undefined" ||
+        typeof datosDescargados.email === "undefined" ||
+        typeof datosDescargados.fecha === "undefined"
+    ) datosDescargados = this.datosDescargadosNulos
+
+    const mensajeAMostrar = `<div>
+    <p>${datosDescargados.mensaje}</p>
+    <ul>
+        <li><b>Autor/a</b>: ${datosDescargados.autor}</li>
+        <li><b>E-mail</b>: ${datosDescargados.email}</li>
+        <li><b>Fecha</b>: ${datosDescargados.fecha}</li>
+    </ul>
+    </div>
+    `;
+    Frontend.Article.actualizar("Plantilla Acerca de", mensajeAMostrar)
+}
+
+Plantilla.procesarAcercaDe = async function () {
+    const descargaSurferos = this.descargarRuta('/surferos/acercade')
+    const descargaHalterofilia = this.descargarRuta('/halterofilia/acercade')
+    const [datosSurferos, datosHalterofilia] = await Promise.all([descargaSurferos, descargaHalterofilia])
+    const datosCombinados = {
+      mensaje: `${datosSurferos.mensaje} y ${datosHalterofilia.mensaje}`,
+      autor: `${datosSurferos.autor} y ${datosHalterofilia.autor}`,
+      email: `${datosSurferos.email} y ${datosHalterofilia.email}`,
+      fecha: `${datosSurferos.fecha} y ${datosHalterofilia.fecha}`
+    }
+    this.mostrarAcercaDe(datosCombinados)
+  }
+  
