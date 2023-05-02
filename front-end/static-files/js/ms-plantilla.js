@@ -41,6 +41,9 @@ Plantilla.pieTable = function () {
     return "</tbody></table>";
 }
 
+/**
+ * @description función para mostrar las opciones de la plantilla
+ */
 function mostrarOpcionesPlantilla() 
 {
     document.getElementById("opciones-halterofilia").style.display = "none";
@@ -51,7 +54,11 @@ function mostrarOpcionesPlantilla()
     document.getElementById("opciones-comun").style.display = "block";
 }
 
-Plantilla.descargarRutas = async function (ruta, callBackFn) {
+
+Plantilla.descargarRuta = async function (ruta, callBackFn) {
+    let response = null
+
+    // Intento conectar con el microservicio Plantilla
     try {
       const url = Frontend.API_GATEWAY + ruta
       const response = await fetch(url)
@@ -61,9 +68,12 @@ Plantilla.descargarRutas = async function (ruta, callBackFn) {
       alert("Error: No se han podido acceder al API Gateway")
       console.error(error)
     }
-  }
-  
-  Plantilla.mostrarAcercaDe = function (datosDescargados) {
+}
+
+
+Plantilla.mostrarAcercaDe = function (datosDescargados)
+{
+    // Si no se ha proporcionado valor para datosDescargados
     datosDescargados = datosDescargados || this.datosDescargadosNulos
     if (typeof datosDescargados !== "object" ||
       typeof datosDescargados.mensaje === "undefined" ||
@@ -81,24 +91,19 @@ Plantilla.descargarRutas = async function (ruta, callBackFn) {
       </ul>
     </div>`;
     Frontend.Article.actualizar("Plantilla Acerca de", mensajeAMostrar)
-  }
-  
-  Plantilla.procesarAcercaDe = async function () {
-    try {
-      const descargaSurferos = Plantilla.descargarRutas('/surferos/acercade', (datosSurferos) => datosSurferos)
-      const descargaHalterofilia = Plantilla.descargarRutas('/halterofilia/acercade', (datosHalterofilia) => datosHalterofilia)
-      const [datosSurferos, datosHalterofilia] = await Promise.all([descargaSurferos, descargaHalterofilia])
-      const datosCombinados = {
-        mensaje: `${datosSurferos.mensaje} y ${datosHalterofilia.mensaje}`,
-        autor: `${datosSurferos.autor} y ${datosHalterofilia.autor}`,
-        email: `${datosSurferos.email} y ${datosHalterofilia.email}`,
-        fecha: `${datosSurferos.fecha} y ${datosHalterofilia.fecha}`
-      }
-      Plantilla.mostrarAcercaDe(datosCombinados)
-    } catch (error) {
-      alert("Error al procesar Acerca de")
-      console.error(error)
+}
+
+Plantilla.procesarAcercaDe = async function () {
+    const descargaSurferos = this.descargarRuta('/surferos/acercade')
+    const descargaHalterofilia = this.descargarRuta('/halterofilia/acercade')
+    const [datosSurferos, datosHalterofilia] = await Promise.all([descargaSurferos, descargaHalterofilia])
+    const datosCombinados = {
+      mensaje: `${datosSurferos.mensaje} y ${datosHalterofilia.mensaje}`,
+      autor: `${datosSurferos.autor} y ${datosHalterofilia.autor}`,
+      email: `${datosSurferos.email} y ${datosHalterofilia.email}`,
+      fecha: `${datosSurferos.fecha} y ${datosHalterofilia.fecha}`
     }
+    this.mostrarAcercaDe(datosCombinados)
   }
   
 /**
@@ -107,7 +112,7 @@ Plantilla.descargarRutas = async function (ruta, callBackFn) {
  * @param {integer} posicion posición del dato descargado en el vector final
  * @returns {Promise} Promesa que se resuelve con los datos descargados y la posición
  */
-Plantilla.descargarRuta = async function (ruta, posicion) {
+Plantilla.descargarRuta2 = async function (ruta, posicion) {
     try {
       const url = Frontend.API_GATEWAY + ruta;
       const response = await fetch(url);
@@ -154,7 +159,7 @@ Plantilla.descargarRuta = async function (ruta, posicion) {
     ];
   
     const descargas = rutas.map((ruta, indice) => {
-      return Plantilla.descargarRuta(ruta, indice);
+      return Plantilla.descargarRuta2(ruta, indice);
     });
   
     // Espera hasta que se descarguen todos los datos

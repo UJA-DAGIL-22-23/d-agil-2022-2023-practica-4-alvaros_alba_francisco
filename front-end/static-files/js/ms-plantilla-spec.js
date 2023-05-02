@@ -5,7 +5,6 @@
  * @date 03-feb-2023
  */
 
-// SPECS para Jasmine
 
 // Constantes para usar en las pruebas
 const elementoTitulo = document.getElementById(Frontend.ID_SECCION_PRINCIPAL_TITULO)
@@ -18,7 +17,7 @@ describe("Plantilla.cabeceraTable():", function ()
     it("debería devolver las etiquetas HTML para la cabecera de la tabla",
         function () 
         {
-            expect(Plantilla.cabeceraTable()).toBe(`<table class="listado-nombres"><thead><th>Deporte</th><th>Nombre</th><th>Apellidos</th></thead><tbody>`);
+            expect(Plantilla.cabeceraTable()).toBe(`<table class="listado-nombres"><thead><th>Nombre</th><th>Apellidos</th></thead><tbody>`);
         })
 })
 
@@ -71,5 +70,66 @@ describe("Plantilla.pieTable():", function ()
             expect(Plantilla.pieTable()).toBe("</tbody></table>");
         })
 })
+
+
+describe('Plantilla.imprimeDeportistas', () => {
+    it('muestra correctamente los nombres de los deportistas', () => {
+      // Preparamos los datos de prueba
+      const datos = {
+        data: [
+          {
+            ref: {
+              '@ref': {
+                id: 'Id de Luis'
+              }
+            },
+            data: {
+              nombre: 'Luis'
+            }
+          },
+          {
+            ref: {
+              '@ref': {
+                id: 'Id de Ana'
+              }
+            },
+            data: {
+              nombre: 'Ana'
+            }
+          }
+        ]
+      };
+  
+      // Simulamos el objeto elementoContenido
+      const elementoContenido = document.createElement('div');
+  
+      // Llamamos a la función Plantilla.imprimeDeportistas
+      Plantilla.imprimeDeportistas(datos, elementoContenido);
+  
+      // Comprobamos que los nombres se hayan mostrado correctamente en los elementos td
+      expect(elementoContenido.getElementsByTagName('td')[0].innerText.search('Luis') >= 0).toBe(true);
+      expect(elementoContenido.getElementsByTagName('td')[0].innerText.includes('Luis')).toBe(true);
+      expect(elementoContenido.getElementsByTagName('td')[1].innerText.search('Ana') >= 0).toBe(true);
+      expect(elementoContenido.getElementsByTagName('td')[1].innerText.includes('Ana')).toBe(true);
+    });
+  });
+
+  describe('Plantilla.listar', () => {
+    it('descarga todas las rutas correctamente', () => {
+      // Simulamos la función Plantilla.descargarRuta2
+      Plantilla.descargarRuta2 = jest.fn((ruta, indice) => Promise.resolve({ datos: [], posicion: indice }));
+  
+      // Llamamos a la función Plantilla.listar
+      return Plantilla.listar().then(() => {
+        // Verificamos que Plantilla.descargarRuta2 se haya llamado correctamente para cada ruta
+        expect(Plantilla.descargarRuta2).toHaveBeenNthCalledWith(1, '/halterofilia/getTodas', 0);
+        expect(Plantilla.descargarRuta2).toHaveBeenNthCalledWith(2, '/surferos/getTodas', 1);
+        expect(Plantilla.descargarRuta2).toHaveBeenNthCalledWith(3, '/voleyPlaya/listarnPersonas', 2);
+        expect(Plantilla.descargarRuta2).toHaveBeenNthCalledWith(4, '/natacion/listarnPersonas', 3);
+        expect(Plantilla.descargarRuta2).toHaveBeenNthCalledWith(5, '/volley/getTodos', 4);
+      });
+    });
+  });
+  
 
 
