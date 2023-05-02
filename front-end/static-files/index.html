@@ -252,11 +252,15 @@
     <div id="opciones-comun" style="display: none;">
         <nav>
         <a href="javascript:Plantilla.procesarAcercaDe()" class="opcion-principal"
-        title="Llama a la ruta /getTodas del MS natacion">Acerca de </a>
+        title="Llama a la ruta /getTodas del MS natacion"
+        onclick="agregarAHistorial('Plantilla.procesarAcercaDe');"
+        >Acerca de </a>
         </nav>
         <nav>
         <a href="javascript:Plantilla.listar()" class="opcion-principal"
-        title="Imprime el nombre de todos los deportistas">Deportistas</a>
+        title="Imprime el nombre de todos los deportistas"
+        onclick="agregarAHistorial('Plantilla.listar');"
+        >Deportistas</a>
         </nav>
         <nav>
         <a class="opcion-principal"
