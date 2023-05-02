@@ -2,15 +2,15 @@
 <html>
 
 <head>
-    <title>Aplicación Microservicios natacion</title>
+    <title>Aplicación Microservicios</title>
 
     <!-- Cargamos biblioteca Jasmine -->
-    <!--
+    
     <link rel="stylesheet" href="lib/jasmine-4.5.0/jasmine.css">
     <script src="lib/jasmine-4.5.0/jasmine.js"></script>
     <script src="lib/jasmine-4.5.0/jasmine-html.js"></script>
     <script src="lib/jasmine-4.5.0/boot0.js"></script>
-    <script src="lib/jasmine-4.5.0/boot1.js"></script>-->
+    <script src="lib/jasmine-4.5.0/boot1.js"></script>
     
     
     <!-- Cargamos nuestros CSS -->
@@ -261,6 +261,12 @@
         title="Imprime el nombre de todos los deportistas"
         onclick="agregarAHistorial('Plantilla.listar');"
         >Deportistas</a>
+        </nav>
+        <nav>
+        <a href="javascript:Plantilla.listarOrdenado()" class="opcion-principal"
+        title="Imprime el nombre de todos los deportistas"
+        onclick="agregarAHistorial('Plantilla.listarOrdenado');"
+        >Deportistas ordenados alfabéticamente</a>
         </nav>
         <nav>
         <a class="opcion-principal"
