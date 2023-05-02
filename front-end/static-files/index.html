@@ -124,20 +124,29 @@
     <div id="opciones-natacion" style="display: none;">
         <nav>
             <a href="javascript:natacion.procesarAcercaDe()" class="opcion-principal"
-                        title="Llama a la ruta /acercade del MS natacion">Acerca de</a>
+                        title="Llama a la ruta /acercade del MS natacion"
+                        onclick="agregarAHistorial('natacion.procesarAcercaDe');">Acerca de</a>
                     <a href="javascript:natacion.procesarListarNombres()" class="opcion-principal"
+                        onclick="agregarAHistorial('natacion.procesarListarNombres');"
                         >Listar nombres de personas</a>
                         <a href="javascript:natacion.procesarListarNombresOrden()" class="opcion-principal"
+                        onclick="agregarAHistorial('natacion.procesarListarNombresOrden');"
                         >Listar nombres de personas en orden</a>
                         <a href="javascript:natacion.procesarPersonasConTodo()" class="opcion-principal"
+                        onclick="agregarAHistorial('natacion.procesarPersonasConTodo');"
                         >Listar personas con todos sus datos</a>
                         <a href="javascript:natacion.cambiarOrden()" class="opcion-principal"
+                        onclick="agregarAHistorial('natacion.cambiarOrden');"
                         >Listar personas con diferente orden</a>
                         <a href="javascript:natacion.mostrar(1009)" class="opcion-principal"
+                        onclick="agregarAHistorial('natacion.mostrar');"
                        >Mostrar los datos de una persona</a>
                         <a href="javascript:natacion.buscarNombre()" class="opcion-principal"
+                        onclick="agregarAHistorial('natacion.buscarNombre');"
                         >Buscar una persona por nombre</a>
-                        <a href="javascript:natacion.buscarDiferentesCampos()" class="opcion-principal">Buscar por diferentes campos</a>
+                        <a href="javascript:natacion.buscarDiferentesCampos()" class="opcion-principal"
+                        onclick="agregarAHistorial('natacion.buscarDiferentesCampos');"
+                        >Buscar por diferentes campos</a>
             <nav>            
         </div>
     </button>
