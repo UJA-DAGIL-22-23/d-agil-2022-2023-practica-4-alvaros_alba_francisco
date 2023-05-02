@@ -115,4 +115,79 @@ Plantilla.procesarAcercaDe = async function () {
     }
     this.mostrarAcercaDe(datosCombinados)
   }
+
+/**
+ * Función que descarga la info de los microservicios al llamar a una de sus rutas
+ * @param {string} ruta Ruta a descargar
+ * @param {integer} posicion posición del dato descargado en el vector final
+ * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
+ */
+Plantilla.descargarRuta = async function (ruta, posicion, callBackFn) {
+    let response = null;
+  
+    try {
+      const url = Frontend.API_GATEWAY + ruta;
+      response = await fetch(url);
+    } catch (error) {
+      alert("Error: No se ha podido acceder al API Gateway");
+      console.error(error);
+    }
+  
+    // Muestro la info que se ha descargado
+    let datosDescargados = null;
+    if (response) {
+      datosDescargados = await response.json();
+      callBackFn(datosDescargados, posicion);
+    }
+  };
+  
+  
+  /**
+   * Función para mostrar en pantalla todos los deportistas que se han recuperado de la BBDD.
+   * @param {Array} datos Vector con los datos de los deportistas a mostrar
+   */
+  Plantilla.imprimeDeportistas = function (datos) {
+    let msj = "";
+    msj += Plantilla.cabeceraTable();
+  
+    datos.forEach(vector => {
+      vector.forEach(e => {
+        msj += Plantilla.cuerpoTr(e);
+      });
+    });
+  
+    msj += Halterofilia.pieTable();
+  
+    Frontend.Article.actualizar("Listado de los nombres de los deportistas", msj);
+  };
+  
+  
+  /**
+   * Función principal para recuperar los deportistas desde el MS y, posteriormente, imprimirlas.
+   */
+  Plantilla.listar = function () {
+    const rutas = [
+      "/halterofilia/getTodas",
+      "/surferos/getTodas",
+      "/voleyPlaya/listarnPersonas",
+      "/natacion/listarnPersonas",
+      "/volley/getTodos"
+    ];
+  
+    const descargas = rutas.map((ruta, indice) => {
+      return new Promise(resolve => {
+        Plantilla.descargarRuta(ruta, indice, resolve);
+      });
+    });
+  
+    // Espera hasta que se descarguen todos los datos
+    Promise.all(descargas).then(resultados => {
+      const datosCompletos = resultados.reduce((acumulador, datos) => {
+        acumulador[datos.posicion] = datos;
+        return acumulador;
+      }, []);
+  
+      this.imprimeDeportistas(datosCompletos);
+    });
+  };
   
