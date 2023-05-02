@@ -48,48 +48,75 @@ Plantilla.pieTable = function () {
  * @param {integer} posicion posición del dato descargado en el vector final
  * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
  */
-Plantilla.descargarRuta = async function (ruta, posicion, callBackFn) {
-    let response = null
-  
-    // Intento conectar con el microservicio Halterofilia
-    try {
-      const url = Frontend.API_GATEWAY + ruta
-      response = await fetch(url)
-    } catch (error) {
-      alert("Error: No se han podido acceder al API Gateway")
-      console.error(error)
-    }
-  
-    // Muestro la info que se han descargado
-    let datosDescargados = null
-    if (response) {
-      datosDescargados = await response.json()
-      callBackFn(datosDescargados, posicion)
-    }
-  }
+    Plantilla.descargarRuta = async function (ruta) {
+        let response = null
+      
+        // Intento conectar con el microservicio Halterofilia
+        try {
+          const url = Frontend.API_GATEWAY + ruta
+          response = await fetch(url)
+        } catch (error) {
+          alert("Error: No se han podido acceder al API Gateway")
+          console.error(error)
+        }
+      
+        if (response) {
+          return response.json()
+        }
+        return null
+      }
   
 
 /**
  * Función para mostrar en pantalla todos los deportistas que se han recuperado de la BBDD.
- * @param {Vector_de_deportistas} vector Vector con los datos de los deportistas a mostrar
+ * @param {Vector_de_deportistas} datos Vector con los datos de los deportistas a mostrar
  */
-Plantilla.imprimeDeportistas = function (vector) 
-{
-
-    let msj = "";
-    msj += Plantilla.cabeceraTable();
-    vector.data.forEach(e => msj += Plantilla.cuerpoTr(e))
-    msj += Halterofilia.pieTable();
-
+Plantilla.imprimeDeportistas = function (datos) {
+    let msj = ""
+    msj += Plantilla.cabeceraTable()
+  
+    datos.forEach(vector => {
+      vector.forEach(e => {
+        msj += Plantilla.cuerpoTr(e)
+      })
+    })
+  
+    msj += Halterofilia.pieTable()
+  
     Frontend.Article.actualizar("Listado de los nombres de los deportistas", msj)
-}
+  }
+  
+  
 
 
 /**
  * Función principal para recuperar los deportistas desde el MS y, posteriormente, imprimirlas.
  */
-Plantilla.listar = function () 
-{
-    this.descargarRuta("/halterofilia/getTodas", this.imprimeDeportistas);
-}
+Plantilla.listar = function () {
+    const rutas = 
+    [
+      "/halterofilia/getTodas",
+      "/surferos/getTodas",
+      "/voleyPlaya/listarnPersonas",
+      "/natacion/listarnPersonas",
+      "/volley/getTodos"
+    ]
+  
+    const descargas = rutas.map((ruta, indice) => {
+      return new Promise(resolve => {
+        this.descargarRuta(ruta, indice, resolve)
+      })
+    })
+    
+    //Para esperar hasta que se descarguen todas
+    Promise.all(descargas).then(resultados => {
+      const datosCompletos = resultados.reduce((acumulador, datos) => {
+        acumulador[datos.posicion] = datos.vector.data
+        return acumulador
+      }, [])
+  
+      this.imprimeDeportistas(datosCompletos)
+    })
+  }
+  
 
