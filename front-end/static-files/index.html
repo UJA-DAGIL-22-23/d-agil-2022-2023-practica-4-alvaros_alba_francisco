@@ -157,19 +157,39 @@
     <div id="opciones-volley" style="display: none;">
         <nav>
             <a href="javascript:Volley.procesarHome()" class="opcion-principal mostrar"
-            title="Llama a la ruta / del MS natacion">Home</a>
+            title="Llama a la ruta / del MS natacion"
+            onclick="agregarAHistorial('Volley.procesarHome');"
+            >Home</a>
         <a href="javascript:Volley.procesarAcercaDe()" class="opcion-principal mostrar"
-            title="Llama a la ruta /acercade del MS natacion">Acerca de</a>
+            title="Llama a la ruta /acercade del MS natacion"
+            onclick="agregarAHistorial('Volley.procesarAcercaDe');"
+            >Acerca de</a>
         <a href="javascript:Volley.listarDatos()" class="opcion-principal mostrar"
-            title="Realiza un listado con todos los datos de los jugadores en la BBDD">Mostrar datos</a>
+            title="Realiza un listado con todos los datos de los jugadores en la BBDD"
+            onclick="agregarAHistorial('Volley.listarDatos');"
+            >Mostrar datos</a>
             <div class="sub-menu" id="sub-menu-datos">
-                <a href="javascript:Volley.listarAlfabeticamenteNombre()" class="opcion-principal mostrar">Sort: Nombre</a>
-                <a href="javascript:Volley.listarAlfabeticamenteApellidos()" class="opcion-principal mostrar">Sort: Apellido</a>
-                <a href="javascript:Volley.listarOrdenFecha()" class="opcion-principal mostrar">Sort: Fecha Nacimiento</a>
-                <a href="javascript:Volley.listarAlfabeticamentePais()" class="opcion-principal mostrar">Sort: País</a>
-                <a href="javascript:Volley.listarOrdenParticipaciones()" class="opcion-principal mostrar">Sort: Num Participaciones</a>
-                <a href="javascript:Volley.listarAlfabeticamenteClub()" class="opcion-principal mostrar">Sort: Club</a>
-                <a href="javascript:Volley.listarAlfabeticamentePosicion()" class="opcion-principal mostrar">Sort: Posición</a>
+                <a href="javascript:Volley.listarAlfabeticamenteNombre()" class="opcion-principal mostrar"
+                onclick="agregarAHistorial('Volley.listarAlfabeticamenteNombre');"
+                >Sort: Nombre</a>
+                <a href="javascript:Volley.listarAlfabeticamenteApellidos()" class="opcion-principal mostrar"
+                onclick="agregarAHistorial('Volley.listarAlfabeticamenteApellidos');"
+                >Sort: Apellido</a>
+                <a href="javascript:Volley.listarOrdenFecha()" class="opcion-principal mostrar"
+                onclick="agregarAHistorial('Volley.listarOrdenFecha');"
+                >Sort: Fecha Nacimiento</a>
+                <a href="javascript:Volley.listarAlfabeticamentePais()" class="opcion-principal mostrar"
+                onclick="agregarAHistorial('Volley.listarAlfabeticamentePais');"
+                >Sort: País</a>
+                <a href="javascript:Volley.listarOrdenParticipaciones()" class="opcion-principal mostrar"
+                onclick="agregarAHistorial('Volley.listarOrdenParticipaciones');"
+                >Sort: Num Participaciones</a>
+                <a href="javascript:Volley.listarAlfabeticamenteClub()" class="opcion-principal mostrar"
+                onclick="agregarAHistorial('Volley.listarAlfabeticamenteClub');"
+                >Sort: Club</a>
+                <a href="javascript:Volley.listarAlfabeticamentePosicion()" class="opcion-principal mostrar"
+                onclick="agregarAHistorial('Volley.listarAlfabeticamentePosicion');"
+                >Sort: Posición</a>
             </div>
         <a href="javascript:Volley.listarNombre()" class="opcion-principal mostrar"
             title="Realiza un listado con todos los nombres de los jugadores en la BBDD">Mostrar Nombres</a>
