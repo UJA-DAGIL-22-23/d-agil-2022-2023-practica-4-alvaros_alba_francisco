@@ -10,8 +10,8 @@
     <script src="lib/jasmine-4.5.0/jasmine.js"></script>
     <script src="lib/jasmine-4.5.0/jasmine-html.js"></script>
     <script src="lib/jasmine-4.5.0/boot0.js"></script>
-    <script src="lib/jasmine-4.5.0/boot1.js"></script>-->
-    
+    <script src="lib/jasmine-4.5.0/boot1.js"></script>
+    -->
     
     <!-- Cargamos nuestros CSS -->
     <link rel="stylesheet" href="css/front-end.css">
@@ -36,22 +36,22 @@
             <nav>
                 <a href="javascript:Halterofilia.procesarHome()" class="opcion-principal"
                     title="Llama a la ruta / del MS natacion"
-                    onclick="agregarAHistorial('Halterofilia.procesarHome');">Home</a>
+                    onclick="Plantilla.agregarAHistorial('Halterofilia.procesarHome');">Home</a>
                 <a href="javascript:Halterofilia.procesarAcercaDe()" class="opcion-principal"
                     title="Llama a la ruta /acercade del MS natacion"
-                    onclick="agregarAHistorial('Halterofilia.procesarAcercaDe');">Acerca de</a>
+                    onclick="Plantilla.agregarAHistorial('Halterofilia.procesarAcercaDe');">Acerca de</a>
                 <a href="javascript:Halterofilia.listar()" class="opcion-principal mostrar"
                     title="Listar todos los nombres de los deportistas en la base de datos"
-                    onclick="agregarAHistorial('Halterofilia.listar');">Lista de Nombres</a>
+                    onclick="Plantilla.agregarAHistorial('Halterofilia.listar');">Lista de Nombres</a>
                 <a href="javascript:Halterofilia.listarCompleto()" class="opcion-principal mostrar"
                     title="Listar todos los deportistas en la base de datos"
-                    onclick="agregarAHistorial('Halterofilia.listarCompleto');">Lista Completa</a> 
+                    onclick="Plantilla.agregarAHistorial('Halterofilia.listarCompleto');">Lista Completa</a> 
                 <a href="javascript:Halterofilia.nuevoDeportista()" class="opcion-principal mostrar"
                     title="Crear un nuevo deportista"
-                    onclick="agregarAHistorial('Halterofilia.nuevoDeportista');">Crear Deportista</a>
+                    onclick="Plantilla.agregarAHistorial('Halterofilia.nuevoDeportista');">Crear Deportista</a>
                 <a href="javascript:Halterofilia.listarCompletoT()" class="opcion-principal mostrar" 
                 title="Listar por un campo"
-                onclick="agregarAHistorial('Halterofilia.listarCompletoT');">Lista Ordenada</a>
+                onclick="Plantilla.agregarAHistorial('Halterofilia.listarCompletoT');">Lista Ordenada</a>
                 <div id="formulario" style="display: none;">
                 <form>
                     <label for="campo">Campo por el cual ordenar:</label>
@@ -69,7 +69,7 @@
                 </form>
                 </div>
                 <a href="javascript:Halterofilia.busquedaNombre()" class="opcion-principal mostrar" title="Listar por un nombre"
-                onclick="agregarAHistorial('Halterofilia.busquedaNombre');">Búsqueda</a>
+                onclick="Plantilla.agregarAHistorial('Halterofilia.busquedaNombre');">Búsqueda</a>
                 <div id="formulario2" style="display: none;">
                     <form>
                         <label for="busqueda">Buscar por nombre:</label>
@@ -89,31 +89,31 @@
         <nav>
             <a href="javascript:voleyPlaya.procesarHome()" class="opcion-principal"
                 title="Llama a la ruta / del MS Plantilla"
-                onclick="agregarAHistorial('voleyPlaya.procesarHome');">Home</a>
+                onclick="Plantilla.agregarAHistorial('voleyPlaya.procesarHome');">Home</a>
             <a href="javascript:voleyPlaya.procesarAcercaDe()" class="opcion-principal"
                 title="Llama a la ruta /acercade del MS Plantilla"
-                onclick="agregarAHistorial('voleyPlaya.procesarAcercaDe');">Acerca de</a>
+                onclick="Plantilla.agregarAHistorial('voleyPlaya.procesarAcercaDe');">Acerca de</a>
             <a href="javascript:voleyPlaya.procesarListarNombres()" class="opcion-principal"
                 title="Llama a la ruta /getTodas del MS Plantilla"
-                onclick="agregarAHistorial('voleyPlaya.procesarListaNombres');">Listado de nombres</a>
+                onclick="Plantilla.agregarAHistorial('voleyPlaya.procesarListaNombres');">Listado de nombres</a>
             <a href="javascript:voleyPlaya.procesarListarNombresOrdenados()" class="opcion-principal"
                 title="Listado de nombres ordenados"
-                onclick="agregarAHistorial('voleyPlaya.procesarListarNombresOrdenados');">Listado de nombres ordenados</a>
+                onclick="Plantilla.agregarAHistorial('voleyPlaya.procesarListarNombresOrdenados');">Listado de nombres ordenados</a>
             <a href="javascript:voleyPlaya.procesarListarTodos()" class="opcion-principal"
                 title="Listado de datos de todos los jugadores"
-                onclick="agregarAHistorial('voleyPlaya.procesarListarTodos');">Listado de datos de jugadores</a>
+                onclick="Plantilla.agregarAHistorial('voleyPlaya.procesarListarTodos');">Listado de datos de jugadores</a>
             <a href="javascript:voleyPlaya.cambiarOrden()" class="opcion-principal"
                 title="Listado de datos de todos los jugadores ordenados segun un criterio"
-                onclick="agregarAHistorial('voleyPlaya.cambiarOrden');">Listado para ordenar según campo a desear</a>
+                onclick="Plantilla.agregarAHistorial('voleyPlaya.cambiarOrden');">Listado para ordenar según campo a desear</a>
             <a href="javascript:voleyPlaya.muestroPersona(359175635380207820)" class="opcion-principal"
                 title="Listado de datos de jugadores"
-                onclick="agregarAHistorial('voleyPlaya.muestroPersona');">Datos de un solo jugador</a>
+                onclick="Plantilla.agregarAHistorial('voleyPlaya.muestroPersona');">Datos de un solo jugador</a>
             <a href="javascript:voleyPlaya.buscarNombre()" class="opcion-principal"
                 title="Listado de datos de jugadores buscados por un nombre"
-                onclick="agregarAHistorial('voleyPlaya.buscarNombre');">Buscador por nombres</a>
+                onclick="Plantilla.agregarAHistorial('voleyPlaya.buscarNombre');">Buscador por nombres</a>
             <a href="javascript:voleyPlaya.buscarCampos()" class="opcion-principal"
                 title="Listado de datos de jugadores buscados por un campo"
-                onclick="agregarAHistorial('voleyPlaya.buscarCampos');">Buscador por campos</a>
+                onclick="Plantilla.agregarAHistorial('voleyPlaya.buscarCampos');">Buscador por campos</a>
         </nav>
         </div>
     </button>
@@ -125,27 +125,27 @@
         <nav>
             <a href="javascript:natacion.procesarAcercaDe()" class="opcion-principal"
                         title="Llama a la ruta /acercade del MS natacion"
-                        onclick="agregarAHistorial('natacion.procesarAcercaDe');">Acerca de</a>
+                        onclick="Plantilla.agregarAHistorial('natacion.procesarAcercaDe');">Acerca de</a>
                     <a href="javascript:natacion.procesarListarNombres()" class="opcion-principal"
-                        onclick="agregarAHistorial('natacion.procesarListarNombres');"
+                        onclick="Plantilla.agregarAHistorial('natacion.procesarListarNombres');"
                         >Listar nombres de personas</a>
                         <a href="javascript:natacion.procesarListarNombresOrden()" class="opcion-principal"
-                        onclick="agregarAHistorial('natacion.procesarListarNombresOrden');"
+                        onclick="Plantilla.agregarAHistorial('natacion.procesarListarNombresOrden');"
                         >Listar nombres de personas en orden</a>
                         <a href="javascript:natacion.procesarPersonasConTodo()" class="opcion-principal"
-                        onclick="agregarAHistorial('natacion.procesarPersonasConTodo');"
+                        onclick="Plantilla.agregarAHistorial('natacion.procesarPersonasConTodo');"
                         >Listar personas con todos sus datos</a>
                         <a href="javascript:natacion.cambiarOrden()" class="opcion-principal"
-                        onclick="agregarAHistorial('natacion.cambiarOrden');"
+                        onclick="Plantilla.agregarAHistorial('natacion.cambiarOrden');"
                         >Listar personas con diferente orden</a>
                         <a href="javascript:natacion.mostrar(1009)" class="opcion-principal"
-                        onclick="agregarAHistorial('natacion.mostrar');"
+                        onclick="Plantilla.agregarAHistorial('natacion.mostrar');"
                        >Mostrar los datos de una persona</a>
                         <a href="javascript:natacion.buscarNombre()" class="opcion-principal"
-                        onclick="agregarAHistorial('natacion.buscarNombre');"
+                        onclick="Plantilla.agregarAHistorial('natacion.buscarNombre');"
                         >Buscar una persona por nombre</a>
                         <a href="javascript:natacion.buscarDiferentesCampos()" class="opcion-principal"
-                        onclick="agregarAHistorial('natacion.buscarDiferentesCampos');"
+                        onclick="Plantilla.agregarAHistorial('natacion.buscarDiferentesCampos');"
                         >Buscar por diferentes campos</a>
             <nav>            
         </div>
@@ -156,56 +156,56 @@
     <button class="opcion-principal" onclick="mostrarOpcionesVolley()">Volley</button>
     <div id="opciones-volley" style="display: none;">
         <nav>
-            <a href="javascript:Volley.procesarHome()" class="opcion-principal mostrar"
+            <a id ="b-volley-home" href="javascript:Volley.procesarHome()" class="opcion-principal mostrar"
             title="Llama a la ruta / del MS natacion"
-            onclick="agregarAHistorial('Volley.procesarHome');"
+            onclick="Plantilla.agregarAHistorial('Volley.procesarHome');"
             >Home</a>
         <a href="javascript:Volley.procesarAcercaDe()" class="opcion-principal mostrar"
             title="Llama a la ruta /acercade del MS natacion"
-            onclick="agregarAHistorial('Volley.procesarAcercaDe');"
+            onclick="Plantilla.agregarAHistorial('Volley.procesarAcercaDe');"
             >Acerca de</a>
         <a href="javascript:Volley.listarDatos()" class="opcion-principal mostrar"
             title="Realiza un listado con todos los datos de los jugadores en la BBDD"
-            onclick="agregarAHistorial('Volley.listarDatos');"
+            onclick="Plantilla.agregarAHistorial('Volley.listarDatos');"
             >Mostrar datos</a>
             <div class="sub-menu" id="sub-menu-datos">
                 <a href="javascript:Volley.listarAlfabeticamenteNombre()" class="opcion-principal mostrar"
-                onclick="agregarAHistorial('Volley.listarAlfabeticamenteNombre');"
+                onclick="Plantilla.agregarAHistorial('Volley.listarAlfabeticamenteNombre');"
                 >Sort: Nombre</a>
                 <a href="javascript:Volley.listarAlfabeticamenteApellidos()" class="opcion-principal mostrar"
-                onclick="agregarAHistorial('Volley.listarAlfabeticamenteApellidos');"
+                onclick="Plantilla.agregarAHistorial('Volley.listarAlfabeticamenteApellidos');"
                 >Sort: Apellido</a>
                 <a href="javascript:Volley.listarOrdenFecha()" class="opcion-principal mostrar"
-                onclick="agregarAHistorial('Volley.listarOrdenFecha');"
+                onclick="Plantilla.agregarAHistorial('Volley.listarOrdenFecha');"
                 >Sort: Fecha Nacimiento</a>
                 <a href="javascript:Volley.listarAlfabeticamentePais()" class="opcion-principal mostrar"
-                onclick="agregarAHistorial('Volley.listarAlfabeticamentePais');"
+                onclick="Plantilla.agregarAHistorial('Volley.listarAlfabeticamentePais');"
                 >Sort: País</a>
                 <a href="javascript:Volley.listarOrdenParticipaciones()" class="opcion-principal mostrar"
-                onclick="agregarAHistorial('Volley.listarOrdenParticipaciones');"
+                onclick="Plantilla.agregarAHistorial('Volley.listarOrdenParticipaciones');"
                 >Sort: Num Participaciones</a>
                 <a href="javascript:Volley.listarAlfabeticamenteClub()" class="opcion-principal mostrar"
-                onclick="agregarAHistorial('Volley.listarAlfabeticamenteClub');"
+                onclick="Plantilla.agregarAHistorial('Volley.listarAlfabeticamenteClub');"
                 >Sort: Club</a>
                 <a href="javascript:Volley.listarAlfabeticamentePosicion()" class="opcion-principal mostrar"
-                onclick="agregarAHistorial('Volley.listarAlfabeticamentePosicion');"
+                onclick="Plantilla.agregarAHistorial('Volley.listarAlfabeticamentePosicion');"
                 >Sort: Posición</a>
             </div>
         <a href="javascript:Volley.listarNombre()" class="opcion-principal mostrar"
             title="Realiza un listado con todos los nombres de los jugadores en la BBDD"
-            onclick="agregarAHistorial('Volley.listarNombre');"
+            onclick="Plantilla.agregarAHistorial('Volley.listarNombre');"
             >Mostrar Nombres</a>
         <a href="javascript:Volley.mostrarOtroJugador('-1')" class="opcion-principal mostrar"
             title="Vuelve al jugador anterior"
-            onclick="agregarAHistorial('Volley.mostrarOtroJugador');"
+            onclick="Plantilla.agregarAHistorial('Volley.mostrarOtroJugador');"
             ><</a>
         <a href="javascript:Volley.mostrarJugador('360465947460370637')" class="opcion-principal mostrar"
             title="Muestra los datos de un jugador"
-            onclick="agregarAHistorial('Volley.mostrarJugador');"
+            onclick="Plantilla.agregarAHistorial('Volley.mostrarJugador');"
             >Mostrar datos de un jugador</a>
         <a href="javascript:Volley.mostrarOtroJugador('1')" class="opcion-principal mostrar"
             title="Pasa al jugador siguiente"
-            onclick="agregarAHistorial('Volley.mostrarOtroJugador');"
+            onclick="Plantilla.agregarAHistorial('Volley.mostrarOtroJugador');"
             >></a>
         </nav>     
         </div>
@@ -218,29 +218,29 @@
         <nav>
         <a href="javascript:Surferos.listar()" class="opcion-principal"
         title="Llama a la ruta /getTodas del MS natacion"
-        onclick="agregarAHistorial('Surferos.listar');"
+        onclick="Plantilla.agregarAHistorial('Surferos.listar');"
         >Listado de datos completo</a>
         <a href="javascript:Surferos.listarNombres()" class="opcion-principal"
         title="Llama a la ruta /getTodas del MS natacion"
-        onclick="agregarAHistorial('Surferos.listarNombres');"
+        onclick="Plantilla.agregarAHistorial('Surferos.listarNombres');"
         >Listado de nombres</a>
     <a href="javascript:Surferos.procesarListarNombresOrdenados()" class="opcion-principal mostrar"
         title="Muestra los datos de surferos ordenados alfabeticamente por nombre"
-        onclick="agregarAHistorial('Surferos.procesarListarNombresOrdenados');"
+        onclick="Plantilla.agregarAHistorial('Surferos.procesarListarNombresOrdenados');"
         >Listado alfabeticamente</a>
         
     <a href="javascript:Surferos.procesarListarApellidosOrdenados()" class="opcion-principal mostrar"
     title="Muestra los datos de los surferos por campos"
-    onclick="agregarAHistorial('Surferos.procesarListarApellidosOrdenados');"
+    onclick="Plantilla.agregarAHistorial('Surferos.procesarListarApellidosOrdenados');"
     >Pulse para ordenar por campos</a>
 
     <a href="javascript:Surferos.mostrar('359177288543109324')" class="opcion-principal mostrar"
         title="Muestra los datos de una persona como ejemplo"
-        onclick="agregarAHistorial('Surferos.mostrar');"
+        onclick="Plantilla.agregarAHistorial('Surferos.mostrar');"
         >Mostrar una persona de ejemplo</a>
     <a href="javascript:Surferos.procesarAcercaDe()" class="opcion-principal"
         title="Llama a la ruta /acercade del MS"
-        onclick="agregarAHistorial('Surferos.procesarAcercaDe');"
+        onclick="Plantilla.agregarAHistorial('Surferos.procesarAcercaDe');"
         >Acerca de</a>
 </nav>
         </div>
@@ -253,19 +253,19 @@
         <nav>
         <a href="javascript:Plantilla.procesarAcercaDe()" class="opcion-principal"
         title="Llama a la ruta /getTodas del MS natacion"
-        onclick="agregarAHistorial('Plantilla.procesarAcercaDe');"
+        onclick="Plantilla.agregarAHistorial('Plantilla.procesarAcercaDe');"
         >Acerca de </a>
         </nav>
         <nav>
         <a href="javascript:Plantilla.listar()" class="opcion-principal"
         title="Imprime el nombre de todos los deportistas"
-        onclick="agregarAHistorial('Plantilla.listar');"
+        onclick="Plantilla.agregarAHistorial('Plantilla.listar');"
         >Deportistas</a>
         </nav>
         <nav>
         <a class="opcion-principal"
         title="Muestra las 10 ultimas acciones realizadas en la pagina"
-        onclick="mostrarHistorial()";>Historial de acciones</a>
+        onclick="Plantilla.mostrarHistorial();">Historial de acciones</a>
         </nav>
     </div>
     </button>
@@ -279,24 +279,17 @@
     elementos[i].classList.toggle("alto-contraste");
   }
 });
+
+
+
 </script>
 
 
-<script>
-    var historial = [];
-    function agregarAHistorial(opcion) {
-        historial.push(opcion);
-        if (historial.length > 10){
-        historial.shift();
-    }
-      }
-    
-      function mostrarHistorial() {
-        for (let i = 0; i < historial.length; ++i){
-            console.log(historial[i]);
-        }
-      }
-</script>
+
+
+
+
+
 
 
 
@@ -327,6 +320,7 @@
 
 
     <!-- Cargamos ficheros spec con los tests -->
+
     <script src="js/front-end-spec.js"></script>
     <script src="js/ms-halterofilia-spec.js"></script>
     <script src="js/surferos-spec.js"></script>
@@ -334,6 +328,7 @@
     <script src="js/ms-natacionAletas-spec.js"></script>
     <script src="js/ms-voleibolP-spec.js"></script>
     <script src="js/ms-plantilla-spec.js"></script>
+
     
 
     
