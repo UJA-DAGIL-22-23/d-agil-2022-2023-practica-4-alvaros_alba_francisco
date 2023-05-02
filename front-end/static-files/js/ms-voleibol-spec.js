@@ -1,5 +1,5 @@
 /**
- * @file ms-Volley-spec.js
+ * @file ms-voleibol-spec.js
  * @description Fichero TDD para probar todo lo relacionado con MS Volley en el front-end
  * @author Víctor M. Rivas <vrivas@ujaen.es>
  * @date 03-feb-2023

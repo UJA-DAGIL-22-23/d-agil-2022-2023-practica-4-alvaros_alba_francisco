@@ -1,5 +1,5 @@
 /**
- * @file Volley.js
+ * @file ms-voleibol.js
  * @description Funciones para el procesamiento de la info enviada por el MS Volley
  * @author Víctor M. Rivas <vrivas@ujaen.es>
  * @date 03-feb-2023
