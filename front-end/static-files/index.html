@@ -19,6 +19,9 @@
 
 <body>
     <h1>ALBARICOS <span>Aprobando Desarrollo Ágil</span></h1>
+    <button class="opcion-principal" id="toggle-contraste">Cambiar contraste</button>
+
+    
 
     <!--<button class="opcion-principal" onclick="mostrarOpciones()">Halterofilia</button>
     <button class="opcion-principal" onclick="mostrarOpcionesVoleyPlaya()">Volley-Playa</button>
@@ -177,6 +180,16 @@
         </div>
     </button>
 </div>
+
+<script>
+    var botonContraste = document.getElementById("toggle-contraste");
+    botonContraste.addEventListener("click", function() {
+    var elementos = document.getElementsByTagName("*");
+    for (var i = 0; i < elementos.length; i++) {
+    elementos[i].classList.toggle("alto-contraste");
+  }
+});
+</script>
 
 
 

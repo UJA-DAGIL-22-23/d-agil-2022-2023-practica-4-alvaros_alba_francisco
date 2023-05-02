@@ -513,5 +513,7 @@ function mostrarInicio()
      document.getElementById("opciones-volley").style.display = "none";
      document.getElementById("opciones-surf").style.display = "none";
   }
+
+
   
  

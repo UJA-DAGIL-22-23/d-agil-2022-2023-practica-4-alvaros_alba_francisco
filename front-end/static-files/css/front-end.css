@@ -18,26 +18,16 @@
     margin-right: 10px;
   }
 
-  #seccion-volley-playa{
-    width: 100%;
-    display: inline-block;
-    margin-right: 10px;
+  .alto-contraste :not(button) {
+    background-color: #00000000;
+    color: #ffffff;
   }
-  #seccion-volley{
-    width: 100%;
-    display: inline-block;
-    margin-right: 10px;
+  
+  .alto-contraste button {
+    background-color: #ffffff;
+    color: #000000;
   }
-  #seccion-natacion{
-    width: 100%;
-    display: inline-block;
-    margin-right: 10px;
-  }
-  #seccion-surf{
-    width: 100%;
-    display: inline-block;
-    margin-right: 10px;
-  }
+  
   
   .mostrar {
     display: inline-block;
@@ -76,5 +66,41 @@
     background-image: url('../images/fondo.jpeg');
     background-position: center;
     color:#1e304d;
+  }
+
+  body.alto-contraste {
+    background-image: url('../images/image.png');
+    background-position: center;
+    color:#000000;
+  }
+
+  
+  .opcion-principal.alto-contraste {
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: .5em 0 .5em 0;
+    padding: .5em;
+    text-decoration: none;
+    background-color: rgba(79, 129, 189, 0.1);
+    color: #ff6b6b;
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  .opcion-principal:hover.alto-contraste {
+    background-color: rgb(255, 255, 255);
+  }
+  
+  h1.alto-contraste {
+    color: #ffffff;
+    background-color: #000000;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  h1 span.alto-contraste {
+    display: block;
+    font-size: 0.5em;
+    color:  #ff6b6b;
+    font-style: italic;
   }
   
