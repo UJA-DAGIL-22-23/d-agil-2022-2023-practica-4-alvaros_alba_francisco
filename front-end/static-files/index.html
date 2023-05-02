@@ -192,13 +192,21 @@
                 >Sort: Posición</a>
             </div>
         <a href="javascript:Volley.listarNombre()" class="opcion-principal mostrar"
-            title="Realiza un listado con todos los nombres de los jugadores en la BBDD">Mostrar Nombres</a>
+            title="Realiza un listado con todos los nombres de los jugadores en la BBDD"
+            onclick="agregarAHistorial('Volley.listarNombre');"
+            >Mostrar Nombres</a>
         <a href="javascript:Volley.mostrarOtroJugador('-1')" class="opcion-principal mostrar"
-            title="Vuelve al jugador anterior"><</a>
+            title="Vuelve al jugador anterior"
+            onclick="agregarAHistorial('Volley.mostrarOtroJugador');"
+            ><</a>
         <a href="javascript:Volley.mostrarJugador('360465947460370637')" class="opcion-principal mostrar"
-            title="Muestra los datos de un jugador">Mostrar datos de un jugador</a>
+            title="Muestra los datos de un jugador"
+            onclick="agregarAHistorial('Volley.mostrarJugador');"
+            >Mostrar datos de un jugador</a>
         <a href="javascript:Volley.mostrarOtroJugador('1')" class="opcion-principal mostrar"
-            title="Pasa al jugador siguiente">></a>
+            title="Pasa al jugador siguiente"
+            onclick="agregarAHistorial('Volley.mostrarOtroJugador');"
+            >></a>
         </nav>     
         </div>
     </button>
@@ -209,19 +217,31 @@
     <div id="opciones-surf" style="display: none;">
         <nav>
         <a href="javascript:Surferos.listar()" class="opcion-principal"
-        title="Llama a la ruta /getTodas del MS natacion">Listado de datos completo</a>
+        title="Llama a la ruta /getTodas del MS natacion"
+        onclick="agregarAHistorial('Surferos.listar');"
+        >Listado de datos completo</a>
         <a href="javascript:Surferos.listarNombres()" class="opcion-principal"
-        title="Llama a la ruta /getTodas del MS natacion">Listado de nombres</a>
+        title="Llama a la ruta /getTodas del MS natacion"
+        onclick="agregarAHistorial('Surferos.listarNombres');"
+        >Listado de nombres</a>
     <a href="javascript:Surferos.procesarListarNombresOrdenados()" class="opcion-principal mostrar"
-        title="Muestra los datos de surferos ordenados alfabeticamente por nombre">Listado alfabeticamente</a>
+        title="Muestra los datos de surferos ordenados alfabeticamente por nombre"
+        onclick="agregarAHistorial('Surferos.procesarListarNombresOrdenados');"
+        >Listado alfabeticamente</a>
         
     <a href="javascript:Surferos.procesarListarApellidosOrdenados()" class="opcion-principal mostrar"
-    title="Muestra los datos de los surferos por campos">Pulse para ordenar por campos</a>
+    title="Muestra los datos de los surferos por campos"
+    onclick="agregarAHistorial('Surferos.procesarListarApellidosOrdenados');"
+    >Pulse para ordenar por campos</a>
 
     <a href="javascript:Surferos.mostrar('359177288543109324')" class="opcion-principal mostrar"
-        title="Muestra los datos de una persona como ejemplo">Mostrar una persona de ejemplo</a>
+        title="Muestra los datos de una persona como ejemplo"
+        onclick="agregarAHistorial('Surferos.mostrar');"
+        >Mostrar una persona de ejemplo</a>
     <a href="javascript:Surferos.procesarAcercaDe()" class="opcion-principal"
-        title="Llama a la ruta /acercade del MS">Acerca de</a>
+        title="Llama a la ruta /acercade del MS"
+        onclick="agregarAHistorial('Surferos.procesarAcercaDe');"
+        >Acerca de</a>
 </nav>
         </div>
     </button>
