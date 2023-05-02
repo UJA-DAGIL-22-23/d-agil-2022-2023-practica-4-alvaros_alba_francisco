@@ -7,6 +7,7 @@
 
 "use strict";
 
+  var historial = [];
 /// Creo el espacio de nombres
 let Plantilla = {};
 
@@ -16,6 +17,10 @@ let Plantilla = {};
  */
 Plantilla.cabeceraTable = function () {
     return `<table class="listado-nombres"><thead><th>Nombre</th><th>Apellidos</th></thead><tbody>`;
+}
+
+Plantilla.cabeceraHistorial = function(){
+  return `<table class="tabla-historial"><thead><th>Historial</th></thead><tbody>`
 }
 
 /**
@@ -174,80 +179,4 @@ Plantilla.descargarRuta2 = async function (ruta, posicion) {
         console.error("Error al descargar los datos:", error);
       });
   };
-
-  Plantilla.listarOrdenado = function () {
-    const rutas = [
-      "/halterofilia/getTodas",
-      "/surferos/getTodas",
-      "/voleyPlaya/listarnPersonas",
-      "/natacion/listarnPersonas",
-      "/volley/getTodos"
-    ];
   
-    const descargas = rutas.map((ruta, indice) => {
-      return Plantilla.descargarRuta2(ruta, indice);
-    });
-  
-    // Espera hasta que se descarguen todos los datos
-    Promise.all(descargas)
-      .then(resultados => {
-        const datosCompletos = resultados.sort(
-          (a, b) => a.posicion - b.posicion
-        );
-        let contador = 0;
-        var vector = [];
-        for(let i = 0;i<datosCompletos.length;i++){
-          for(let j = 0; j<datosCompletos[i].datos.data.length;j++){
-            vector.push(datosCompletos[i].datos.data[j]);  
-          }
-        } 
-        
-        vector.sort(function(a,b){
-          let nombre1 = a.data.nombre;
-          let nombre2 = b.data.nombre;
-
-          if(nombre1<nombre2){
-            return -1;
-          }
-          if(nombre1>nombre2){
-            return 1;
-          }
-          return 0;
-        });
-        console.log(vector);
-        this.imprimeDeportistas2(vector);
-      })
-      .catch(error => {
-        console.error("Error al descargar los datos:", error);
-      });
-  };
-
-  Plantilla.imprimeDeportistas2 = function (datos) {
-    let msj = "";
-    msj += Plantilla.cabeceraTable();
-  
-    datos.forEach(e=>msj+=Plantilla.listarPersonas(e));
-  
-    msj += Plantilla.pieTable();
-  
-    Frontend.Article.actualizar(
-      "Listado de los nombres de los deportistas ordenados",
-      msj
-    );
-  };
-  
-  Plantilla.listarPersonas = function (p) {
-    const d = p.data
-    
-  if(d.apellidos == null ||d.apellidos == undefined){
-      return `<tr><td>${d.nombre}</td><td></td></tr>`;
-
-  }
-  if( d.nombre == null || d.nombre == undefined){
-      return `<tr><td></td><td>${d.apellidos}</td></tr>`;
-  }
-  if((d.nombre == null || d.nombre == undefined) && (d.apellidos == null||d.apellidos == undefined)){
-      return `<tr><td></td><td></td></tr>`;
-  }
-  return `<tr><td>${d.nombre}</td><td>${d.apellidos}</td></tr>`;
-}

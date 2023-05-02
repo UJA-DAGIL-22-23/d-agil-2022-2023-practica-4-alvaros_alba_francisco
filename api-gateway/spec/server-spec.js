@@ -204,4 +204,36 @@ describe('API Gateway: rutas estáticas', () => {
 }); //FIN RUTAS HALTEROFILIA
 
 
+/**
+ * @describe Rutas ms-volley
+ */
+describe('API Gateway: rutas estáticas', () => {
+  describe('Rutas estáticas de MS Volley', () => {
+    it('Devuelve MS Volley Home Page', (done) => {
+      supertest(app)
+        .get('/volley/')
+        .expect(200)
+        .expect('Content-Type', /json/)
+        .expect(function (res) {
+          //console.log( res.body ); // Para comprobar qué contiene exactamente res.body
+          assert(res.body.hasOwnProperty('mensaje'));
+          assert(res.body.mensaje === "Microservicio MS Volley: home");
 
+        })
+        .end((error) => { error ? done.fail(error) : done() })
+    });
+    it('Devuelve MS Volley Acerca De', (done) => {
+      supertest(app)
+        .get('/volley/acercade')
+        .expect(200)
+        .expect('Content-Type', /json/)
+        .expect(function (res) {
+          //console.log( "BODY ACERCA DE ", res.body ); // Para comprobar qué contiene exactamente res.body
+          assert(res.body.hasOwnProperty('mensaje'));
+          assert(res.body.mensaje === "Microservicio MS Volley: acerca de");
+
+        })
+        .end((error) => { error ? done.fail(error) : done() })
+    });
+  })
+});
