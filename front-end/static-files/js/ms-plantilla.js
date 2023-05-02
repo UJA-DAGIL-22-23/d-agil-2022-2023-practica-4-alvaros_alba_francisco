@@ -52,70 +52,56 @@ function mostrarOpcionesPlantilla()
     document.getElementById("opciones-comun").style.display = "block";
 }
 
-
-Plantilla.descargarRuta = async function (ruta, callBackFn) {
-    let response = null
-
-    // Intento conectar con el microservicio Plantilla
+Plantilla.descargarRutas = async function (ruta, callBackFn) {
     try {
-        const url = Frontend.API_GATEWAY + ruta
-        response = await fetch(url)
-
+      const url = Frontend.API_GATEWAY + ruta
+      const response = await fetch(url)
+      const datosDescargados = await response.json()
+      callBackFn(datosDescargados)
     } catch (error) {
-        alert("Error: No se han podido acceder al API Gateway")
-        console.error(error)
-        //throw error
+      alert("Error: No se han podido acceder al API Gateway")
+      console.error(error)
     }
-
-    // Muestro la info que se han descargado
-    let datosDescargados = null
-    if (response) {
-        datosDescargados = await response.json()
-        callBackFn(datosDescargados)
-    }
-}
-
-
-Plantilla.mostrarAcercaDe = function (datosDescargados)
-{
-    // Si no se ha proporcionado valor para datosDescargados
+  }
+  
+  Plantilla.mostrarAcercaDe = function (datosDescargados) {
     datosDescargados = datosDescargados || this.datosDescargadosNulos
-
-    // Si datos descargados NO es un objeto 
-    if (typeof datosDescargados !== "object") datosDescargados = this.datosDescargadosNulos
-
-    // Si datos descargados NO contiene los campos mensaje, autor, o email
-    if (typeof datosDescargados.mensaje === "undefined" ||
-        typeof datosDescargados.autor === "undefined" ||
-        typeof datosDescargados.email === "undefined" ||
-        typeof datosDescargados.fecha === "undefined"
-    ) datosDescargados = this.datosDescargadosNulos
-
+    if (typeof datosDescargados !== "object" ||
+      typeof datosDescargados.mensaje === "undefined" ||
+      typeof datosDescargados.autor === "undefined" ||
+      typeof datosDescargados.email === "undefined" ||
+      typeof datosDescargados.fecha === "undefined") {
+      datosDescargados = this.datosDescargadosNulos
+    }
     const mensajeAMostrar = `<div>
-    <p>${datosDescargados.mensaje}</p>
-    <ul>
+      <p>${datosDescargados.mensaje}</p>
+      <ul>
         <li><b>Autor/a</b>: ${datosDescargados.autor}</li>
         <li><b>E-mail</b>: ${datosDescargados.email}</li>
         <li><b>Fecha</b>: ${datosDescargados.fecha}</li>
-    </ul>
-    </div>
-    `;
+      </ul>
+    </div>`;
     Frontend.Article.actualizar("Plantilla Acerca de", mensajeAMostrar)
-}
-
-Plantilla.procesarAcercaDe = async function () {
-    const descargaSurferos = this.descargarRuta('/surferos/acercade')
-    const descargaHalterofilia = this.descargarRuta('/halterofilia/acercade')
-    const [datosSurferos, datosHalterofilia] = await Promise.all([descargaSurferos, descargaHalterofilia])
-    const datosCombinados = {
-      mensaje: `${datosSurferos.mensaje} y ${datosHalterofilia.mensaje}`,
-      autor: `${datosSurferos.autor} y ${datosHalterofilia.autor}`,
-      email: `${datosSurferos.email} y ${datosHalterofilia.email}`,
-      fecha: `${datosSurferos.fecha} y ${datosHalterofilia.fecha}`
-    }
-    this.mostrarAcercaDe(datosCombinados)
   }
-
+  
+  Plantilla.procesarAcercaDe = async function () {
+    try {
+      const descargaSurferos = Plantilla.descargarRutas('/surferos/acercade', (datosSurferos) => datosSurferos)
+      const descargaHalterofilia = Plantilla.descargarRutas('/halterofilia/acercade', (datosHalterofilia) => datosHalterofilia)
+      const [datosSurferos, datosHalterofilia] = await Promise.all([descargaSurferos, descargaHalterofilia])
+      const datosCombinados = {
+        mensaje: `${datosSurferos.mensaje} y ${datosHalterofilia.mensaje}`,
+        autor: `${datosSurferos.autor} y ${datosHalterofilia.autor}`,
+        email: `${datosSurferos.email} y ${datosHalterofilia.email}`,
+        fecha: `${datosSurferos.fecha} y ${datosHalterofilia.fecha}`
+      }
+      Plantilla.mostrarAcercaDe(datosCombinados)
+    } catch (error) {
+      alert("Error al procesar Acerca de")
+      console.error(error)
+    }
+  }
+  
 /**
  * Función que descarga la info de los microservicios al llamar a una de sus rutas
  * @param {string} ruta Ruta a descargar
