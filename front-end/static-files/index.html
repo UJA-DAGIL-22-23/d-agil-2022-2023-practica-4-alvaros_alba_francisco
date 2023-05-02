@@ -174,10 +174,25 @@
 
     <a href="javascript:Surferos.mostrar('359177288543109324')" class="opcion-principal mostrar"
         title="Muestra los datos de una persona como ejemplo">Mostrar una persona de ejemplo</a>
-    <a href="javascript:natacion.procesarAcercaDe()" class="opcion-principal"
+    <a href="javascript:Surferos.procesarAcercaDe()" class="opcion-principal"
         title="Llama a la ruta /acercade del MS">Acerca de</a>
 </nav>
         </div>
+    </button>
+</div>
+
+<div class="seccion-comun">
+    <button class="opcion-principal" onclick="mostrarOpcionesPlantilla()">Funciones comunes</button>
+    <div id="opciones-comun" style="display: none;">
+        <nav>
+        <a href="javascript:Plantilla.procesarAcercaDe()" class="opcion-principal"
+        title="Llama a la ruta /getTodas del MS natacion">Acerca de </a>
+        </nav>
+        <nav>
+            <a href="javascript:Plantilla.imprimeDeportistas()" class="opcion-principal"
+            title="Imprime el nombre de todos los deportistas">Deportistas</a>
+            </nav>
+    </div>
     </button>
 </div>
 
@@ -216,6 +231,7 @@
     <script src="js/ms-voleibol.js"></script>
     <script src="js/ms-natacionAletas.js"></script>
     <script src="js/ms-voleibolP.js"></script>
+    <script src="js/ms-plantilla.js"></script>
 
 
     <!-- Cargamos ficheros spec con los tests -->

@@ -660,6 +660,7 @@ function mostrarOpcionesSurf()
     document.getElementById("opciones-natacion").style.display = "none";
     document.getElementById("opciones-volley").style.display = "none";
     document.getElementById("opciones-surf").style.display = "block";
+    document.getElementById("opciones-comun").style.display = "none";
 }
 
 Surferos.descargarRuta = async function (ruta, callBackFn) {
