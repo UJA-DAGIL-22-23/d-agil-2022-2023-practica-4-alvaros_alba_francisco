@@ -15,7 +15,7 @@ let Plantilla = {};
  * @returns Cabecera de la tabla 
  */
 Plantilla.cabeceraTable = function () {
-    return `<table class="listado-nombres"><thead><th>Deporte</th><th>Nombre</th><th>Apellidos</th></thead><tbody>`;
+    return `<table class="listado-nombres"><thead><th>Nombre</th><th>Apellidos</th></thead><tbody>`;
 }
 
 /**
@@ -27,7 +27,6 @@ Plantilla.cuerpoTr = function (p, deporte) {
     const d = p.data
 
     return `<tr title="${p.ref['@ref'].id}">
-    <td><em>${deporte}</em></td>
     <td><em>${d.nombre}</em></td>
     <td><em>${d.apellidos}</em></td>
     </tr>
@@ -106,27 +105,19 @@ Plantilla.descargarRutas = async function (ruta, callBackFn) {
  * Función que descarga la info de los microservicios al llamar a una de sus rutas
  * @param {string} ruta Ruta a descargar
  * @param {integer} posicion posición del dato descargado en el vector final
- * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
+ * @returns {Promise} Promesa que se resuelve con los datos descargados y la posición
  */
-Plantilla.descargarRuta = async function (ruta, posicion, callBackFn) {
-    let response = null;
-  
+Plantilla.descargarRuta = async function (ruta, posicion) {
     try {
       const url = Frontend.API_GATEWAY + ruta;
-      response = await fetch(url);
+      const response = await fetch(url);
+      const datosDescargados = await response.json();
+      return { datos: datosDescargados, posicion: posicion };
     } catch (error) {
-      alert("Error: No se ha podido acceder al API Gateway");
-      console.error(error);
-    }
-  
-    // Muestro la info que se ha descargado
-    let datosDescargados = null;
-    if (response) {
-      datosDescargados = await response.json();
-      callBackFn(datosDescargados, posicion);
+      console.error(`Error al descargar datos de ${ruta}:`, error);
+      throw error;
     }
   };
-  
   
   /**
    * Función para mostrar en pantalla todos los deportistas que se han recuperado de la BBDD.
@@ -136,17 +127,19 @@ Plantilla.descargarRuta = async function (ruta, posicion, callBackFn) {
     let msj = "";
     msj += Plantilla.cabeceraTable();
   
-    datos.forEach(vector => {
-      vector.forEach(e => {
-        msj += Plantilla.cuerpoTr(e);
+    datos.forEach(dato => {
+      dato.datos.data.forEach(deportista => {
+        msj += Plantilla.cuerpoTr(deportista);
       });
     });
   
     msj += Halterofilia.pieTable();
   
-    Frontend.Article.actualizar("Listado de los nombres de los deportistas", msj);
+    Frontend.Article.actualizar(
+      "Listado de los nombres de los deportistas",
+      msj
+    );
   };
-  
   
   /**
    * Función principal para recuperar los deportistas desde el MS y, posteriormente, imprimirlas.
@@ -161,19 +154,19 @@ Plantilla.descargarRuta = async function (ruta, posicion, callBackFn) {
     ];
   
     const descargas = rutas.map((ruta, indice) => {
-      return new Promise(resolve => {
-        Plantilla.descargarRuta(ruta, indice, resolve);
-      });
+      return Plantilla.descargarRuta(ruta, indice);
     });
   
     // Espera hasta que se descarguen todos los datos
-    Promise.all(descargas).then(resultados => {
-      const datosCompletos = resultados.reduce((acumulador, datos) => {
-        acumulador[datos.posicion] = datos;
-        return acumulador;
-      }, []);
-  
-      this.imprimeDeportistas(datosCompletos);
-    });
+    Promise.all(descargas)
+      .then(resultados => {
+        const datosCompletos = resultados.sort(
+          (a, b) => a.posicion - b.posicion
+        );
+        this.imprimeDeportistas(datosCompletos);
+      })
+      .catch(error => {
+        console.error("Error al descargar los datos:", error);
+      });
   };
   
