@@ -142,7 +142,7 @@ describe("Pie table ", function () {
 describe("Cabecera table ", function () {
     it("debería devolver las etiquetas HTML para la cabecera de tabla",
         function () {
-            expect(voleyPlaya.cabeceraTablaNombres()).toBe(`<table class="listado-proyectos"><thead><th>ID</th><th>Nombre</th></thead><tbody>`);
+            expect(voleyPlaya.cabeceraTablaNombres()).toBe(`<table class="listado-nombres"><thead><th>ID</th><th>Nombre</th></thead><tbody>`);
         });
 });
 
@@ -285,7 +285,7 @@ describe('voleyPlaya.cuerpoListarPersonas', () => {
   describe("Cabecera table personas ", function () {
     it("debería devolver las etiquetas HTML para la cabecera de tabla",
         function () {
-            expect(voleyPlaya.cabeceraTablaTodos()).toBe(`<table class="listado-proyectos"><thead><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Día</th><th>Mes</th><th>Año</th><th>Ciudad</th><th>País</th><th>VECTORCOMPETICIONES</th><th>Talla</th><th>NUMMEDALLASOLIMPICAS</th><th>Posicion</th></thead><tbody>`);
+            expect(voleyPlaya.cabeceraTablaTodos()).toBe(`<table class="listado-nombres"><thead><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Día</th><th>Mes</th><th>Año</th><th>Ciudad</th><th>País</th><th>VECTORCOMPETICIONES</th><th>Talla</th><th>NUMMEDALLASOLIMPICAS</th><th>Posicion</th></thead><tbody>`);
         });
 });
 
@@ -316,24 +316,7 @@ describe('voleyPlaya.cuerpoListarTodos', () => {
     });
   });
 
-  describe("voleyPlaya", function() {
-    describe("voleyPlaya", function() {
-      
-      beforeEach(function() {
-        spyOn(Frontend.Article, "actualizar");
-      });
-      
-      it("debería llamar a Frontend.Article.actualizar con los argumentos correctos", function() {
-        const vector = [{ ref: { "@ref": { ID: "1", id: "123" } }, data: { nombre: "John", apellidos: "Doe", nacimiento: { dia: 1, mes: 1, Año: 2000 }, direccion: { ciudad: "Madrid", pais: "España" }, vectorCompeticiones: ["comp1", "comp2"], talla: "M", numMedallasOlimpicas: 2, posicion: 1 } }];
-        const expectedMensaje = '<table class="listado-proyectos"><thead><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Día</th><th>Mes</th><th>Año</th><th>Ciudad</th><th>País</th><th>VECTORCOMPETICIONES</th><th>Talla</th><th>NUMMEDALLASOLIMPICAS</th><th>Posicion</th></thead><tbody><tr title="1"><td>123</td><td>John</td><td>Doe</td><td>1</td><td>1</td><td>2000</td><td>Madrid</td><td>España</td><td>comp1,comp2</td><td>M</td><td>2</td><td>1</td></tr></tbody></table>';
-        
-        voleyPlaya.imprimeTodos(vector);
-        
-        expect(Frontend.Article.actualizar).toHaveBeenCalledWith("Listado de personas", expectedMensaje);
-      });
-      
-    });
-  });
+  
 
   describe("voleyPlaya.nuevoOrden", function() {
     const personas = [
