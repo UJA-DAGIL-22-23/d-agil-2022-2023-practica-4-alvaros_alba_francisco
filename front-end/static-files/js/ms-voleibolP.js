@@ -1,6 +1,6 @@
 /**
- * @file Plantilla.js
- * @description Funciones para el procesamiento de la info enviada por el MS Plantilla
+ * @file ms-voleibolP.js
+ * @description Funciones para el procesamiento de la info enviada por el MS Volley Playa
  * @author Álvaro Ordóñez Romero <aor00039@red.ujaen.es>
  * @date 03-feb-2023
  */

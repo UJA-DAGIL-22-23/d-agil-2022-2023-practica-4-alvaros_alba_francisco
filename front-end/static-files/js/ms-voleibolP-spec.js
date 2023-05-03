@@ -13,10 +13,10 @@
 // Constantes para usar en las pruebas
 const tituloElemento = document.getElementById(Frontend.ID_SECCION_PRINCIPAL_TITULO)
 const ContenidoElemento = document.getElementById(Frontend.ID_SECCION_PRINCIPAL_CONTENIDO)
-const home_titulo = "Plantilla Home"
-const TITULO_ACERCA_DE = "Plantilla Acerca de"
+const home_titulo = "Volley Playa Home"
+const acercaDeTitulo = "Volley Playa Acerca de"
 
-const datosDescargadosPrueba = {
+const datosDescargados = {
     mensaje: "Mensaje de prueba descargado",
     autor: "Prueba de autor",
     email: "Prueba de email",
@@ -73,9 +73,9 @@ describe("voleyPlaya.mostrarHome: ", function () {
 
     it("muestra correctamente el título y el mensaje",
         function () {
-            voleyPlaya.mostrarHome(datosDescargadosPrueba)
+            voleyPlaya.mostrarHome(datosDescargados)
             expect(elementoTitulo.innerHTML).toBe(home_titulo)
-            expect(ContenidoElemento.innerHTML).toBe(datosDescargadosPrueba.mensaje)
+            expect(ContenidoElemento.innerHTML).toBe(datosDescargados.mensaje)
         })
 })
 
@@ -84,14 +84,14 @@ describe("voleyPlaya.mostrarAcercaDe: ", function () {
     it("muestra datos nulos cuando le pasamos un valor nulo",
         function () {
             voleyPlaya.mostrarAcercaDe()
-            expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
+            expect(elementoTitulo.innerHTML).toBe(acercaDeTitulo)
             expect(ContenidoElemento.innerHTML.search(voleyPlaya.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
         })
 
     it("muestra datos nulos cuando le pasamos un valor que no es un objeto",
         function () {
             voleyPlaya.mostrarAcercaDe(23)
-            expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
+            expect(elementoTitulo.innerHTML).toBe(acercaDeTitulo)
             expect(ContenidoElemento.innerHTML.search(voleyPlaya.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
         })
 
@@ -99,35 +99,35 @@ describe("voleyPlaya.mostrarAcercaDe: ", function () {
         function () {
             // Objeto vacío
             voleyPlaya.mostrarAcercaDe({})
-            expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
+            expect(elementoTitulo.innerHTML).toBe(acercaDeTitulo)
             expect(ContenidoElemento.innerHTML.search(voleyPlaya.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
 
             // Objeto sin campo mensaje
             voleyPlaya.mostrarAcercaDe({ autor: "un autor", email: "un email", fecha: "una fecha" })
-            expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
+            expect(elementoTitulo.innerHTML).toBe(acercaDeTitulo)
             expect(ContenidoElemento.innerHTML.search(voleyPlaya.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
             // Objeto sin campo autor
             voleyPlaya.mostrarAcercaDe({ mensaje: "un mensaje", email: "un email", fecha: "una fecha" })
-            expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
+            expect(elementoTitulo.innerHTML).toBe(acercaDeTitulo)
             expect(ContenidoElemento.innerHTML.search(voleyPlaya.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
             // Objeto sin campo email
             voleyPlaya.mostrarAcercaDe({ mensaje: "un mensaje", autor: "un autor", fecha: "una fecha" })
-            expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
+            expect(elementoTitulo.innerHTML).toBe(acercaDeTitulo)
             expect(ContenidoElemento.innerHTML.search(voleyPlaya.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
             // Objeto sin campo fecha
             voleyPlaya.mostrarAcercaDe({ mensaje: "un mensaje", autor: "un autor", email: "un email" })
-            expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
+            expect(elementoTitulo.innerHTML).toBe(acercaDeTitulo)
             expect(ContenidoElemento.innerHTML.search(voleyPlaya.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
         })
     it("muestra correctamente el título y el mensaje conteniendo el autor, el email y la fecha",
         function () {
-            voleyPlaya.mostrarAcercaDe(datosDescargadosPrueba)
-            expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
+            voleyPlaya.mostrarAcercaDe(datosDescargados)
+            expect(elementoTitulo.innerHTML).toBe(acercaDeTitulo)
 
             // Comprobamos que al buscar el autor, el email y la fecha de prueba los encuentra dentro del contenido del article
-            expect(ContenidoElemento.innerHTML.search(datosDescargadosPrueba.autor) >= 0).toBeTrue()
-            expect(ContenidoElemento.innerHTML.search(datosDescargadosPrueba.email) >= 0).toBeTrue()
-            expect(ContenidoElemento.innerHTML.search(datosDescargadosPrueba.fecha) >= 0).toBeTrue()
+            expect(ContenidoElemento.innerHTML.search(datosDescargados.autor) >= 0).toBeTrue()
+            expect(ContenidoElemento.innerHTML.search(datosDescargados.email) >= 0).toBeTrue()
+            expect(ContenidoElemento.innerHTML.search(datosDescargados.fecha) >= 0).toBeTrue()
         })
 })
 
@@ -408,22 +408,22 @@ describe("voleyPlaya.imprimeConBoton", function() {
 
   it("genera un botón para ordenar por ID", function() {
     let result = voleyPlaya.ordenarBoton(vector);
-    expect(result).toContain('<div class="contenedor"><button class="miBoton" onclick="voleyPlaya.ordenarCampo(0, vDatos)">Ordenar por ID</button></div><br></br>');
+    expect(result).toContain(`<div class="botones"><button class="miBoton" onclick="voleyPlaya.ordenarCampo(0, vDatos)">Ordenar por ID</button></div><br></br>`);
   });
 
   it("genera un botón para ordenar por Nombre", function() {
     let result = voleyPlaya.ordenarBoton(vector);
-    expect(result).toContain('<div class="contenedor"><button class="miBoton" onclick="voleyPlaya.ordenarCampo(1, vDatos)">Ordenar por Nombre</button></div><br></br>');
+    expect(result).toContain(`<div class="contenedor"><button class="miBoton" onclick="voleyPlaya.ordenarCampo(1, vDatos)">Ordenar por Nombre</button></div><br></br>`);
   });
 
   it("genera un botón para ordenar por Apellidos", function() {
     let result = voleyPlaya.ordenarBoton(vector);
-    expect(result).toContain('<div class="contenedor"><button class="miBoton" onclick="voleyPlaya.ordenarCampo(2, vDatos)">Ordenar por Apellidos</button></div><br></br>');
+    expect(result).toContain(`<div class="contenedor"><button class="miBoton" onclick="voleyPlaya.ordenarCampo(2, vDatos)">Ordenar por Apellidos</button></div><br></br>`);
   });
 
   it("genera un botón para ordenar por Altura", function() {
     let result = voleyPlaya.ordenarBoton(vector);
-    expect(result).toContain('<div class="contenedor"><button class="miBoton" onclick="voleyPlaya.ordenarCampo(3, vDatos)">Ordenar por Altura</button></div><br></br>');
+    expect(result).toContain(`<div class="botones"><button class="miBoton" onclick="voleyPlaya.ordenarCampo(3, vDatos)">Ordenar por Altura</button></div><br></br>`);
   });
 
   it("deberia devolver un string con código HTML", function() {
@@ -463,7 +463,7 @@ describe("voleyPlaya.mostrarPersona", function() {
   });
   
   it("debería llamar a voleyPlaya.cabeceraTablaTodos, voleyPlaya.pieTabla y Frontend.Article.actualizar", function() {
-    Plantilla.mostrarPersona(persona, idPos);
+    voleyPlaya.mostrarPersona(persona, idPos);
     expect(voleyPlaya.cabeceraTablaTodos).toHaveBeenCalled();
     expect(voleyPlaya.pieTabla).toHaveBeenCalled();
     expect(Frontend.Article.actualizar).toHaveBeenCalledWith("Detalles de persona", jasmine.any(String));
@@ -607,12 +607,12 @@ describe("voleyPlaya.generarMensaje", function() {
   
   it("debería devolver un mensaje vacío si se le pasa un mensaje vacío y encontrada es verdadero", function() {
     let resultado = voleyPlaya.generarMensaje("", true);
-    expect(resultado).toEqual('<input type="text" id="buscar" placeholder="Introduce un nombre"><button onclick="Plantilla.busca(vDatos)">Buscar</button>');
+    expect(resultado).toEqual('<input type="text" id="buscar" placeholder="Introduce un nombre"><button onclick="voleyPlaya.busca(vDatos)">Buscar</button>');
   });
   
   it("debería devolver un mensaje de error si se le pasa un mensaje vacío y encontrada es falso", function() {
     let resultado = voleyPlaya.generarMensaje("", false);
-    expect(resultado).toEqual('<input type="text" id="buscar" placeholder="Introduce un nombre"><button onclick="Plantilla.busca(vDatos)">Buscar</button><div class="error"><p>¡Error! No se ha encontrado el nombre.</p> </div>');
+    expect(resultado).toEqual('<input type="text" id="buscar" placeholder="Introduce un nombre"><button onclick="voleyPlaya.busca(vDatos)">Buscar</button><div class="error"><p>¡Error! No se ha encontrado el nombre.</p> </div>');
   });
 });
 
