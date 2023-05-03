@@ -413,12 +413,12 @@ describe("voleyPlaya.imprimeConBoton", function() {
 
   it("genera un botón para ordenar por Nombre", function() {
     let result = voleyPlaya.ordenarBoton(vector);
-    expect(result).toContain(`<div class="contenedor"><button class="miBoton" onclick="voleyPlaya.ordenarCampo(1, vDatos)">Ordenar por Nombre</button></div><br></br>`);
+    expect(result).toContain(`<div class="botones"><button class="miBoton" onclick="voleyPlaya.ordenarCampo(1, vDatos)">Ordenar por Nombre</button></div><br></br>`);
   });
 
   it("genera un botón para ordenar por Apellidos", function() {
     let result = voleyPlaya.ordenarBoton(vector);
-    expect(result).toContain(`<div class="contenedor"><button class="miBoton" onclick="voleyPlaya.ordenarCampo(2, vDatos)">Ordenar por Apellidos</button></div><br></br>`);
+    expect(result).toContain(`<div class="botones"><button class="miBoton" onclick="voleyPlaya.ordenarCampo(2, vDatos)">Ordenar por Apellidos</button></div><br></br>`);
   });
 
   it("genera un botón para ordenar por Altura", function() {
