@@ -6,11 +6,11 @@
 
     <!-- Cargamos biblioteca Jasmine -->
     
-    <link rel="stylesheet" href="lib/jasmine-4.5.0/jasmine.css">
+    <!--<link rel="stylesheet" href="lib/jasmine-4.5.0/jasmine.css">
     <script src="lib/jasmine-4.5.0/jasmine.js"></script>
     <script src="lib/jasmine-4.5.0/jasmine-html.js"></script>
     <script src="lib/jasmine-4.5.0/boot0.js"></script>
-    <script src="lib/jasmine-4.5.0/boot1.js"></script> 
+    <script src="lib/jasmine-4.5.0/boot1.js"></script>-->
     
     
     <!-- Cargamos nuestros CSS -->
@@ -21,7 +21,7 @@
     <h1>ALBARICOS <span>Aprobando Desarrollo Ágil</span></h1>
     <button class="opcion-principal" id="toggle-contraste">Cambiar contraste</button>
     <div class="seccion-halterofilia">
-        <button class="opcion-principal" onclick="mostrarOpcionesHalterofilia()">Halterofilia</button>
+        <button class="opcion-principal" onclick="Plantilla.mostrarOpcionesHalterofilia()">Halterofilia</button>
         <div id="opciones-halterofilia" style="display: none;">
             <nav>
                 <a href="javascript:Halterofilia.procesarHome()" class="opcion-principal"
@@ -74,7 +74,7 @@
 
 <!--Volley Playa-->
 <div class="seccion-volley-playa">
-    <button class="opcion-principal" onclick="mostrarOpcionesVolleyPlaya()">Volley Playa</button>
+    <button class="opcion-principal" onclick="Plantilla.mostrarOpcionesVolleyPlaya()">Volley Playa</button>
     <div id="opciones-volley-playa" style="display: none;">
         <nav>
             <a href="javascript:voleyPlaya.procesarHome()" class="opcion-principal"
@@ -143,7 +143,7 @@
 </div>
 
 <div class="seccion-volley">
-    <button class="opcion-principal" onclick="mostrarOpcionesVolley()">Volley</button>
+    <button class="opcion-principal" onclick="Plantilla.mostrarOpcionesVolley()">Volley</button>
     <div id="opciones-volley" style="display: none;">
         <nav>
             <a id ="b-volley-home" href="javascript:Volley.procesarHome()" class="opcion-principal mostrar"

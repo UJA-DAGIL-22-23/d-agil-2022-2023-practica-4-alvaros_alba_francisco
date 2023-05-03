@@ -293,3 +293,31 @@ Plantilla.descargarRuta2 = async function (ruta, posicion) {
   }
   return `<tr><td>${d.nombre}</td><td>${d.apellidos}</td></tr>`;
 }
+
+Plantilla.mostrarOpcionesVolley = function() 
+{
+    document.getElementById("opciones-halterofilia").style.display = "none";
+    document.getElementById("opciones-volley-playa").style.display = "none";
+    document.getElementById("opciones-natacion").style.display = "none";
+    document.getElementById("opciones-volley").style.display = "block";
+    document.getElementById("opciones-surf").style.display = "none";
+}
+
+Plantilla.mostrarOpcionesVolleyPlaya = function() 
+{
+    document.getElementById("opciones-halterofilia").style.display = "none";
+     document.getElementById("opciones-volley-playa").style.display = "block";
+     document.getElementById("opciones-natacion").style.display = "none";
+     document.getElementById("opciones-volley").style.display = "none";
+     document.getElementById("opciones-surferos").style.display = "none";
+}
+
+
+Plantilla.mostrarInicio = function() 
+{
+    document.getElementById("opciones-halterofilia").style.display = "none";
+     document.getElementById("opciones-volley-playa").style.display = "none";
+     document.getElementById("opciones-natacion").style.display = "none";
+     document.getElementById("opciones-volley").style.display = "none";
+     document.getElementById("opciones-surf").style.display = "none";
+}
