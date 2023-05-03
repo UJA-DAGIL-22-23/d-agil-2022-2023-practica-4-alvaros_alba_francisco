@@ -227,4 +227,79 @@ describe('Plantilla.listarOrdenado', () => {
   });
 });
 
+describe('Plantilla', function() {
+  describe('mostrarOpcionesVolleyPlaya', function() {
+    beforeEach(function() {
+      // Crea elementos de prueba y añade al DOM
+      const opcionesHalterofilia = document.createElement('div');
+      opcionesHalterofilia.id = 'opciones-halterofilia';
+      opcionesHalterofilia.style.display = 'block';
+      document.body.appendChild(opcionesHalterofilia);
+
+      const opcionesVolleyPlaya = document.createElement('div');
+      opcionesVolleyPlaya.id = 'opciones-volley-playa';
+      opcionesVolleyPlaya.style.display = 'none';
+      document.body.appendChild(opcionesVolleyPlaya);
+
+      const opcionesNatacion = document.createElement('div');
+      opcionesNatacion.id = 'opciones-natacion';
+      opcionesNatacion.style.display = 'block';
+      document.body.appendChild(opcionesNatacion);
+
+      const opcionesVolley = document.createElement('div');
+      opcionesVolley.id = 'opciones-volley';
+      opcionesVolley.style.display = 'block';
+      document.body.appendChild(opcionesVolley);
+
+      const opcionesSurferos = document.createElement('div');
+      opcionesSurferos.id = 'opciones-surferos';
+      opcionesSurferos.style.display = 'block';
+      document.body.appendChild(opcionesSurferos);
+
+      const opcionesComun = document.createElement('div');
+      opcionesComun.id = 'opciones-comun';
+      opcionesComun.style.display = 'block';
+      document.body.appendChild(opcionesComun);
+
+      // Ejecuta la función a probar
+      Plantilla.mostrarOpcionesVolleyPlaya();
+    });
+
+    afterEach(function() {
+      // Remueve los elementos de prueba del DOM
+      document.body.removeChild(document.getElementById('opciones-halterofilia'));
+      document.body.removeChild(document.getElementById('opciones-volley-playa'));
+      document.body.removeChild(document.getElementById('opciones-natacion'));
+      document.body.removeChild(document.getElementById('opciones-volley'));
+      document.body.removeChild(document.getElementById('opciones-surferos'));
+      document.body.removeChild(document.getElementById('opciones-comun'));
+    });
+
+    it('debería ocultar opciones-halterofilia', function() {
+      expect(document.getElementById('opciones-halterofilia').style.display).toBe('none');
+    });
+
+    it('debería mostrar opciones-volley-playa', function() {
+      expect(document.getElementById('opciones-volley-playa').style.display).toBe('block');
+    });
+
+    it('debería ocultar opciones-natacion', function() {
+      expect(document.getElementById('opciones-natacion').style.display).toBe('none');
+    });
+
+    it('debería ocultar opciones-volley', function() {
+      expect(document.getElementById('opciones-volley').style.display).toBe('none');
+    });
+
+    it('debería ocultar opciones-surferos', function() {
+      expect(document.getElementById('opciones-surferos').style.display).toBe('none');
+    });
+
+    it('debería ocultar opciones-comun', function() {
+      expect(document.getElementById('opciones-comun').style.display).toBe('none');
+    });
+  });
+});
+
+
 
