@@ -11,9 +11,9 @@
 // SPECS para Jasmine
 
 // Constantes para usar en las pruebas
-const elementoTitulo = document.getElementById(Frontend.ID_SECCION_PRINCIPAL_TITULO)
-const elementoContenido = document.getElementById(Frontend.ID_SECCION_PRINCIPAL_CONTENIDO)
-const TITULO_HOME = "Plantilla Home"
+const tituloElemento = document.getElementById(Frontend.ID_SECCION_PRINCIPAL_TITULO)
+const ContenidoElemento = document.getElementById(Frontend.ID_SECCION_PRINCIPAL_CONTENIDO)
+const home_titulo = "Plantilla Home"
 const TITULO_ACERCA_DE = "Plantilla Acerca de"
 
 const datosDescargadosPrueba = {
@@ -47,35 +47,35 @@ describe("voleyPlaya.mostrarHome: ", function () {
     it("muestra datos nulos cuando le pasamos un valor nulo",
         function () {
             voleyPlaya.mostrarHome()
-            expect(elementoTitulo.innerHTML).toBe(TITULO_HOME)
-            expect(elementoContenido.innerHTML).toBe(voleyPlaya.datosDescargadosNulos.mensaje)
+            expect(elementoTitulo.innerHTML).toBe(home_titulo)
+            expect(ContenidoElemento.innerHTML).toBe(voleyPlaya.datosDescargadosNulos.mensaje)
         })
 
     it("muestra datos nulos cuando le pasamos un valor que no es un objeto",
         function () {
             voleyPlaya.mostrarHome(23)
-            expect(elementoTitulo.innerHTML).toBe(TITULO_HOME)
-            expect(elementoContenido.innerHTML).toBe(voleyPlaya.datosDescargadosNulos.mensaje)
+            expect(elementoTitulo.innerHTML).toBe(home_titulo)
+            expect(ContenidoElemento.innerHTML).toBe(voleyPlaya.datosDescargadosNulos.mensaje)
         })
 
     it("muestra datos nulos cuando le pasamos un objeto que no tiene campo mensaje",
         function () {
             // Objeto vacío
             voleyPlaya.mostrarHome({})
-            expect(elementoTitulo.innerHTML).toBe(TITULO_HOME)
-            expect(elementoContenido.innerHTML).toBe(voleyPlaya.datosDescargadosNulos.mensaje)
+            expect(elementoTitulo.innerHTML).toBe(home_titulo)
+            expect(ContenidoElemento.innerHTML).toBe(voleyPlaya.datosDescargadosNulos.mensaje)
 
             // Objeto sin campo mensaje
             voleyPlaya.mostrarHome({ foo: "bar" })
-            expect(elementoTitulo.innerHTML).toBe(TITULO_HOME)
-            expect(elementoContenido.innerHTML).toBe(voleyPlaya.datosDescargadosNulos.mensaje)
+            expect(elementoTitulo.innerHTML).toBe(home_titulo)
+            expect(ContenidoElemento.innerHTML).toBe(voleyPlaya.datosDescargadosNulos.mensaje)
         })
 
     it("muestra correctamente el título y el mensaje",
         function () {
             voleyPlaya.mostrarHome(datosDescargadosPrueba)
-            expect(elementoTitulo.innerHTML).toBe(TITULO_HOME)
-            expect(elementoContenido.innerHTML).toBe(datosDescargadosPrueba.mensaje)
+            expect(elementoTitulo.innerHTML).toBe(home_titulo)
+            expect(ContenidoElemento.innerHTML).toBe(datosDescargadosPrueba.mensaje)
         })
 })
 
@@ -85,14 +85,14 @@ describe("voleyPlaya.mostrarAcercaDe: ", function () {
         function () {
             voleyPlaya.mostrarAcercaDe()
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(voleyPlaya.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(ContenidoElemento.innerHTML.search(voleyPlaya.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
         })
 
     it("muestra datos nulos cuando le pasamos un valor que no es un objeto",
         function () {
             voleyPlaya.mostrarAcercaDe(23)
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(voleyPlaya.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(ContenidoElemento.innerHTML.search(voleyPlaya.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
         })
 
     it("muestra datos nulos cuando le pasamos un objeto que no tiene campo mensaje o autor o email o fecha ",
@@ -100,24 +100,24 @@ describe("voleyPlaya.mostrarAcercaDe: ", function () {
             // Objeto vacío
             voleyPlaya.mostrarAcercaDe({})
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(voleyPlaya.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(ContenidoElemento.innerHTML.search(voleyPlaya.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
 
             // Objeto sin campo mensaje
             voleyPlaya.mostrarAcercaDe({ autor: "un autor", email: "un email", fecha: "una fecha" })
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(voleyPlaya.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(ContenidoElemento.innerHTML.search(voleyPlaya.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
             // Objeto sin campo autor
             voleyPlaya.mostrarAcercaDe({ mensaje: "un mensaje", email: "un email", fecha: "una fecha" })
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(voleyPlaya.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(ContenidoElemento.innerHTML.search(voleyPlaya.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
             // Objeto sin campo email
             voleyPlaya.mostrarAcercaDe({ mensaje: "un mensaje", autor: "un autor", fecha: "una fecha" })
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(voleyPlaya.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(ContenidoElemento.innerHTML.search(voleyPlaya.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
             // Objeto sin campo fecha
             voleyPlaya.mostrarAcercaDe({ mensaje: "un mensaje", autor: "un autor", email: "un email" })
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(voleyPlaya.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(ContenidoElemento.innerHTML.search(voleyPlaya.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
         })
     it("muestra correctamente el título y el mensaje conteniendo el autor, el email y la fecha",
         function () {
@@ -125,9 +125,9 @@ describe("voleyPlaya.mostrarAcercaDe: ", function () {
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
 
             // Comprobamos que al buscar el autor, el email y la fecha de prueba los encuentra dentro del contenido del article
-            expect(elementoContenido.innerHTML.search(datosDescargadosPrueba.autor) >= 0).toBeTrue()
-            expect(elementoContenido.innerHTML.search(datosDescargadosPrueba.email) >= 0).toBeTrue()
-            expect(elementoContenido.innerHTML.search(datosDescargadosPrueba.fecha) >= 0).toBeTrue()
+            expect(ContenidoElemento.innerHTML.search(datosDescargadosPrueba.autor) >= 0).toBeTrue()
+            expect(ContenidoElemento.innerHTML.search(datosDescargadosPrueba.email) >= 0).toBeTrue()
+            expect(ContenidoElemento.innerHTML.search(datosDescargadosPrueba.fecha) >= 0).toBeTrue()
         })
 })
 
