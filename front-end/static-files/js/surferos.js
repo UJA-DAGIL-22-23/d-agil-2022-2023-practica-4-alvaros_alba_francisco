@@ -653,15 +653,6 @@ Surferos.imprimexApellidos = function (vector,campo) {
     Frontend.Article.actualizar("Listado de personas ordenado por nombre", mensaje);
 }
 
-function mostrarOpcionesSurf() 
-{
-    document.getElementById("opciones-halterofilia").style.display = "none";
-    document.getElementById("opciones-volley-playa").style.display = "none";
-    document.getElementById("opciones-natacion").style.display = "none";
-    document.getElementById("opciones-volley").style.display = "none";
-    document.getElementById("opciones-surf").style.display = "block";
-    document.getElementById("opciones-comun").style.display = "none";
-}
 
 Surferos.descargarRuta = async function (ruta, callBackFn) {
     let response = null

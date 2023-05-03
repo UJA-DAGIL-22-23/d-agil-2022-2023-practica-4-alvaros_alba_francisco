@@ -301,6 +301,7 @@ Plantilla.mostrarOpcionesVolley = function()
     document.getElementById("opciones-natacion").style.display = "none";
     document.getElementById("opciones-volley").style.display = "block";
     document.getElementById("opciones-surf").style.display = "none";
+    document.getElementById("opciones-comun").style.display = "none";
 }
 
 Plantilla.mostrarOpcionesVolleyPlaya = function() 
@@ -310,6 +311,7 @@ Plantilla.mostrarOpcionesVolleyPlaya = function()
      document.getElementById("opciones-natacion").style.display = "none";
      document.getElementById("opciones-volley").style.display = "none";
      document.getElementById("opciones-surferos").style.display = "none";
+     document.getElementById("opciones-comun").style.display = "none";
 }
 
 
@@ -320,4 +322,35 @@ Plantilla.mostrarInicio = function()
      document.getElementById("opciones-natacion").style.display = "none";
      document.getElementById("opciones-volley").style.display = "none";
      document.getElementById("opciones-surf").style.display = "none";
+     document.getElementById("opciones-comun").style.display = "none";
+}
+
+Plantilla.mostrarOpcionesnatacion = function() 
+{
+    document.getElementById("opciones-halterofilia").style.display = "none";
+    document.getElementById("opciones-volley-playa").style.display = "none";
+    document.getElementById("opciones-natacion").style.display = "block";
+    document.getElementById("opciones-volley").style.display = "none";
+    document.getElementById("opciones-surf").style.display = "none";
+    document.getElementById("opciones-comun").style.display = "none";
+}
+
+Plantilla.mostrarOpcionesSurf = function() 
+{
+    document.getElementById("opciones-halterofilia").style.display = "none";
+    document.getElementById("opciones-volley-playa").style.display = "none";
+    document.getElementById("opciones-natacion").style.display = "none";
+    document.getElementById("opciones-volley").style.display = "none";
+    document.getElementById("opciones-surf").style.display = "block";
+    document.getElementById("opciones-comun").style.display = "none";
+}
+
+Plantilla.mostrarOpcionesHalterofilia = function() 
+{
+  document.getElementById("opciones-halterofilia").style.display = "block";
+  document.getElementById("opciones-volley-playa").style.display = "none";
+  document.getElementById("opciones-natacion").style.display = "none";
+  document.getElementById("opciones-volley").style.display = "none";
+  document.getElementById("opciones-surf").style.display = "none";
+  document.getElementById("opciones-comun").style.display = "none";
 }

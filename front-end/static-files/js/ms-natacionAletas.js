@@ -638,11 +638,3 @@ natacion.buscaDifParametros = function (vector, parametro){
     }return this.imprimirPersonasBuscada(vectorSalida, 0);
 }
 
-function mostrarOpcionesnatacion() 
-{
-    document.getElementById("opciones-halterofilia").style.display = "none";
-    document.getElementById("opciones-volley-playa").style.display = "none";
-    document.getElementById("opciones-natacion").style.display = "block";
-    document.getElementById("opciones-volley").style.display = "none";
-    document.getElementById("opciones-surf").style.display = "none";
-}
