@@ -6,6 +6,8 @@
  */
 
 "use strict";
+var historial = [];
+
 
 /// Creo el espacio de nombres
 let Plantilla = {};
@@ -17,6 +19,10 @@ let Plantilla = {};
 Plantilla.cabeceraTable = function () {
     return `<table class="listado-nombres"><thead><th>Nombre</th><th>Apellidos</th></thead><tbody>`;
 }
+Plantilla.cabeceraHistorial = function(){
+  return `<table class="tabla-historial"><thead><th>Historial</th></thead><tbody>`
+}
+
 
 /**
  * Muestra el nombre de cada deportista en un elemento TR con sus correspondientes TD
@@ -174,6 +180,42 @@ Plantilla.descargarRuta2 = async function (ruta, posicion) {
         console.error("Error al descargar los datos:", error);
       });
   };
+
+  
+  Plantilla.getHistorial = function (){
+    return historial;
+  }
+    Plantilla.agregarAHistorial = function(opcion){
+      historial.push(opcion);
+      //console.log(opcion);
+          if (historial.length > 10){
+          historial.shift();
+      }
+      //console.log(Plantilla.getHistorial().length);
+  
+    }
+  
+    Plantilla.mostrarHistorial = function(vector){
+      vector = historial;
+      let msj = "";
+      msj += `<table class="listado-nombres">
+        <thead>
+          <th>ID</th>
+          <th>Historial</th>
+        </thead>
+        <tbody>`;
+      let contador = 1;
+      vector.forEach(e => msj += `
+          <tr>
+            <td>${contador++}</td>
+            <td>${e || ""}</td>
+          </tr>
+      `);
+      msj += Plantilla.pieTable();
+  
+      Frontend.Article.actualizar("HISTORIAL", msj);
+  }
+
 
   Plantilla.listarOrdenado = function () {
     const rutas = [

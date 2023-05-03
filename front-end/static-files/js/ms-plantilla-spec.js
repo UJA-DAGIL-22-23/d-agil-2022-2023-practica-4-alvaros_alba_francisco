@@ -131,6 +131,32 @@ describe('Plantilla.imprimeDeportistas', () => {
     });
   });
 
+  describe('Plantilla.mostrarHistorial', function() {
+    it('Historial nunca tendrá un tamaño superior a 10', () => {
+      const boton = document.getElementById('b-volley-home');
+      for (let i = 0; i < 15; ++i){
+        boton.click();
+      }
+      expect((Plantilla.getHistorial().length) <= 10).toBe(true);
+    })
+    it('La opción que se acaba de pulsar aparecerá en la tabla', () => {
+      const boton = document.getElementById('b-volley-home');
+      boton.click();
+      var accion = 'Volley.procesarHome'
+
+      Plantilla.mostrarHistorial(Plantilla.getHistorial());
+
+      expect(elementoContenido.innerHTML.search(accion) >= 0).toBeTrue();
+    })
+/*
+    it('Si la página se recarga, el historial estará vacío', () => {
+      location.reload();
+      done();
+      expect(Plantilla.getHistorial().length).toEqual(0);
+    })
+    */
+  })
+
   describe("Plantilla.listarPersonas():", function () 
 {
     it("debería devolver una fila de tabla con los nombres ordenados de los deportistas",
