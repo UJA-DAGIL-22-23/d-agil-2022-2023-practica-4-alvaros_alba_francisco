@@ -50,7 +50,7 @@ Plantilla.pieTable = function () {
 /**
  * @description función para mostrar las opciones de la plantilla
  */
-function mostrarOpcionesPlantilla() 
+Plantilla.mostrarOpcionesPlantilla = function () 
 {
     document.getElementById("opciones-halterofilia").style.display = "none";
     document.getElementById("opciones-volley-playa").style.display = "none";
