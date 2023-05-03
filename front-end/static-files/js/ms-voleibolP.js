@@ -78,7 +78,7 @@ voleyPlaya.mostrarHome = function (datosDescargados) {
     // Si datos descargados NO contiene el campo mensaje
     if (typeof datosDescargados.mensaje === "undefined") datosDescargados = this.datosDescargadosNulos
 
-    Frontend.Article.actualizar("Plantilla Home", datosDescargados.mensaje)
+    Frontend.Article.actualizar("Volley Playa Home", datosDescargados.mensaje)
 }
 
 /**
@@ -107,7 +107,7 @@ voleyPlaya.mostrarAcercaDe = function (datosDescargados) {
     </ul>
     </div>
     `;
-    Frontend.Article.actualizar("Plantilla Acerca de", mensajeAMostrar)
+    Frontend.Article.actualizar("Volley Playa Acerca de", mensajeAMostrar)
 }
 
 
@@ -512,7 +512,7 @@ function mostrarInicio()
      document.getElementById("opciones-natacion").style.display = "none";
      document.getElementById("opciones-volley").style.display = "none";
      document.getElementById("opciones-surf").style.display = "none";
-  }
+}
 
 
   
