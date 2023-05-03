@@ -495,25 +495,6 @@ voleyPlaya.buscador = function(vector) {
      document.getElementById("opcionesVolleyPlaya").style.display = "block";
 }*/
 
-function mostrarOpcionesVolleyPlaya() 
-{
-    document.getElementById("opciones-halterofilia").style.display = "none";
-     document.getElementById("opciones-volley-playa").style.display = "block";
-     document.getElementById("opciones-natacion").style.display = "none";
-     document.getElementById("opciones-volley").style.display = "none";
-     document.getElementById("opciones-surferos").style.display = "none";
-}
-
-
-function mostrarInicio() 
-{
-    document.getElementById("opciones-halterofilia").style.display = "none";
-     document.getElementById("opciones-volley-playa").style.display = "none";
-     document.getElementById("opciones-natacion").style.display = "none";
-     document.getElementById("opciones-volley").style.display = "none";
-     document.getElementById("opciones-surf").style.display = "none";
-}
-
 
   
  
