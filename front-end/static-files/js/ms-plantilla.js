@@ -75,91 +75,29 @@ Plantilla.descargarRuta = async function (ruta, callBackFn) {
       console.error(error)
     }
 }
+Plantilla.procesarDatosDescargados = function () {
+  var funciones = [    natacion.procesarAcercaDe(), voleyPlaya.procesarAcercaDe(),    Volley.procesarAcercaDe(),    Halterofilia.procesarAcercaDe(),    Surferos.procesarAcercaDe()  ];
+  Promise.all(funciones).then(function(respuestas) {
+    var mensajesAMostrar = '';
+    for (var i = 0; i < respuestas.length; i++) {
+      var respuesta = respuestas[i];
+      if (respuesta) {
+        mensajesAMostrar += `<div>
+          <p>${respuesta.mensaje}</p>
+          <ul>
+            <li><b>Autor/a</b>: ${respuesta.autor}</li>
+            <li><b>E-mail</b>: ${respuesta.email}</li>
+            <li><b>Fecha</b>: ${respuesta.fecha}</li>
+          </ul>
+        </div>`;
+      }
+    }
+    Frontend.Article.actualizar("Datos descargados", mensajesAMostrar);
+  }).catch(function(error) {
+    console.error("Error al descargar datos:", error);
+  });
+};
 
-// Crear una matriz de objetos que contenga las funciones y la información de sección correspondiente
-var secciones = [
-  {
-    nombre: "Natación Acerca de",
-    funcion: function() {
-      // Lógica para la sección de natación
-      return Promise.resolve({
-        mensaje: "Información sobre natación.",
-        autor: "Juan Pérez",
-        email: "juan.perez@example.com",
-        fecha: "2023-05-01"
-      });
-    }
-  },
-  {
-    nombre: "Surferos Acerca de",
-    funcion: function() {
-      // Lógica para la sección de surferos
-      return Promise.resolve({
-        mensaje: "Información sobre surferos.",
-        autor: "María García",
-        email: "maria.garcia@example.com",
-        fecha: "2023-05-02"
-      });
-    }
-  },
-  {
-    nombre: "Volley Acerca de",
-    funcion: function() {
-      // Lógica para la sección de vóley
-      return Promise.resolve({
-        mensaje: "Información sobre vóley.",
-        autor: "Pedro Rodríguez",
-        email: "pedro.rodriguez@example.com",
-        fecha: "2023-05-03"
-      });
-    }
-  },
-  {
-    nombre: "Halterofilia Acerca de",
-    funcion: function() {
-      // Lógica para la sección de halterofilia
-      return Promise.resolve({
-        mensaje: "Información sobre halterofilia.",
-        autor: "Ana Martínez",
-        email: "ana.martinez@example.com",
-        fecha: "2023-05-04"
-      });
-    }
-  },
-  {
-    nombre: "Voley Playa Acerca de",
-    funcion: function() {
-      // Lógica para la sección de vóley playa
-      return Promise.resolve({
-        mensaje: "Información sobre vóley playa.",
-        autor: "Carlos Sánchez",
-        email: "carlos.sanchez@example.com",
-        fecha: "2023-05-05"
-      });
-    }
-  }
-];
-
-// Definir la función procesarAcercaDe
-Plantilla.procesarAcercaDe = function () {
-  // Elegir un objeto aleatorio de la matriz de secciones
-  var seccionAleatoria = secciones[Math.floor(Math.random() * secciones.length)];
-
-  // Llamar a la función correspondiente y actualizar el artículo
-  seccionAleatoria.funcion().then(function(respuesta) {
-    var mensajeAMostrar = `<div>
-      <p>${respuesta.mensaje}</p>
-      <ul>
-        <li><b>Autor/a</b>: ${respuesta.autor}</li>
-        <li><b>E-mail</b>: ${respuesta.email}</li>
-        <li><b>Fecha</b>: ${respuesta.fecha}</li>
-      </ul>
-    </div>`;
-    Frontend.Article.actualizar(seccionAleatoria.nombre, mensajeAMostrar);
-    }).catch(function(error) {
-      console.error("Error al descargar datos:", error);
-      });
-      };
 /**
  * Función que descarga la info de los microservicios al llamar a una de sus rutas
  * @param {string} ruta Ruta a descargar
