@@ -272,3 +272,38 @@ describe('API Gateway: rutas estáticas', () => {
     });
   })
 });
+
+/**
+ * @describe Rutas ms-natacionAletas
+ */
+
+describe('API Gateway: rutas estáticas', () => {
+  describe('Rutas estáticas de MS natacion', () => {
+    it('Devuelve MS natacion Home Page', (done) => {
+      supertest(app)
+        .get('/natacion/')
+        .expect(200)
+        .expect('Content-Type', /json/)
+        .expect(function (res) {
+          //console.log( res.body ); // Para comprobar qué contiene exactamente res.body
+          assert(res.body.hasOwnProperty('mensaje'));
+          assert(res.body.mensaje === "Microservicio MS Natacion: home");
+
+        })
+        .end((error) => { error ? done.fail(error) : done() })
+    });
+    it('Devuelve MS natacion Acerca De', (done) => {
+      supertest(app)
+        .get('/natacion/acercade')
+        .expect(200)
+        .expect('Content-Type', /json/)
+        .expect(function (res) {
+          //console.log( "BODY ACERCA DE ", res.body ); // Para comprobar qué contiene exactamente res.body
+          assert(res.body.hasOwnProperty('mensaje'));
+          assert(res.body.mensaje === "Microservicio MS Natacion: acerca de");
+
+        })
+        .end((error) => { error ? done.fail(error) : done() })
+    });
+  })
+});
