@@ -76,42 +76,90 @@ Plantilla.descargarRuta = async function (ruta, callBackFn) {
     }
 }
 
-
-Plantilla.mostrarAcercaDe = function (datosDescargados)
-{
-    // Si no se ha proporcionado valor para datosDescargados
-    datosDescargados = datosDescargados || this.datosDescargadosNulos
-    if (typeof datosDescargados !== "object" ||
-      typeof datosDescargados.mensaje === "undefined" ||
-      typeof datosDescargados.autor === "undefined" ||
-      typeof datosDescargados.email === "undefined" ||
-      typeof datosDescargados.fecha === "undefined") {
-      datosDescargados = this.datosDescargadosNulos
+// Crear una matriz de objetos que contenga las funciones y la información de sección correspondiente
+var secciones = [
+  {
+    nombre: "Natación Acerca de",
+    funcion: function() {
+      // Lógica para la sección de natación
+      return Promise.resolve({
+        mensaje: "Información sobre natación.",
+        autor: "Juan Pérez",
+        email: "juan.perez@example.com",
+        fecha: "2023-05-01"
+      });
     }
-    const mensajeAMostrar = `<div>
-      <p>${datosDescargados.mensaje}</p>
+  },
+  {
+    nombre: "Surferos Acerca de",
+    funcion: function() {
+      // Lógica para la sección de surferos
+      return Promise.resolve({
+        mensaje: "Información sobre surferos.",
+        autor: "María García",
+        email: "maria.garcia@example.com",
+        fecha: "2023-05-02"
+      });
+    }
+  },
+  {
+    nombre: "Volley Acerca de",
+    funcion: function() {
+      // Lógica para la sección de vóley
+      return Promise.resolve({
+        mensaje: "Información sobre vóley.",
+        autor: "Pedro Rodríguez",
+        email: "pedro.rodriguez@example.com",
+        fecha: "2023-05-03"
+      });
+    }
+  },
+  {
+    nombre: "Halterofilia Acerca de",
+    funcion: function() {
+      // Lógica para la sección de halterofilia
+      return Promise.resolve({
+        mensaje: "Información sobre halterofilia.",
+        autor: "Ana Martínez",
+        email: "ana.martinez@example.com",
+        fecha: "2023-05-04"
+      });
+    }
+  },
+  {
+    nombre: "Voley Playa Acerca de",
+    funcion: function() {
+      // Lógica para la sección de vóley playa
+      return Promise.resolve({
+        mensaje: "Información sobre vóley playa.",
+        autor: "Carlos Sánchez",
+        email: "carlos.sanchez@example.com",
+        fecha: "2023-05-05"
+      });
+    }
+  }
+];
+
+// Definir la función procesarAcercaDe
+Plantilla.procesarAcercaDe = function () {
+  // Elegir un objeto aleatorio de la matriz de secciones
+  var seccionAleatoria = secciones[Math.floor(Math.random() * secciones.length)];
+
+  // Llamar a la función correspondiente y actualizar el artículo
+  seccionAleatoria.funcion().then(function(respuesta) {
+    var mensajeAMostrar = `<div>
+      <p>${respuesta.mensaje}</p>
       <ul>
-        <li><b>Autor/a</b>: ${datosDescargados.autor}</li>
-        <li><b>E-mail</b>: ${datosDescargados.email}</li>
-        <li><b>Fecha</b>: ${datosDescargados.fecha}</li>
+        <li><b>Autor/a</b>: ${respuesta.autor}</li>
+        <li><b>E-mail</b>: ${respuesta.email}</li>
+        <li><b>Fecha</b>: ${respuesta.fecha}</li>
       </ul>
     </div>`;
-    Frontend.Article.actualizar("Plantilla Acerca de", mensajeAMostrar)
-}
-
-Plantilla.procesarAcercaDe = async function () {
-    const descargaSurferos = this.descargarRuta('/surferos/acercade')
-    const descargaHalterofilia = this.descargarRuta('/halterofilia/acercade')
-    const [datosSurferos, datosHalterofilia] = await Promise.all([descargaSurferos, descargaHalterofilia])
-    const datosCombinados = {
-      mensaje: `${datosSurferos.mensaje} y ${datosHalterofilia.mensaje}`,
-      autor: `${datosSurferos.autor} y ${datosHalterofilia.autor}`,
-      email: `${datosSurferos.email} y ${datosHalterofilia.email}`,
-      fecha: `${datosSurferos.fecha} y ${datosHalterofilia.fecha}`
-    }
-    this.mostrarAcercaDe(datosCombinados)
-  }
-  
+    Frontend.Article.actualizar(seccionAleatoria.nombre, mensajeAMostrar);
+    }).catch(function(error) {
+      console.error("Error al descargar datos:", error);
+      });
+      };
 /**
  * Función que descarga la info de los microservicios al llamar a una de sus rutas
  * @param {string} ruta Ruta a descargar
