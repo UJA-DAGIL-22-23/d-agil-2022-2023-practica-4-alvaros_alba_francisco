@@ -426,3 +426,85 @@ describe("Plantilla", function() {
     });
   });
 });
+describe('Plantilla', function() {
+  describe('#procesarDatosDescargados()', function() {
+    var voleyPlayaSpy, VolleySpy, HalterofiliaSpy, SurferosSpy, actualizarSpy;
+
+    beforeEach(function() {
+      voleyPlayaSpy = jasmine.createSpy().and.returnValue(Promise.resolve({
+        mensaje: 'Mensaje 1',
+        autor: 'Autor 1',
+        email: 'email1@example.com',
+        fecha: '2023-05-01'
+      }));
+      VolleySpy = jasmine.createSpy().and.returnValue(Promise.resolve({
+        mensaje: 'Mensaje 2',
+        autor: 'Autor 2',
+        email: 'email2@example.com',
+        fecha: '2023-05-02'
+      }));
+      HalterofiliaSpy = jasmine.createSpy().and.returnValue(Promise.resolve());
+      SurferosSpy = jasmine.createSpy().and.returnValue(Promise.resolve({
+        mensaje: 'Mensaje 4',
+        autor: 'Autor 4',
+        email: 'email4@example.com',
+        fecha: '2023-05-04'
+      }));
+      actualizarSpy = jasmine.createSpy('actualizar');
+      
+      spyOn(Frontend.Article, 'actualizar').and.callFake(actualizarSpy);
+    });
+
+    it('debe llamar a todas las funciones y actualizar el artículo con los datos descargados', function(done) {
+      Plantilla.procesarDatosDescargados().then(function() {
+        expect(voleyPlayaSpy).toHaveBeenCalled();
+        expect(VolleySpy).toHaveBeenCalled();
+        expect(HalterofiliaSpy).toHaveBeenCalled();
+        expect(SurferosSpy).toHaveBeenCalled();
+
+        expect(actualizarSpy).toHaveBeenCalledWith(
+          'Datos descargados',
+          '<div>\n' +
+          '    <p>Mensaje 1</p>\n' +
+          '    <ul>\n' +
+          '      <li><b>Autor/a</b>: Autor 1</li>\n' +
+          '      <li><b>E-mail</b>: email1@example.com</li>\n' +
+          '      <li><b>Fecha</b>: 2023-05-01</li>\n' +
+          '    </ul>\n' +
+          '  </div>' +
+          '<div>\n' +
+          '    <p>Mensaje 2</p>\n' +
+          '    <ul>\n' +
+          '      <li><b>Autor/a</b>: Autor 2</li>\n' +
+          '      <li><b>E-mail</b>: email2@example.com</li>\n' +
+          '      <li><b>Fecha</b>: 2023-05-02</li>\n' +
+          '    </ul>\n' +
+          '  </div>' +
+          '<div>\n' +
+          '    <p>Mensaje 4</p>\n' +
+          '    <ul>\n' +
+          '      <li><b>Autor/a</b>: Autor 4</li>\n' +
+          '      <li><b>E-mail</b>: email4@example.com</li>\n' +
+          '      <li><b>Fecha</b>: 2023-05-04</li>\n' +
+          '    </ul>\n' +
+          '  </div>'
+        );
+
+        done();
+      }).catch(function(error) {
+        fail(error);
+      });
+    });
+
+    it('debe manejar errores si algunde las descargas falla', function(done) {
+  voleyPlayaSpy.and.returnValue(Promise.reject('Error en Voley Playa'));
+    Plantilla.procesarDatosDescargados().then(function() {
+      expect(actualizarSpy).not.toHaveBeenCalled();
+      done();
+    }).catch(function(error) {
+      expect(error).toBe('Error en Voley Playa');
+      done();
+    });
+  });
+  });
+  });
