@@ -9,22 +9,22 @@
 * **Nombre**: Francisco
 * **Apellidos**: Ortega Peña
 * **Descripción**: Estudiante de Ingeniería Informática en la Universidad de Jaén.
-* **📥**: agl00108@red.ujaen.es
+* **📥**: fop00009@red.ujaen.es
 
-* **Nombre**: Alba
-* **Apellidos**: Gómez Liébana
+* **Nombre**: Álvaro
+* **Apellidos**: Ordóñez Romero
 * **Descripción**: Estudiante de Ingeniería Informática en la Universidad de Jaén.
-* **📥**: agl00108@red.ujaen.es
+* **📥**: aor00039@red.ujaen.es
 
-* **Nombre**: Alba
-* **Apellidos**: Gómez Liébana
+* **Nombre**: Álvaro
+* **Apellidos**: Herrera Arjonilla
 * **Descripción**: Estudiante de Ingeniería Informática en la Universidad de Jaén.
-* **📥**: agl00108@red.ujaen.es
+* **📥**: aha00026@red.ujaen.es
 
-* **Nombre**: Alba
-* **Apellidos**: Gómez Liébana
+* **Nombre**: Álvaro
+* **Apellidos**: Martin Bacas
 * **Descripción**: Estudiante de Ingeniería Informática en la Universidad de Jaén.
-* **📥**: agl00108@red.ujaen.es
+* **📥**: amb00093@red.ujaen.es
 
 ## 🗓️ Trello
 https://trello.com/b/YYQ32O06/practica4
