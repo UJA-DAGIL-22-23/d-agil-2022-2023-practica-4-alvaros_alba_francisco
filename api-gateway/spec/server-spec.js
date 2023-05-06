@@ -282,8 +282,20 @@ describe('API Gateway: rutas estáticas', () => {
         })
         .end((error) => { error ? done.fail(error) : done(); }
         );
+      });
+      it('Obtiene todos los nadadores: debe tener un campo data que es distinto de 0', (done) => {
+        supertest(app)
+          .get('/natacion/listarnPersonas')
+          .expect(200)
+          .expect('Content-Type', /json/)
+          .expect(function (res) {
+            assert(res.body.hasOwnProperty('data'));
+            assert(res.body.data.length !== 0);
+    
+          })
+          .end((error) => { error ? done.fail(error) : done() })
+      //
   });
-  })
 });
 
 /**

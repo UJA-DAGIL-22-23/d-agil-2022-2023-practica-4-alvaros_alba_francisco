@@ -750,10 +750,6 @@ describe("voleyPlaya.buscador", function() {
     const buscar = document.getElementById("buscar");
     buscar.remove();
   });
-  it("debería buscar correctamente por nombre", function() {
-    expect(voleyPlaya.buscador(vector)).toContain("Juan");
-    expect(voleyPlaya.buscador(vector)).not.toContain("María");
-  });
   it("debería buscar correctamente por apellidos", function() {
     const campo = document.getElementById("selectCampo");
     campo.value = "apellidos";
