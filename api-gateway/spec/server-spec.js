@@ -294,9 +294,11 @@ describe('API Gateway: rutas estáticas', () => {
     
           })
           .end((error) => { error ? done.fail(error) : done() })
+      });
       //
-  });
+  })
 });
+
 
 /**
  * @describe Rutas ms-natacionAletas
