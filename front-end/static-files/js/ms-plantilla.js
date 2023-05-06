@@ -75,43 +75,29 @@ Plantilla.descargarRuta = async function (ruta, callBackFn) {
       console.error(error)
     }
 }
-
-
-Plantilla.mostrarAcercaDe = function (datosDescargados)
-{
-    // Si no se ha proporcionado valor para datosDescargados
-    datosDescargados = datosDescargados || this.datosDescargadosNulos
-    if (typeof datosDescargados !== "object" ||
-      typeof datosDescargados.mensaje === "undefined" ||
-      typeof datosDescargados.autor === "undefined" ||
-      typeof datosDescargados.email === "undefined" ||
-      typeof datosDescargados.fecha === "undefined") {
-      datosDescargados = this.datosDescargadosNulos
+Plantilla.procesarDatosDescargados = function () {
+  var funciones = [    natacion.procesarAcercaDe(), voleyPlaya.procesarAcercaDe(),    Volley.procesarAcercaDe(),    Halterofilia.procesarAcercaDe(),    Surferos.procesarAcercaDe()  ];
+  Promise.all(funciones).then(function(respuestas) {
+    var mensajesAMostrar = '';
+    for (var i = 0; i < respuestas.length; i++) {
+      var respuesta = respuestas[i];
+      if (respuesta) {
+        mensajesAMostrar += `<div>
+          <p>${respuesta.mensaje}</p>
+          <ul>
+            <li><b>Autor/a</b>: ${respuesta.autor}</li>
+            <li><b>E-mail</b>: ${respuesta.email}</li>
+            <li><b>Fecha</b>: ${respuesta.fecha}</li>
+          </ul>
+        </div>`;
+      }
     }
-    const mensajeAMostrar = `<div>
-      <p>${datosDescargados.mensaje}</p>
-      <ul>
-        <li><b>Autor/a</b>: ${datosDescargados.autor}</li>
-        <li><b>E-mail</b>: ${datosDescargados.email}</li>
-        <li><b>Fecha</b>: ${datosDescargados.fecha}</li>
-      </ul>
-    </div>`;
-    Frontend.Article.actualizar("Plantilla Acerca de", mensajeAMostrar)
-}
+    Frontend.Article.actualizar("Datos descargados", mensajesAMostrar);
+  }).catch(function(error) {
+    console.error("Error al descargar datos:", error);
+  });
+};
 
-Plantilla.procesarAcercaDe = async function () {
-    const descargaSurferos = this.descargarRuta('/surferos/acercade')
-    const descargaHalterofilia = this.descargarRuta('/halterofilia/acercade')
-    const [datosSurferos, datosHalterofilia] = await Promise.all([descargaSurferos, descargaHalterofilia])
-    const datosCombinados = {
-      mensaje: `${datosSurferos.mensaje} y ${datosHalterofilia.mensaje}`,
-      autor: `${datosSurferos.autor} y ${datosHalterofilia.autor}`,
-      email: `${datosSurferos.email} y ${datosHalterofilia.email}`,
-      fecha: `${datosSurferos.fecha} y ${datosHalterofilia.fecha}`
-    }
-    this.mostrarAcercaDe(datosCombinados)
-  }
-  
 /**
  * Función que descarga la info de los microservicios al llamar a una de sus rutas
  * @param {string} ruta Ruta a descargar

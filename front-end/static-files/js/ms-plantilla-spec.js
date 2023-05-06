@@ -376,3 +376,135 @@ describe('Plantilla', function() {
     });
   });
 });
+
+describe("Plantilla", function() {
+  describe("mostrarOpcionesnatacion", function() {
+    beforeEach(function() {
+      // Crea el DOM necesario para las pruebas
+      document.body.innerHTML = `
+        <div id="opciones-halterofilia"></div>
+        <div id="opciones-volley-playa"></div>
+        <div id="opciones-natacion"></div>
+        <div id="opciones-volley"></div>
+        <div id="opciones-surf"></div>
+        <div id="opciones-comun"></div>
+      `;
+    });
+
+    it("debería mostrar las opciones de natación y ocultar las demás opciones", function() {
+      // Actuar
+      Plantilla.mostrarOpcionesnatacion();
+
+      // Comprobar
+      expect(document.getElementById("opciones-halterofilia").style.display).toBe("none");
+      expect(document.getElementById("opciones-volley-playa").style.display).toBe("none");
+      expect(document.getElementById("opciones-natacion").style.display).toBe("block");
+      expect(document.getElementById("opciones-volley").style.display).toBe("none");
+      expect(document.getElementById("opciones-surf").style.display).toBe("none");
+      expect(document.getElementById("opciones-comun").style.display).toBe("none");
+    });
+
+    it("debería ocultar todas las opciones si no hay opciones para mostrar", function() {
+      // Preparar
+      document.getElementById("opciones-halterofilia").style.display = "block";
+      document.getElementById("opciones-volley-playa").style.display = "block";
+      document.getElementById("opciones-natacion").style.display = "block";
+      document.getElementById("opciones-volley").style.display = "block";
+      document.getElementById("opciones-surf").style.display = "block";
+      document.getElementById("opciones-comun").style.display = "block";
+
+      // Actuar
+      Plantilla.mostrarOpcionesnatacion();
+
+      // Comprobar
+      expect(document.getElementById("opciones-halterofilia").style.display).toBe("none");
+      expect(document.getElementById("opciones-volley-playa").style.display).toBe("none");
+      expect(document.getElementById("opciones-natacion").style.display).toBe("block");
+      expect(document.getElementById("opciones-volley").style.display).toBe("none");
+      expect(document.getElementById("opciones-surf").style.display).toBe("none");
+      expect(document.getElementById("opciones-comun").style.display).toBe("none");
+    });
+  });
+});
+describe('Plantilla', function() {
+  describe('#procesarDatosDescargados()', function() {
+    var voleyPlayaSpy, VolleySpy, HalterofiliaSpy, SurferosSpy, actualizarSpy;
+
+    beforeEach(function() {
+      voleyPlayaSpy = jasmine.createSpy().and.returnValue(Promise.resolve({
+        mensaje: 'Mensaje 1',
+        autor: 'Autor 1',
+        email: 'email1@example.com',
+        fecha: '2023-05-01'
+      }));
+      VolleySpy = jasmine.createSpy().and.returnValue(Promise.resolve({
+        mensaje: 'Mensaje 2',
+        autor: 'Autor 2',
+        email: 'email2@example.com',
+        fecha: '2023-05-02'
+      }));
+      HalterofiliaSpy = jasmine.createSpy().and.returnValue(Promise.resolve());
+      SurferosSpy = jasmine.createSpy().and.returnValue(Promise.resolve({
+        mensaje: 'Mensaje 4',
+        autor: 'Autor 4',
+        email: 'email4@example.com',
+        fecha: '2023-05-04'
+      }));
+      actualizarSpy = jasmine.createSpy('actualizar');
+      
+      spyOn(Frontend.Article, 'actualizar').and.callFake(actualizarSpy);
+    });
+
+    it('debe llamar a todas las funciones y actualizar el artículo con los datos descargados', function(done) {
+      Plantilla.procesarDatosDescargados().then(function() {
+        expect(voleyPlayaSpy).toHaveBeenCalled();
+        expect(VolleySpy).toHaveBeenCalled();
+        expect(HalterofiliaSpy).toHaveBeenCalled();
+        expect(SurferosSpy).toHaveBeenCalled();
+
+        expect(actualizarSpy).toHaveBeenCalledWith(
+          'Datos descargados',
+          '<div>\n' +
+          '    <p>Mensaje 1</p>\n' +
+          '    <ul>\n' +
+          '      <li><b>Autor/a</b>: Autor 1</li>\n' +
+          '      <li><b>E-mail</b>: email1@example.com</li>\n' +
+          '      <li><b>Fecha</b>: 2023-05-01</li>\n' +
+          '    </ul>\n' +
+          '  </div>' +
+          '<div>\n' +
+          '    <p>Mensaje 2</p>\n' +
+          '    <ul>\n' +
+          '      <li><b>Autor/a</b>: Autor 2</li>\n' +
+          '      <li><b>E-mail</b>: email2@example.com</li>\n' +
+          '      <li><b>Fecha</b>: 2023-05-02</li>\n' +
+          '    </ul>\n' +
+          '  </div>' +
+          '<div>\n' +
+          '    <p>Mensaje 4</p>\n' +
+          '    <ul>\n' +
+          '      <li><b>Autor/a</b>: Autor 4</li>\n' +
+          '      <li><b>E-mail</b>: email4@example.com</li>\n' +
+          '      <li><b>Fecha</b>: 2023-05-04</li>\n' +
+          '    </ul>\n' +
+          '  </div>'
+        );
+
+        done();
+      }).catch(function(error) {
+        fail(error);
+      });
+    });
+
+    it('debe manejar errores si algunde las descargas falla', function(done) {
+  voleyPlayaSpy.and.returnValue(Promise.reject('Error en Voley Playa'));
+    Plantilla.procesarDatosDescargados().then(function() {
+      expect(actualizarSpy).not.toHaveBeenCalled();
+      done();
+    }).catch(function(error) {
+      expect(error).toBe('Error en Voley Playa');
+      done();
+    });
+  });
+  });
+  });
