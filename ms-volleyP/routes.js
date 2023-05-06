@@ -59,9 +59,5 @@ router.get("/listarnPersonas", async(req,res)=>{
 });
 
 
-router.param("idJugador", (req, res, next, id) => {
-    next();
-});
-
 // Exporto el módulo para poder usarlo en server
 module.exports = router;

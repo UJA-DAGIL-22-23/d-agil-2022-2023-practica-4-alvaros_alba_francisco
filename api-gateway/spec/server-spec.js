@@ -270,5 +270,18 @@ describe('API Gateway: rutas estáticas', () => {
         })
         .end((error) => { error ? done.fail(error) : done() })
     });
+    it('Devuelve F al consultar mediante test_db', (done) => {
+      supertest(app)
+        .get('/voleyPlaya/test_db')
+        .expect(200)
+        .expect('Content-Type', /json/)
+        .expect(function (res) {
+          assert(res.body.data[0].data.hasOwnProperty('numMedallasOlimpicas'));
+          assert(res.body.data[0].data.sexo === "1");
+
+        })
+        .end((error) => { error ? done.fail(error) : done(); }
+        );
+  });
   })
 });
