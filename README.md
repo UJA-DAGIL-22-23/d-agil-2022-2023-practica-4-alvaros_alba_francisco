@@ -80,6 +80,11 @@ https://trello.com/b/YYQ32O06/practica4
    <img width="700" alt="image" src="https://user-images.githubusercontent.com/124689598/236429615-7b0571b3-ce7a-4f31-8163-4e3b7cd80070.png">
    
    
+   #### -HU12: Ver en una sola página la información de todos los autores de la aplicación al pulsar en el botón “Acerca de”.
+   
+   <img width="700" alt="image" src="image.png">
+   
+   
 
    
    
