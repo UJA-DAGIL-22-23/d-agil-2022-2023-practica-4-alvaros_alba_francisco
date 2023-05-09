@@ -82,8 +82,7 @@ https://trello.com/b/YYQ32O06/practica4
    
    #### -HU12: Ver en una sola página la información de todos los autores de la aplicación al pulsar en el botón “Acerca de”.
    
-   <img width="700" alt="image" src="![image](https://github.com/UJA-DAGIL-22-23/d-agil-2022-2023-practica-4-alvaros_alba_francisco/assets/114657755/4669d3af-cfe5-4b88-a23d-5724282828e6)
-">
+   <img width="700" alt="image" src=".\front-end\static-files\images\hu11.png">
    
    
 
