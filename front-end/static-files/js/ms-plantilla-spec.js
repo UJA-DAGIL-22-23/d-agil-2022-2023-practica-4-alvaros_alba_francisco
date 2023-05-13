@@ -21,6 +21,15 @@ describe("Plantilla.cabeceraTable():", function ()
         })
 })
 
+describe("Plantilla.cabeceraHistorial():", function () 
+{
+    it("debería devolver las etiquetas HTML para la cabecera de la tabla",
+        function () 
+        {
+            expect(Plantilla.cabeceraHistorial()).toBe(`<table class="tabla-historial"><thead><th>Historial</th></thead><tbody>`);
+        })
+})
+
 describe("Plantilla.cuerpoTr():", function () 
 {
     it("debería devolver una fila de tabla con los nombres de los deportistas",

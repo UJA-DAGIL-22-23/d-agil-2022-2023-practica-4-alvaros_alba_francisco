@@ -23,7 +23,6 @@ Plantilla.cabeceraHistorial = function(){
   return `<table class="tabla-historial"><thead><th>Historial</th></thead><tbody>`
 }
 
-
 /**
  * Muestra el nombre de cada deportista en un elemento TR con sus correspondientes TD
  * @param {deportista} deportista Datos del deportista a mostrar con los nombres de los deportistas
@@ -60,7 +59,11 @@ Plantilla.mostrarOpcionesPlantilla = function ()
     document.getElementById("opciones-comun").style.display = "block";
 }
 
-
+/**
+ * @description para descargar rutas
+ * @param {} ruta la ruta que se pretende descargar
+ * @param {*} callBackFn función que se llamará después
+ */
 Plantilla.descargarRuta = async function (ruta, callBackFn) {
     let response = null
 
@@ -75,6 +78,10 @@ Plantilla.descargarRuta = async function (ruta, callBackFn) {
       console.error(error)
     }
 }
+
+/**
+ * @description Función para procesar los datos descargados
+ */
 Plantilla.procesarDatosDescargados = function () {
   var funciones = [    natacion.procesarAcercaDe(), voleyPlaya.procesarAcercaDe(),    Volley.procesarAcercaDe(),    Halterofilia.procesarAcercaDe(),    Surferos.procesarAcercaDe()  ];
   Promise.all(funciones).then(function(respuestas) {
@@ -139,7 +146,7 @@ Plantilla.descargarRuta2 = async function (ruta, posicion) {
   };
   
   /**
-   * Función principal para recuperar los deportistas desde el MS y, posteriormente, imprimirlas.
+   * @description Función principal para recuperar los deportistas desde el MS y, posteriormente, imprimirlas.
    */
   Plantilla.listar = function () {
     const rutas = [
@@ -167,43 +174,60 @@ Plantilla.descargarRuta2 = async function (ruta, posicion) {
       });
   };
 
-  
+  /**
+   * @description Función para obtener el historial de cambios de la aplicación
+   * @returns el historial
+   */
   Plantilla.getHistorial = function (){
     return historial;
   }
-    Plantilla.agregarAHistorial = function(opcion){
-      historial.push(opcion);
-      //console.log(opcion);
-          if (historial.length > 10){
-          historial.shift();
-      }
-      //console.log(Plantilla.getHistorial().length);
-  
+
+  /**
+   * @description Función para agregar al historial
+   * @param {*} opcion la opción solicitada 
+   */
+  Plantilla.agregarAHistorial = function(opcion)
+  {
+    historial.push(opcion);
+    //console.log(opcion);
+        if (historial.length > 10)
+        {
+        historial.shift();
+        }
+    //console.log(Plantilla.getHistorial().length);
     }
   
-    Plantilla.mostrarHistorial = function(vector){
-      vector = historial;
-      let msj = "";
-      msj += `<table class="listado-nombres">
-        <thead>
-          <th>ID</th>
-          <th>Historial</th>
-        </thead>
-        <tbody>`;
-      let contador = 1;
-      vector.forEach(e => msj += `
-          <tr>
-            <td>${contador++}</td>
-            <td>${e || ""}</td>
-          </tr>
-      `);
-      msj += Plantilla.pieTable();
+  /**
+   * @description función para mostrar el historial
+   * @param {vector} vector vector con los datos del historial
+   */
+  Plantilla.mostrarHistorial = function(vector){
+    vector = historial;
+    let msj = "";
+    msj += `<table class="listado-nombres">
+      <thead>
+        <th>ID</th>
+        <th>Historial</th>
+      </thead>
+      <tbody>`;
+    let contador = 1;
+    vector.forEach(e => msj += `
+        <tr>
+          <td>${contador++}</td>
+          <td>${e || ""}</td>
+        </tr>
+    `);
+    msj += Plantilla.pieTable();
   
-      Frontend.Article.actualizar("HISTORIAL", msj);
+    Frontend.Article.actualizar("HISTORIAL", msj);
   }
 
 
-  Plantilla.listarOrdenado = function () {
+  /**
+   * @description Función para listar los elementos ordenados
+   */
+  Plantilla.listarOrdenado = function () 
+  {
     const rutas = [
       "/halterofilia/getTodas",
       "/surferos/getTodas",
@@ -250,6 +274,10 @@ Plantilla.descargarRuta2 = async function (ruta, posicion) {
       });
   };
 
+  /**
+   * @description Función para imprimir los deportistas ordenados
+   * @param {*} datos los deportistas
+   */
   Plantilla.imprimeDeportistas2 = function (datos) {
     let msj = "";
     msj += Plantilla.cabeceraTable();
@@ -264,7 +292,13 @@ Plantilla.descargarRuta2 = async function (ruta, posicion) {
     );
   };
   
-  Plantilla.listarPersonas = function (p) {
+  /**
+   * @description Función para listar pdeportistas
+   * @param {*} p deportistas
+   * @returns el listado
+   */
+  Plantilla.listarPersonas = function (p) 
+  {
     const d = p.data
     
   if(d.apellidos == null ||d.apellidos == undefined){
@@ -280,6 +314,9 @@ Plantilla.descargarRuta2 = async function (ruta, posicion) {
   return `<tr><td>${d.nombre}</td><td>${d.apellidos}</td></tr>`;
 }
 
+/**
+ * @description Función para mostrar las opciones del volley playa
+ */
 Plantilla.mostrarOpcionesVolleyPlaya = function() 
 {
     document.getElementById("opciones-halterofilia").style.display = "none";
@@ -290,6 +327,10 @@ Plantilla.mostrarOpcionesVolleyPlaya = function()
      document.getElementById("opciones-comun").style.display = "none";
 }
 
+
+/**
+ * @description Función para mostrar las opciones del volley
+ */
 Plantilla.mostrarOpcionesVolley = function() 
 {
     document.getElementById("opciones-halterofilia").style.display = "none";
@@ -300,8 +341,9 @@ Plantilla.mostrarOpcionesVolley = function()
     document.getElementById("opciones-comun").style.display = "none";
 }
 
-
-
+/**
+ * Función para mostrar las opciones de inicio
+ */
 Plantilla.mostrarInicio = function() 
 {
     document.getElementById("opciones-halterofilia").style.display = "none";
@@ -312,6 +354,9 @@ Plantilla.mostrarInicio = function()
      document.getElementById("opciones-comun").style.display = "none";
 }
 
+/**
+ * Función para mostrar las opciones de natación
+ */
 Plantilla.mostrarOpcionesnatacion = function() 
 {
     document.getElementById("opciones-halterofilia").style.display = "none";
@@ -322,6 +367,9 @@ Plantilla.mostrarOpcionesnatacion = function()
     document.getElementById("opciones-comun").style.display = "none";
 }
 
+/**
+ * Función para mostrar las opciones del surf
+ */
 Plantilla.mostrarOpcionesSurf = function() 
 {
     document.getElementById("opciones-halterofilia").style.display = "none";
@@ -332,6 +380,9 @@ Plantilla.mostrarOpcionesSurf = function()
     document.getElementById("opciones-comun").style.display = "none";
 }
 
+/**
+ * Función para mostrar las opciones de halterofilia
+ */
 Plantilla.mostrarOpcionesHalterofilia = function() 
 {
   document.getElementById("opciones-halterofilia").style.display = "block";
