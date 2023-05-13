@@ -435,6 +435,57 @@ describe("Plantilla", function() {
     });
   });
 });
+
+describe("Plantilla", function() {
+  describe("mostrarOpcionesnatacion", function() {
+    beforeEach(function() {
+      // Crea el DOM necesario para las pruebas
+      document.body.innerHTML = `
+        <div id="opciones-halterofilia"></div>
+        <div id="opciones-volley-playa"></div>
+        <div id="opciones-natacion"></div>
+        <div id="opciones-volley"></div>
+        <div id="opciones-surf"></div>
+        <div id="opciones-comun"></div>
+      `;
+    });
+
+    it("debería mostrar las opciones de natación y ocultar las demás opciones", function() {
+      // Actuar
+      Plantilla.mostrarOpcionesHalterofilianatacion();
+
+      // Comprobar
+      expect(document.getElementById("opciones-halterofilia").style.display).toBe("none");
+      expect(document.getElementById("opciones-volley-playa").style.display).toBe("none");
+      expect(document.getElementById("opciones-natacion").style.display).toBe("block");
+      expect(document.getElementById("opciones-volley").style.display).toBe("none");
+      expect(document.getElementById("opciones-surf").style.display).toBe("none");
+      expect(document.getElementById("opciones-comun").style.display).toBe("none");
+    });
+
+    it("debería ocultar todas las opciones si no hay opciones para mostrar", function() {
+      // Preparar
+      document.getElementById("opciones-halterofilia").style.display = "block";
+      document.getElementById("opciones-volley-playa").style.display = "block";
+      document.getElementById("opciones-natacion").style.display = "block";
+      document.getElementById("opciones-volley").style.display = "block";
+      document.getElementById("opciones-surf").style.display = "block";
+      document.getElementById("opciones-comun").style.display = "block";
+
+      // Actuar
+      Plantilla.mostrarOpcionesHalterofilia();
+
+      // Comprobar
+      expect(document.getElementById("opciones-halterofilia").style.display).toBe("block");
+      expect(document.getElementById("opciones-volley-playa").style.display).toBe("none");
+      expect(document.getElementById("opciones-natacion").style.display).toBe("none");
+      expect(document.getElementById("opciones-volley").style.display).toBe("none");
+      expect(document.getElementById("opciones-surf").style.display).toBe("none");
+      expect(document.getElementById("opciones-comun").style.display).toBe("none");
+    });
+  });
+});
+
 describe('Plantilla', function() {
   describe('#procesarDatosDescargados()', function() {
     var voleyPlayaSpy, VolleySpy, HalterofiliaSpy, SurferosSpy, actualizarSpy;
