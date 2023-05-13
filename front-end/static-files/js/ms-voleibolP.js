@@ -393,41 +393,48 @@ voleyPlaya.mostrarPersona = function (persona, indiceActual) {
 
 //Octava historia de usuario
 voleyPlaya.buscarNombre = function(){
-    this.recupera(this.pantallaBuscarNombre);
+  this.recupera(this.pantallaBuscarNombre);
 }
 
 voleyPlaya.pantallaBuscarNombre=function(vector){
-    vDatos=vector;
-    let mensaje = "";
-    mensaje+='<input type="text" id="buscar" placeholder="Introduce un nombre"><button onclick="voleyPlaya.busca(vDatos)">Buscar</button>'
-    Frontend.Article.actualizar("Buscar persona por nombre", mensaje);
-    return mensaje;
+  vDatos=vector;
+  let mensaje = "";
+  console.log(vector);
+  mensaje+='<input type="text" id="buscaNombre" placeholder="Introduce un nombre"><button onclick="voleyPlaya.busca(vDatos)">Buscar</button>'
+  Frontend.Article.actualizar("Buscar persona por nombre", mensaje);
+  return mensaje;
 }
 
-voleyPlaya.busca = function(vector){
-    var nombre = document.getElementById("buscar").value.toUpperCase();
-    let encontrada = false;
-    let mensaje = "";
-    for(let i = 0;i<vector.length;i++ ){
-        if(vector[i].data.nombre.toUpperCase() == nombre){
-            encontrada = true;
-            mensaje += voleyPlaya.cabeceraTablaTodos() + voleyPlaya.cuerpoListarTodos(vector[i]) + voleyPlaya.pieTabla();
-        }
+voleyPlaya.busca = function(vector) {
+  var nombre = document.getElementById("buscaNombre").value.toUpperCase();
+  let encontrada = false;
+  let mensaje = "";
+  for (let i = 0; i < vector.length; i++) {
+    console.log('nombre:', nombre);
+    console.log('vector[i].data.nombre:', vector[i].data.nombre);
+    if (vector[i].data.nombre.toUpperCase() === nombre) {
+      encontrada = true;
+      mensaje += voleyPlaya.cabeceraTablaTodos() + voleyPlaya.cuerpoListarTodos(vector[i]) + voleyPlaya.pieTabla();
     }
-    mensaje = voleyPlaya.generarMensaje(mensaje, encontrada);
-    Frontend.Article.actualizar("Buscar persona por nombre", mensaje);
-    return mensaje;
   }
   
-  voleyPlaya.generarMensaje = function(mensaje, encontrada) {
-    if (encontrada) {
-      mensaje+='<input type="text" id="buscar" placeholder="Introduce un nombre"><button onclick="voleyPlaya.busca(vDatos)">Buscar</button>';
-    } else {
-      mensaje+='<input type="text" id="buscar" placeholder="Introduce un nombre"><button onclick="voleyPlaya.busca(vDatos)">Buscar</button>' + '<div class="error"><p>¡Error! No se ha encontrado el nombre.</p> </div>';
-    }
-    return mensaje;
-  }
 
+  mensaje = voleyPlaya.generarMensaje(mensaje, encontrada);
+  Frontend.Article.actualizar("Buscar persona por nombre", mensaje);
+  return mensaje;
+}
+
+
+voleyPlaya.generarMensaje = function(mensaje, encontrada) {
+  if (encontrada) {
+    mensaje+='<input type="text" id="buscaNombre" placeholder="Introduce un nombre"><button onclick="voleyPlaya.busca(vDatos)">Buscar</button>';
+  } else {
+    mensaje+='<input type="text" id="buscaNombre" placeholder="Introduce un nombre"><button onclick="voleyPlaya.busca(vDatos)">Buscar</button>' + '<div class="error"><p>¡Error! No se ha encontrado el nombre.</p> </div>';
+  }
+  return mensaje;
+}
+
+  
 
   //Novena y última historia de usuario
 
@@ -444,7 +451,7 @@ voleyPlaya.busca = function(vector){
     mensaje += '<option value="numMedallasOlimpicas">Medallas olímpicas</option>';
     mensaje += '<option value="posicion">Posición</option>';
     mensaje += '</select>';
-    mensaje += '<input type="text" id="buscar" placeholder="Introduce el valor a buscar">';
+    mensaje += '<input type="text" id="busquedaCampin" placeholder="Introduce el valor a buscar">';
     mensaje += '<button onclick="voleyPlaya.buscador(vDatos)">Buscar</button>';
     Frontend.Article.actualizar("Buscar persona por campo", mensaje);
     return mensaje;
@@ -467,7 +474,7 @@ voleyPlaya.busca = function(vector){
   
 voleyPlaya.buscador = function(vector) {
     var campo = document.getElementById("selectCampo").value;
-    var valor = document.getElementById("buscar").value;
+    var valor = document.getElementById("busquedaCampin").value;
     let encontrada = false;
     let mensaje = "";
     for (let i = 0; i < vector.length; i++) {
