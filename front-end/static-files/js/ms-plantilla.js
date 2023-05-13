@@ -79,31 +79,55 @@ Plantilla.descargarRuta = async function (ruta, callBackFn) {
     }
 }
 
-/**
- * @description Función para procesar los datos descargados
- */
 Plantilla.procesarDatosDescargados = function () {
-  var funciones = [    natacion.procesarAcercaDe(), voleyPlaya.procesarAcercaDe(),    Volley.procesarAcercaDe(),    Halterofilia.procesarAcercaDe(),    Surferos.procesarAcercaDe()  ];
-  Promise.all(funciones).then(function(respuestas) {
-    var mensajesAMostrar = '';
-    for (var i = 0; i < respuestas.length; i++) {
-      var respuesta = respuestas[i];
-      if (respuesta) {
-        mensajesAMostrar += `<div>
-          <p>${respuesta.mensaje}</p>
-          <ul>
-            <li><b>Autor/a</b>: ${respuesta.autor}</li>
-            <li><b>E-mail</b>: ${respuesta.email}</li>
-            <li><b>Fecha</b>: ${respuesta.fecha}</li>
-          </ul>
-        </div>`;
-      }
-    }
-    Frontend.Article.actualizar("Datos descargados", mensajesAMostrar);
-  }).catch(function(error) {
-    console.error("Error al descargar datos:", error);
+  const rutas =  {
+    "/halterofilia/procesarAcercaDe": 8007,
+    "/surferos/procesarAcercaDe": 8023,
+    "/voleyPlaya/procesarAcercaDe": 8033,
+    "/natacion/procesarAcercaDe": 8028,
+    "/volley/procesarAcercaDe": 8074
+  };
+  
+  const descargas = Object.keys(rutas).map((ruta, indice) => {
+    const puerto = rutas[ruta];
+    return Plantilla.descargarRuta3(ruta, puerto, indice);
   });
+
+  var mensajesAMostrar = '<div>'; // Abre el contenedor de mensajes
+  Promise.all(descargas)
+    .then(respuestas => {
+      respuestas.forEach(respuesta => {
+        if (respuesta) {
+          mensajesAMostrar += `
+            <div>
+              <p>${respuesta.mensaje}</p>
+              <ul>
+                <li><b>Autor/a</b>: ${respuesta.autor}</li>
+                <li><b>E-mail</b>: ${respuesta.email}</li>
+                <li><b>Fecha</b>: ${respuesta.fecha}</li>
+              </ul>
+            </div>
+          `;
+        }
+      });
+      mensajesAMostrar += '</div>'; // Cierra el contenedor de mensajes
+      Frontend.Article.actualizar("Datos descargados", mensajesAMostrar);
+    })
+    .catch(error => console.error(`Error al procesar descargas: ${error}`));
 };
+
+Plantilla.descargarRuta3 = async function (ruta, puerto, posicion) {
+  try {
+    const url = `http://localhost:${puerto}${ruta}`;
+    const response = await fetch(url);
+    const datosDescargados = await response.json();
+    return { datos: datosDescargados, posicion: posicion };
+  } catch (error) {
+    console.error(`Error al descargar datos de ${ruta}:`, error);
+    throw error;
+  }
+}; 
+
 
 /**
  * Función que descarga la info de los microservicios al llamar a una de sus rutas

@@ -720,6 +720,7 @@ Surferos.mostrarAcercaDe = function (datosDescargados) {
     </div>
     `;
     Frontend.Article.actualizar("Plantilla Acerca de", mensajeAMostrar)
+    return datosDescargados;
 }
 
 /**

@@ -18,4 +18,6 @@ app.listen(port, () => {
   console.log(`Aplicación API-Gateway escuchando en ${port}!`);
 });
 
+
+
 module.exports=app
