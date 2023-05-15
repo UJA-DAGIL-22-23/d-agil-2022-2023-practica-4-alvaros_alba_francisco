@@ -236,19 +236,30 @@ describe('API Gateway: rutas estáticas', () => {
         .end((error) => { error ? done.fail(error) : done() })
     });
 
-    it('Devuelve F al consultar mediante test_db', (done) => {
+    it('Comprueba los atributos de la base de datos al consultar test_db', (done) => {
       supertest(app)
         .get('/volley/test_db')
         .expect(200)
         .expect('Content-Type', /json/)
         .expect(function (res) {
           assert(res.body.data[0].data.hasOwnProperty('numParticipaciones'));
-          
-
+          assert(res.body.data[0].data.numParticipaciones === 2)
         })
         .end((error) => { error ? done.fail(error) : done(); }
         );
       });
+    it('Devuelve 1992 al consultar la fecha de nacimiento del jugador con id 360465772045140172 mediante getPorId', (done) => {
+      supertest(app)
+        .get('/volley/getPorId/360465772045140172')
+        .expect(200)
+        .expect('Content-Type', /json/)
+        .expect(function (res) {
+          assert(res.body.data.hasOwnProperty('nacimiento'));
+          assert(res.body.data.nacimiento === 1992);
+        })
+        .end((error) => { error ? done.fail(error) : done(); }
+        );
+    });
   })
 });
 
