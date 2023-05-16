@@ -98,7 +98,9 @@ Plantilla.procesarDatosDescargados = async function () {
   let descargas=[]
   descargas.push( await Plantilla.descargarRuta3( "/surferos/acercade", 8001, 0) )
   descargas.push( await Plantilla.descargarRuta3( "/voleyPlaya/acercade", 8001, 1) )
-
+  descargas.push( await Plantilla.descargarRuta3( "/volley/acercade", 8001, 2) )
+  descargas.push( await Plantilla.descargarRuta3( "/halterofilia/acercade", 8001, 3) )
+  descargas.push( await Plantilla.descargarRuta3( "/natacion/acercade", 8001, 4) )
 
   var mensajesAMostrar = '<div>'; // Abre el contenedor de mensajes
   /*Promise.all(descargas)
