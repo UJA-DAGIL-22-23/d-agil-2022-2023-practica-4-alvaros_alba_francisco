@@ -79,22 +79,31 @@ Plantilla.descargarRuta = async function (ruta, callBackFn) {
     }
 }
 
-Plantilla.procesarDatosDescargados = function () {
+Plantilla.procesarDatosDescargados = async function () {
   const rutas =  {
-    "/halterofilia/procesarAcercaDe": 8007,
-    "/surferos/procesarAcercaDe": 8023,
-    "/voleyPlaya/procesarAcercaDe": 8033,
+    
+    "/surferos/acercade": 8001,
+    "/voleyPlaya/acercade": 8001,
+    /*
     "/natacion/procesarAcercaDe": 8028,
-    "/volley/procesarAcercaDe": 8074
+    "/volley/procesarAcercaDe": 8074,
+    "/halterofilia/procesarAcercaDe": 8007,*/
   };
   
-  const descargas = Object.keys(rutas).map((ruta, indice) => {
+  /*const descargas = await Object.keys(rutas).map((ruta, indice) => {
     const puerto = rutas[ruta];
     return Plantilla.descargarRuta3(ruta, puerto, indice);
-  });
+  });*/
+
+  let descargas=[]
+  descargas.push( await Plantilla.descargarRuta3( "/surferos/acercade", 8001, 0) )
+  descargas.push( await Plantilla.descargarRuta3( "/voleyPlaya/acercade", 8001, 1) )
+  descargas.push( await Plantilla.descargarRuta3( "/volley/acercade", 8001, 2) )
+  descargas.push( await Plantilla.descargarRuta3( "/halterofilia/acercade", 8001, 3) )
+  descargas.push( await Plantilla.descargarRuta3( "/natacion/acercade", 8001, 4) )
 
   var mensajesAMostrar = '<div>'; // Abre el contenedor de mensajes
-  Promise.all(descargas)
+  /*Promise.all(descargas)
     .then(respuestas => {
       respuestas.forEach(respuesta => {
         if (respuesta) {
@@ -109,11 +118,28 @@ Plantilla.procesarDatosDescargados = function () {
             </div>
           `;
         }
-      });
+      });*/
+      if( descargas ) {
+        descargas.forEach(d => {
+          if (d) {
+            console.log( d )
+            mensajesAMostrar += `
+              <div>
+                <p>${d.datos.mensaje}</p>
+                <ul>
+                  <li><b>Autor/a</b>: ${d.datos.autor}</li>
+                  <li><b>E-mail</b>: ${d.datos.email}</li>
+                  <li><b>Fecha</b>: ${d.datos.fecha}</li>
+                </ul>
+              </div>
+            `;
+          }
+        })
+      }
       mensajesAMostrar += '</div>'; // Cierra el contenedor de mensajes
       Frontend.Article.actualizar("Datos descargados", mensajesAMostrar);
-    })
-    .catch(error => console.error(`Error al procesar descargas: ${error}`));
+    /*}
+    .catch(error => console.error(`Error al procesar descargas: ${error}`));*/
 };
 
 Plantilla.descargarRuta3 = async function (ruta, puerto, posicion) {
