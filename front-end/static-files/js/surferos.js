@@ -660,7 +660,18 @@ Surferos.descargarRuta = async function (ruta, callBackFn) {
     // Intento conectar con el microservicio Plantilla
     try {
         const url = Frontend.API_GATEWAY + ruta
-        response = await fetch(url)
+        //response = await fetch(url)
+        const response = await fetch(url, {
+            method: 'GET', // *GET, POST, PUT, DELETE, etc.
+            mode: 'no-cors', // no-cors, cors, *same-origin
+            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: 'omit', // include, *same-origin, omit
+            redirect: 'follow', // manual, *follow, error
+            referrer: 'no-referrer', // no-referrer, *client
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+            },
+        })
 
     } catch (error) {
         alert("Error: No se han podido acceder al API Gateway")

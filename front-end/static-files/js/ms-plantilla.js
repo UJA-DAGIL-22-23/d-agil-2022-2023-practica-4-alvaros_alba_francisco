@@ -81,11 +81,13 @@ Plantilla.descargarRuta = async function (ruta, callBackFn) {
 
 Plantilla.procesarDatosDescargados = function () {
   const rutas =  {
-    "/halterofilia/procesarAcercaDe": 8007,
-    "/surferos/procesarAcercaDe": 8023,
-    "/voleyPlaya/procesarAcercaDe": 8033,
+    
+    "/surferos/acercade": 8001,
+    "/voleyPlaya/acercade": 8001,
+    /*
     "/natacion/procesarAcercaDe": 8028,
-    "/volley/procesarAcercaDe": 8074
+    "/volley/procesarAcercaDe": 8074,
+    "/halterofilia/procesarAcercaDe": 8007,*/
   };
   
   const descargas = Object.keys(rutas).map((ruta, indice) => {
