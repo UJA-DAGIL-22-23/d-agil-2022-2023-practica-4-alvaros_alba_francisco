@@ -79,7 +79,7 @@ Plantilla.descargarRuta = async function (ruta, callBackFn) {
     }
 }
 
-Plantilla.procesarDatosDescargados = function () {
+Plantilla.procesarDatosDescargados = async function () {
   const rutas =  {
     
     "/surferos/acercade": 8001,
@@ -90,13 +90,16 @@ Plantilla.procesarDatosDescargados = function () {
     "/halterofilia/procesarAcercaDe": 8007,*/
   };
   
-  const descargas = Object.keys(rutas).map((ruta, indice) => {
+  /*const descargas = await Object.keys(rutas).map((ruta, indice) => {
     const puerto = rutas[ruta];
     return Plantilla.descargarRuta3(ruta, puerto, indice);
-  });
+  });*/
+
+  let descargas=[]
+  const desc_surferos = await Plantilla.descargarRuta3( "/surferos/acercade", 8001, 0)
 
   var mensajesAMostrar = '<div>'; // Abre el contenedor de mensajes
-  Promise.all(descargas)
+  /*Promise.all(descargas)
     .then(respuestas => {
       respuestas.forEach(respuesta => {
         if (respuesta) {
@@ -111,11 +114,29 @@ Plantilla.procesarDatosDescargados = function () {
             </div>
           `;
         }
-      });
+      });*/
+      if( desc_surferos ) {
+        descargas.push( desc_surferos )
+        descargas.forEach(d => {
+          if (d) {
+            console.log( d )
+            mensajesAMostrar += `
+              <div>
+                <p>${d.datos.mensaje}</p>
+                <ul>
+                  <li><b>Autor/a</b>: ${d.datos.autor}</li>
+                  <li><b>E-mail</b>: ${d.datos.email}</li>
+                  <li><b>Fecha</b>: ${d.datos.fecha}</li>
+                </ul>
+              </div>
+            `;
+          }
+        })
+      }
       mensajesAMostrar += '</div>'; // Cierra el contenedor de mensajes
       Frontend.Article.actualizar("Datos descargados", mensajesAMostrar);
-    })
-    .catch(error => console.error(`Error al procesar descargas: ${error}`));
+    /*}
+    .catch(error => console.error(`Error al procesar descargas: ${error}`));*/
 };
 
 Plantilla.descargarRuta3 = async function (ruta, puerto, posicion) {
