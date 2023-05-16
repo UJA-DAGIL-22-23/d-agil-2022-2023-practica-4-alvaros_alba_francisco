@@ -80,21 +80,6 @@ Plantilla.descargarRuta = async function (ruta, callBackFn) {
 }
 
 Plantilla.procesarDatosDescargados = async function () {
-  const rutas =  {
-    
-    "/surferos/acercade": 8001,
-    "/voleyPlaya/acercade": 8001,
-    /*
-    "/natacion/procesarAcercaDe": 8028,
-    "/volley/procesarAcercaDe": 8074,
-    "/halterofilia/procesarAcercaDe": 8007,*/
-  };
-  
-  /*const descargas = await Object.keys(rutas).map((ruta, indice) => {
-    const puerto = rutas[ruta];
-    return Plantilla.descargarRuta3(ruta, puerto, indice);
-  });*/
-
   let descargas=[]
   descargas.push( await Plantilla.descargarRuta3( "/surferos/acercade", 8001, 0) )
   descargas.push( await Plantilla.descargarRuta3( "/voleyPlaya/acercade", 8001, 1) )
@@ -103,22 +88,7 @@ Plantilla.procesarDatosDescargados = async function () {
   descargas.push( await Plantilla.descargarRuta3( "/natacion/acercade", 8001, 4) )
 
   var mensajesAMostrar = '<div>'; // Abre el contenedor de mensajes
-  /*Promise.all(descargas)
-    .then(respuestas => {
-      respuestas.forEach(respuesta => {
-        if (respuesta) {
-          mensajesAMostrar += `
-            <div>
-              <p>${respuesta.mensaje}</p>
-              <ul>
-                <li><b>Autor/a</b>: ${respuesta.autor}</li>
-                <li><b>E-mail</b>: ${respuesta.email}</li>
-                <li><b>Fecha</b>: ${respuesta.fecha}</li>
-              </ul>
-            </div>
-          `;
-        }
-      });*/
+  
       if( descargas ) {
         descargas.forEach(d => {
           if (d) {
@@ -138,8 +108,6 @@ Plantilla.procesarDatosDescargados = async function () {
       }
       mensajesAMostrar += '</div>'; // Cierra el contenedor de mensajes
       Frontend.Article.actualizar("Datos descargados", mensajesAMostrar);
-    /*}
-    .catch(error => console.error(`Error al procesar descargas: ${error}`));*/
 };
 
 Plantilla.descargarRuta3 = async function (ruta, puerto, posicion) {
