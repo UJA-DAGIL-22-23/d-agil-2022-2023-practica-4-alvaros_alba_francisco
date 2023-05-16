@@ -96,7 +96,9 @@ Plantilla.procesarDatosDescargados = async function () {
   });*/
 
   let descargas=[]
-  const desc_surferos = await Plantilla.descargarRuta3( "/surferos/acercade", 8001, 0)
+  descargas.push( await Plantilla.descargarRuta3( "/surferos/acercade", 8001, 0) )
+  descargas.push( await Plantilla.descargarRuta3( "/voleyPlaya/acercade", 8001, 1) )
+
 
   var mensajesAMostrar = '<div>'; // Abre el contenedor de mensajes
   /*Promise.all(descargas)
@@ -115,8 +117,7 @@ Plantilla.procesarDatosDescargados = async function () {
           `;
         }
       });*/
-      if( desc_surferos ) {
-        descargas.push( desc_surferos )
+      if( descargas ) {
         descargas.forEach(d => {
           if (d) {
             console.log( d )
