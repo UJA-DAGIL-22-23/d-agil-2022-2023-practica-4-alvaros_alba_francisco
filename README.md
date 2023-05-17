@@ -3,31 +3,32 @@
 ## 👩🏽‍💻🧑‍💻 Datos personales de los autores
 <img width="567" alt="image" src="https://github.com/UJA-DAGIL-22-23/d-agil-2022-2023-practica-4-alvaros_alba_francisco/assets/124689598/51f8ba96-6dbc-47d0-9743-a463335567e4">
 
-* **Nombre**: Alba
-* **Apellidos**: Gómez Liébana
-* **Descripción**: Estudiante de Ingeniería Informática en la Universidad de Jaén.
-* **📥**: agl00108@red.ujaen.es
+> * **Nombre**: Alba
+> * **Apellidos**: Gómez Liébana
+> * **Descripción**: Estudiante de Ingeniería Informática en la Universidad de Jaén.
+> * **📥**: agl00108@red.ujaen.es
+> 
+ 
+> * **Nombre**: Francisco
+> * **Apellidos**: Ortega Peña
+> * **Descripción**: Estudiante de Ingeniería Informática en la Universidad de Jaén.
+> * **📥**: fop00009@red.ujaen.es
 
+> * **Nombre**: Álvaro
+> * **Apellidos**: Ordóñez Romero
+> * **Descripción**: Estudiante de Ingeniería Informática en la Universidad de Jaén.
+> * **📥**: aor00039@red.ujaen.es
 
-* **Nombre**: Francisco
-* **Apellidos**: Ortega Peña
-* **Descripción**: Estudiante de Ingeniería Informática en la Universidad de Jaén.
-* **📥**: fop00009@red.ujaen.es
+> * **Nombre**: Álvaro
+> * **Apellidos**: Herrera Arjonilla
+> * **Descripción**: Estudiante de Ingeniería Informática en la Universidad de Jaén.
+> * **📥**: aha00026@red.ujaen.es
 
-* **Nombre**: Álvaro
-* **Apellidos**: Ordóñez Romero
-* **Descripción**: Estudiante de Ingeniería Informática en la Universidad de Jaén.
-* **📥**: aor00039@red.ujaen.es
+> * **Nombre**: Álvaro
+> * **Apellidos**: Martin Bacas
+> * **Descripción**: Estudiante de Ingeniería Informática en la Universidad de Jaén.
+> * **📥**: amb00093@red.ujaen.es
 
-* **Nombre**: Álvaro
-* **Apellidos**: Herrera Arjonilla
-* **Descripción**: Estudiante de Ingeniería Informática en la Universidad de Jaén.
-* **📥**: aha00026@red.ujaen.es
-
-* **Nombre**: Álvaro
-* **Apellidos**: Martin Bacas
-* **Descripción**: Estudiante de Ingeniería Informática en la Universidad de Jaén.
-* **📥**: amb00093@red.ujaen.es
 
 ## 🗓️ Trello
 https://trello.com/b/YYQ32O06/practica4
