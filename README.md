@@ -100,6 +100,26 @@ https://trello.com/b/YYQ32O06/practica4
    
    <img width="700" alt="image" src="https://user-images.githubusercontent.com/124689598/236429615-7b0571b3-ce7a-4f31-8163-4e3b7cd80070.png">
    
+## SPRINT RETROSPECTIVE
+En este Sprint se ha aplicado una metodología basada en Scrum para el desarrollo de un proyecto de microservicios, incluyendo los deportes Halterofilia, Surf, Voleibol, Volley Playa y Natación con aletas. A continuación, se presentan las conclusiones obtenidas durante la Sprint Retrospective realizada el día 16 de mayo a las 17.00h de la tarde de forma virtual.
+
+#### BIEN HECHO:
+El equipo ha aplicado correctamente los principios de la metodología Scrum estudiada en teoría durante todo el proceso de desarrollo, lo que ha permitido el cumplimiento de los objetivos establecidos para el Sprint. 
+
+Además, se ha logrado una buena comunicación entre los miembros del equipo, lo que ha contribuido a la resolución rápida de los problemas que se han presentado, ya que todos nos hemos ayudado entre nosotros para poder lograr el objetivo más fácilmente.
+
+El proceso de desarrollo se ha llevado a cabo de manera iterativa e incremental, todo lo que se ha podido debido al final del cuatrimestre, lo que ha permitido la entrega de valor al profesor en un corto periodo de tiempo.
+
+#### MODIFICACIONES:
+
+A pesar de los buenos resultados obtenidos, el equipo identificó algunos aspectos a mejorar en el proceso de trabajo basado en Scrum. 
+
+En particular, se considera necesario mejorar la estimación de los tiempos necesarios para llevar a cabo cada tarea, lo que permitiría evitar la sobrecarga de trabajo en algunos momentos de la Sprint. Debido a la gran cantidad de trabajos de todas las asignaturas no ha sido tan usual trabajar todos los días como se debería, aún así, hemos intentado que sea lo más incremental posible.
+
+#### COMPROMISO:
+
+Aunque no se llevará a cabo un próximo Sprint, cada miembro del equipo se compromete a continuar mejorando en sus habilidades técnicas y de comunicación, así como a aplicar las lecciones aprendidas en teoría en futuros proyectos que utilicen la metodología Scrum. Además, se comprometen a aplicar las mejoras sugeridas en el proceso de trabajo para mejorar la eficiencia y efectividad del equipo así como las mejoras sugeridas en la corrección de la práctica por parte del profesor.
+   
   
    
    
