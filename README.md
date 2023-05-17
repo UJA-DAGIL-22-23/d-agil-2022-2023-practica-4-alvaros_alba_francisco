@@ -99,7 +99,37 @@ https://trello.com/b/YYQ32O06/practica4
    Realizado por Álvaro Martín Bacas.
    
    <img width="700" alt="image" src="https://user-images.githubusercontent.com/124689598/236429615-7b0571b3-ce7a-4f31-8163-4e3b7cd80070.png">
-   
+
+## Sprint Review - Proyecto de Aplicación de Microservicios
+
+El equipo de 5 miembros ha logrado completar exitosamente el proyecto de aplicación de microservicios, incluyendo las siguientes historias de usuario:
+
+1. Crear carpetas y archivos iniciales del proyecto.
+2. Ofrecer en la aplicación toda la funcionalidad de la práctica individual creada por la estudiante Alba Gómez.
+3. Ofrecer en la aplicación toda la funcionalidad de la práctica individual creada por el/la estudiante Álvaro Martín.
+4. Ofrecer en la aplicación toda la funcionalidad de la práctica individual creada por el estudiante Álvaro Herrera.
+5. Ofrecer en la aplicación toda la funcionalidad de la práctica individual creada por el estudiante Álvaro Ordóñez.
+6. Ofrecer en la aplicación toda la funcionalidad de la práctica individual creada por el estudiante Francisco Ortega.
+7. Ver un listado solo con los nombres de todos los jugadores/equipos de todos los deportes incluidos en la app.
+8. Ver un listado solo con los nombres de todos los jugadores/equipos ordenados alfabéticamente de todos los deportes incluidos en la app. (Todos los nombres aparecerán ordenados en una sola tabla).
+9. Modificar la visualización de la app con un modo ALTO CONTRASTE. (Es decir: el usuario podrá cambiar entre visualizar la app en el modo normal o en modo ALTO CONTRASTE pulsando solo un botón)
+
+El equipo ha trabajado arduamente en la implementación de estas historias de usuario y ha logrado completarlas dentro del plazo establecido. 
+
+Destacamos la inclusión de las historias de usuario de cada uno de los miembros del equipo, lo que demuestra la habilidad del equipo para trabajar juntos y lograr un objetivo común. También hemos incluido las funcionalidades de los listados de jugadores/equipos, lo que mejora significativamente la usabilidad de la aplicación.
+
+Finalmente, la incorporación de un modo ALTO CONTRASTE demuestra nuestra capacidad para agregar funcionalidades adicionales que mejoren la experiencia del usuario.
+
+Agradecemos a todo el equipo por su arduo trabajo y dedicación en este proyecto.
+
+#### Resumen del Sprint Review
+Durante este Sprint, el equipo de desarrollo ha creado una aplicación de microservicios que incluye funcionalidades creadas por cada uno de los 5 miembros del equipo. Además, se han incluido funcionalidades como la visualización de un listado de deportes y jugadores/equipos, así como la opción de cambiar la visualización a un modo de alto contraste. Se han cumplido todos los objetivos establecidos para el Sprint en el tiempo previsto.
+
+#### Conclusiones
+El equipo ha logrado aplicar correctamente la metodología Scrum y trabajar de manera colaborativa, lo que ha permitido cumplir con los objetivos establecidos en el Sprint. Además, se ha logrado una buena comunicación entre los miembros del equipo, lo que ha contribuido a la resolución rápida de los problemas que surgieron.
+
+Entre las áreas de mejora identificadas, se destaca la necesidad de mejorar la estimación de los tiempos necesarios para llevar a cabo cada tarea y evitar la sobrecarga de trabajo. A pesar de esto, el equipo ha logrado avanzar en el proyecto y cumplir con los objetivos establecidos.
+
 ## SPRINT RETROSPECTIVE
 En este Sprint se ha aplicado una metodología basada en Scrum para el desarrollo de un proyecto de microservicios, incluyendo los deportes Halterofilia, Surf, Voleibol, Volley Playa y Natación con aletas. A continuación, se presentan las conclusiones obtenidas durante la Sprint Retrospective realizada el día 16 de mayo a las 17.00h de la tarde de forma virtual.
 
