@@ -1,10 +1,13 @@
 # Práctica 4️⃣
 
 ## 👩🏽‍💻🧑‍💻 Datos personales de los autores
+<img width="567" alt="image" src="https://github.com/UJA-DAGIL-22-23/d-agil-2022-2023-practica-4-alvaros_alba_francisco/assets/124689598/51f8ba96-6dbc-47d0-9743-a463335567e4">
+
 * **Nombre**: Alba
 * **Apellidos**: Gómez Liébana
 * **Descripción**: Estudiante de Ingeniería Informática en la Universidad de Jaén.
 * **📥**: agl00108@red.ujaen.es
+
 
 * **Nombre**: Francisco
 * **Apellidos**: Ortega Peña
@@ -31,11 +34,14 @@ https://trello.com/b/YYQ32O06/practica4
   
    ## 💻 INCREMENTO
    #### Iniciado el 25/04/2023
-   #### Finalizado el 
+   #### Finalizado el 17/05/2023
    ##### Captura inicial Trello
    <img width="700" alt="image" src="https://user-images.githubusercontent.com/124689598/236425375-1ba2e8af-a039-4dad-a552-5307027aaa41.png">
    
    ##### Captura final Trello
+   
+   <img width="700" alt="image" src="https://github.com/UJA-DAGIL-22-23/d-agil-2022-2023-practica-4-alvaros_alba_francisco/assets/124689598/db7ffb96-9f95-44e6-a192-ea73685e5bce">
+
    
    #### Sprint Planning
    En la reunión de Sprint Planning realizada el 25/04/2023 nos reunimos de forma física en el edificio A3 de la Universidad de Jaén a las 12:30 h. En ella describimos todas las Historias de Usuario y las añadimos a la lista Product Backlog de nuestro tablero de Trello. De todas ellas elegimos la HU01, HU02, HU03, HU04, HU05, HU06, HU07, HU08, HU10 y HU11 para añadirlas a nuestro proyecto y se incorporaron al Sprint Backlog como se puede ver en la captura inicial de Trello. Y, por último, nos repartimos el trabajo para poder hacerlo más edificientemente.
